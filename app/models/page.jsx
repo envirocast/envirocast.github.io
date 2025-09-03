@@ -12,7 +12,7 @@ export default function Models() {
     <div className="section">
       <div className="container mx-auto px-4 max-w-6xl space-y-10">
         <header className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold gradient-text">c
+          <h1 className="text-4xl md:text-5xl font-bold gradient-text">Models & Simulations</h1>
           <p className="text-slate-300 mt-3 max-w-3xl mx-auto">Explore interactive tools demonstrating pollution dynamics and our hybrid prediction flow.</p>
         </header>
 
