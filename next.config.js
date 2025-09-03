@@ -1,8 +1,11 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
-module.exports = {
-  output: 'export', // enables `next export` for static output
+const nextConfig = {
+  output: 'export', // ensures static export
   images: {
-    unoptimized: true, // required for static export
+    unoptimized: true, // GitHub Pages doesn’t handle Next.js Image optimization
   },
+  basePath: '', // keep empty since you're using org.github.io root
 }
+
+module.exports = nextConfig
