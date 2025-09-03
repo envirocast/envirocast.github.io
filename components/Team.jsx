@@ -1,4 +1,6 @@
 // components/Team.jsx
+import Card from "@/components/cards/Card"
+
 const team = [
   { name: 'Ava Chen', role: 'Quantum ML Lead', img: '/team/member1.jpg', github: 'https://github.com/avachen', bio: 'Designs quantum kernels; IBM Quantum enthusiast.' },
   { name: 'Marcus Lee', role: 'Full-Stack Engineer', img: '/team/member2.jpg', github: 'https://github.com/marcuslee', bio: 'Next.js, data APIs, CI/CD on GitHub Pages.' },
@@ -14,13 +16,13 @@ export default function Team() {
       <p className="text-slate-300 mb-6">We’re an interdisciplinary group accelerating environmental action with quantum-inspired AI.</p>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {team.map(m => (
-          <article key={m.name} className="card-base">
+          <Card key={m.name}>
             <img src={m.img} alt={m.name} className="h-40 w-full object-cover rounded-xl mb-4" />
             <h3 className="text-xl font-semibold">{m.name}</h3>
             <p className="text-brand text-sm">{m.role}</p>
             <p className="text-slate-300 mt-2 text-sm">{m.bio}</p>
             <a className="link text-sm mt-2 inline-block" href={m.github} target="_blank" rel="noreferrer">GitHub</a>
-          </article>
+          </Card>
         ))}
       </div>
     </div>
