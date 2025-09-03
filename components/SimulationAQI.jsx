@@ -2,6 +2,7 @@
 'use client'
 import { useMemo, useState } from 'react'
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
+import Card from "@/components/cards/Card"
 
 export default function SimulationAQI() {
   const [pm25, setPm25] = useState(15)
@@ -28,7 +29,7 @@ export default function SimulationAQI() {
   }, [pm25, o3, no2, temp, humidity])
 
   return (
-    <div className="card-base">
+    <Card>
       <h2 className="text-2xl font-semibold mb-2">Interactive AQI Simulator</h2>
       <p className="text-slate-300 mb-4">Adjust pollutant & weather sliders. A mock quantum-kernel similarity influences predicted AQI.</p>
 
@@ -52,7 +53,7 @@ export default function SimulationAQI() {
           </ResponsiveContainer>
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 
