@@ -27,7 +27,7 @@ export default function About() {
               <li>Weather: temp, humidity, wind, pressure</li>
               <li>NASA Earth data (remote sensing proxies)</li>
             </ul>
-          </Cqrd>
+          </Card>
           <Card>
             <h3 className="text-xl font-semibold mb-2">Why It Matters</h3>
             <p className="text-slate-300">Better forecasts empower cities to reduce exposure and plan interventions—smart routing, alerts, and cleaner energy incentives.</p>
