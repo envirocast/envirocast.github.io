@@ -1,6 +1,7 @@
 // app/models/page.jsx
 'use client'
 import React, { useState } from 'react'
+import Card from "@/components/cards/Card"
 import SimulationAQI from '@/components/SimulationAQI'
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 
@@ -15,7 +16,7 @@ export default function Models() {
           <p className="text-slate-300 mt-3 max-w-3xl mx-auto">Explore interactive tools demonstrating pollution dynamics and our hybrid prediction flow.</p>
         </header>
 
-        <div className="card-base">
+        <Card>
           <h2 className="text-2xl font-semibold mb-4">Daily AQI Pattern (Demo)</h2>
           <div className="w-full h-72">
             <ResponsiveContainer>
@@ -28,15 +29,15 @@ export default function Models() {
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </div>
+        </Card>
 
         <SimulationAQI />
 
-        <div className="card-base">
+        <Card">
           <h2 className="text-2xl font-semibold mb-2">Energy Choices Mini-Game</h2>
           <p className="text-slate-300 mb-3">Toggle sources and watch estimated emissions change. Try to keep AQI below 100!</p>
           <EnergyGame />
-        </div>
+        </Card>
       </div>
     </div>
   )
