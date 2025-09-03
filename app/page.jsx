@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Hero from '@/components/Hero'
 import Team from '@/components/Team'
+import Card from "@/components/cards/Card"
 import QuantumExplainer from '@/components/QuantumExplainer'
 import SimulationAQI from '@/components/SimulationAQI'
 
@@ -15,7 +16,7 @@ export default function Home() {
       <section className="section">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid md:grid-cols-2 gap-8">
-            <div className="card-base">
+            <Card>
               <h2 className="text-3xl font-semibold mb-3">The Problem: Pollution</h2>
               <p className="text-slate-300 leading-relaxed">
                 Pollution—from traffic, industry, wildfires, and more—threatens our health and climate.
@@ -27,8 +28,8 @@ export default function Home() {
                 <li>Why it’s dangerous: elevated AQI, respiratory and cardiovascular risks, economic costs.</li>
                 <li>What we do: predict, visualize, and nudge communities toward cleaner choices.</li>
               </ul>
-            </div>
-            <div className="card-base">
+            </Card>
+            <Card>
               <h3 className="text-2xl font-semibold mb-4">Our Mission</h3>
               <p className="text-slate-300 mb-4">
                 EnviroCast saves the environment by promoting action and leveraging new technology.
@@ -38,7 +39,7 @@ export default function Home() {
                 <a className="btn" href="/about">Learn how it works</a>
                 <a className="btn btn-outline" href="/models">Try simulations</a>
               </div>
-            </div>
+            </Card>
           </motion.div>
         </div>
       </section>
