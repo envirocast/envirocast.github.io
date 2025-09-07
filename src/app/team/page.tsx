@@ -43,19 +43,19 @@ export default function TeamPage() {
     {
       id: 3,
       name: "Divin Giddaluru",
-      role: "Role",
+      role: "[What did you do for EnviroCast?!]",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=DG&font=inter",
-      bio: "Bio",
+      bio: "A developer and AI enthusiast passionate about using technology to break down barriers to education and information. [Add one more sentence on what you did for EnviroCast]",
       expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+        "Artificial Intelligence", "Full-Stack Development", "Web Programming", "Machine Learning", "Computer Vision", "Digital Learning Tools", "Cloud Integration",
       ],
       achievements: [
-        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+        "PCAP™ Certified Associate in Python Programming", "Developed accessible tools for legal, financial, and digital literacy", "Led full-stack development of resource discovery platforms", "Deployed AI apps using Streamlit, SQL, and PyTorch", "Designed cloud-based tools with Azure authentication integration", "Can't run?! [Add one more]",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
       email: "divin.giddaluru@gmail.com",
-      personalNote: "Quote by you"
+      personalNote: "Technology should be used to help people, especially those who often get overlooked."
     },
     {
       id: 4,
