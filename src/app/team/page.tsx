@@ -43,19 +43,19 @@ export default function TeamPage() {
     {
       id: 3,
       name: "Vir Sanghavi",
-      role: "Role",
+      role: "Lead Presenter and AI Systems Engineer",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=VS&font=inter",
-      bio: "Bio",
+      bio: "A student innovator applying AI and data-driven systems to solve environmental and societal challenges. Constructed resilient artificial intelligence and machine learning systems and algorithms complemented with scalable platforms to enhance real-world impact.",
       expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+        "Machine Learning", "Artificial Intelligence", "Full-Stack Development", "Data Visualization", "Leadership", "Public Speaking", "STEM Outreach",
       ],
       achievements: [
-        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+        "Founder of an AI-powered debate platform with 2300+ users across 3 continents", "Executive director of a scaled nonprofit distributing $500K+ in robotics hardware", "Led an AI-powered bird strike prevention system using computer vision and bioacoustic deterrents", "Developed a machine learning tool for real-world contextual awareness using LAB color models", "2023 Texas State Champion in Congressional Debate & National Finalist", "Launched a global coding educational initiative, teaching 100+ students in India basic programming skills",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
       email: "vir.sanghavi@gmail.com",
-      personalNote: "Quote by you"
+      personalNote: "Innovation should scale beyond people. It should serve the planet too."
     },
     {
       id: 4,
