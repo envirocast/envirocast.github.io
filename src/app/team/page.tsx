@@ -16,10 +16,10 @@ export default function TeamPage() {
         "Quantum Engineering", "Geospatial Analysis", "Machine Learning Algorithms", "Satellite Data Fusion", "Artificial Intelligence", "Weather Modeling (WRF)", "Python",
       ],
       achievements: [
-        "Published 15+ papers on tropospheric ozone and NO2 monitoring", "Developed novel algorithms for TEMPO data calibration", "Led a multi-institutional team for a NOAA grant on air quality", "Presented findings at the American Geophysical Union (AGU) annual meeting",
+        "Co-president of a non-profit to help marginalized farmers in third-world countries", "Founder of an AI web application for exploration of student career choices", "Ranked 16th in the country in PicoCTF Cybersecurity", "Won local NASA Space Apps Hackathon in the Data Analysis category", "First place in school wide GT expo for developing an environmental & agricultural service application", "HUDL City Championship finalist",
       ],
       location: "Houston, TX",
-      joinedYear: "2024",
+      joinedYear: "2025",
       email: "anya.sharma@envirocast.tech",
       personalNote: "The air we breathe connects us all. My goal is to make the invisible visible, using cutting-edge satellite technology to empower communities with the knowledge to protect their health from air pollution."
     },
