@@ -10,7 +10,7 @@ export default function TeamPage() {
       id: 1,
       name: "Arnav Nemade",
       role: "Lead Quantum Developer",
-      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AS&font=inter",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AN&font=inter",
       bio: "A passionate student with the goal of making the world a cleaner place using machine learning models and advanced quantum algorithms. Focuses on creating impressive and interactive analytical applications to engage users and convey data.",
       expertise: [
         "Quantum Engineering", "Geospatial Analysis", "Machine Learning Algorithms", "Satellite Data Fusion", "Artificial Intelligence", "Weather Modeling (WRF)", "Python",
@@ -20,8 +20,8 @@ export default function TeamPage() {
       ],
       location: "Houston, TX",
       joinedYear: "2025",
-      email: "anya.sharma@envirocast.tech",
-      personalNote: "The air we breathe connects us all. My goal is to make the invisible visible, using cutting-edge satellite technology to empower communities with the knowledge to protect their health from air pollution."
+      email: "arnavnemade1@gmail.com",
+      personalNote: "If we all pitch in, we can make this world a better place."
     },
     {
       id: 2,
