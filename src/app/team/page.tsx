@@ -42,6 +42,23 @@ export default function TeamPage() {
     },
     {
       id: 3,
+      name: "Vir Sanghavi",
+      role: "Role",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=VS&font=inter",
+      bio: "Bio",
+      expertise: [
+        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+      ],
+      achievements: [
+        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+      ],
+      location: "Houston, TX",
+      joinedYear: "2025",
+      email: "vir.sanghavi@gmail.com",
+      personalNote: "Quote by you"
+    },
+    {
+      id: 4,
       name: "Divin Giddaluru",
       role: "[Add role...]",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=DG&font=inter",
@@ -58,7 +75,7 @@ export default function TeamPage() {
       personalNote: "Technology should be used to help people, especially those who often get overlooked."
     },
     {
-      id: 4,
+      id: 5,
       name: "Ahaan Thota",
       role: "Role",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
@@ -75,7 +92,7 @@ export default function TeamPage() {
       personalNote: "Quote by you"
     },
     {
-      id: 5,
+      id: 6,
       name: "Sathyan Gopal",
       role: "Social Media & Promotional Content Manager",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=SG&font=inter",
