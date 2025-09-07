@@ -8,12 +8,12 @@ export default function TeamPage() {
   const teamMembers = [
     {
       id: 1,
-      name: "Dr. Anya Sharma",
-      role: "Lead Atmospheric Scientist",
+      name: "Arnav Nemade",
+      role: "Lead Quantum Developer",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=AS&font=inter",
-      bio: "An atmospheric scientist dedicated to translating complex satellite data into actionable public health insights. My work focuses on integrating NASA's TEMPO mission data with ground-based sensors to create high-fidelity air quality forecasts.",
+      bio: "A passionate student with the goal of making the world a cleaner place using machine learning models and advanced quantum algorithms. Focuses on creating impressive and interactive analytical applications to engage users and convey data.",
       expertise: [
-        "Atmospheric Chemistry", "Satellite Data Fusion", "Geospatial Analysis", "Weather Modeling (WRF)", "Pollutant Dispersion", "Python (Pandas, xarray)",
+        "Quantum Engineering", "Geospatial Analysis", "Machine Learning Algorithms", "Satellite Data Fusion", "Artificial Intelligence", "Weather Modeling (WRF)", "Python",
       ],
       achievements: [
         "Published 15+ papers on tropospheric ozone and NO2 monitoring", "Developed novel algorithms for TEMPO data calibration", "Led a multi-institutional team for a NOAA grant on air quality", "Presented findings at the American Geophysical Union (AGU) annual meeting",
