@@ -28,12 +28,12 @@ export default function TeamPage() {
       name: "Kavin Elangovan",
       role: "Web Applications and Graphics Developer",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=KE&font=inter",
-      bio: "Bio",
+      bio: "A data-driven student with the goal of using the powers of innovation, creativity, and technology to improve connection and engagement using interactive interfaces. I worked on creating an informative and engaging website for EnviroCast and developing user interfaces and graphics for our models and applications.",
       expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+        "Web Development", "Software Applications", "Graphic Design", "Artificial Intelligence", "Machine Learning", "Image Editing", "API Interfaces",
       ],
       achievements: [
-        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+        "Recipient of the United States Navy and Marine Corps' Office of Naval Research Gold Medal", "Developed an AI-powered application for scalable multicancer classification and diagnosis", "Finalist at TXSEF in Biomedical Engineering", "Presenter at SAIL2025, ENDO2025, and ISBI2025 international conferences", "AP and CollegeBoard-certified Computer Science & Mathematics tutor", "UNICEF Youth Training Advocate",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
