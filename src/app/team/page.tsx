@@ -26,19 +26,70 @@ export default function TeamPage() {
     {
       id: 2,
       name: "Kavin Elangovan",
-      role: "Lead Quantum Developer",
+      role: "Role",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=KE&font=inter",
-      bio: "A passionate student with the goal of making the world a cleaner place using machine learning models and advanced quantum algorithms. Focuses on creating impressive and interactive analytical applications to engage users and convey data.",
+      bio: "Bio",
       expertise: [
-        "Quantum Engineering", "Geospatial Analysis", "Machine Learning Algorithms", "Satellite Data Fusion", "Artificial Intelligence", "Weather Modeling (WRF)", "Python",
+        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
       ],
       achievements: [
-        "Co-president of a non-profit to help marginalized farmers in third-world countries", "Founder of an AI web application for exploration of student career choices", "Ranked 16th in the country in PicoCTF Cybersecurity", "Won local NASA Space Apps Hackathon in the Data Analysis category", "First place in school wide GT expo for developing an environmental & agricultural service application", "HUDL City Championship finalist",
+        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
       email: "ketechwiz@gmail.com",
       personalNote: "Nature is beautiful. We cannot let it be destroyed."
+    },
+    {
+      id: 3,
+      name: "Divin Giddaluru",
+      role: "Role",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=DG&font=inter",
+      bio: "Bio",
+      expertise: [
+        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+      ],
+      achievements: [
+        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+      ],
+      location: "Houston, TX",
+      joinedYear: "2025",
+      email: "divin.giddaluru@gmail.com",
+      personalNote: "Quote by you"
+    },
+    {
+      id: 4,
+      name: "Ahaan Thota",
+      role: "Role",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
+      bio: "Bio",
+      expertise: [
+        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+      ],
+      achievements: [
+        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+      ],
+      location: "Houston, TX",
+      joinedYear: "2025",
+      email: "ahaan.thota@gmail.com",
+      personalNote: "Quote by you"
+    },
+    {
+      id: 5,
+      name: "Sathyan Gopal",
+      role: "Role",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=SG&font=inter",
+      bio: "Bio",
+      expertise: [
+        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+      ],
+      achievements: [
+        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+      ],
+      location: "Houston, TX",
+      joinedYear: "2025",
+      email: "sathyangopal4@gmail.com",
+      personalNote: "Quote by you"
     }
   ];
 
