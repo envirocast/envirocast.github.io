@@ -77,7 +77,7 @@ export default function TeamPage() {
     {
       id: 5,
       name: "Sathyan Gopal",
-      role: "Role",
+      role: "Social Media & Promotional Content Manager",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=SG&font=inter",
       bio: "A hard-working student with the goal of making the world a better place through the use of technology and machine learning. Organized social media compaigns and promotional multimedia to support the environment aligned with EnviroCast's mission and objectives.",
       expertise: [
