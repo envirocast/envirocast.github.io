@@ -79,17 +79,17 @@ export default function TeamPage() {
       name: "Sathyan Gopal",
       role: "Role",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=SG&font=inter",
-      bio: "Bio",
+      bio: "A hard-working student with the goal of making the world a better place through the use of technology and machine learning. Organized social media compaigns and promotional multimedia to support the environment aligned with EnviroCast's mission and objectives.",
       expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+        "Python", "Java", "Artificial Intelligence", "API Integration", "Web Development", "Software Applications", "Data Management",
       ],
       achievements: [
-        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+        "Created a user-friendly LLM application for student learning and educational assistance across school districts", "Finalist in SEFH in Physics & Astronomy Division", "2nd place in local NASA Space Apps state-wide hackathon", "Deployed integrated applications using Streamlit and Render", "Designed a career search application as an online intern for the STEM·E Youth Career Development Program", "Vice President of the Programming & Web Development Club at Carnegie Vanguard High School",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
       email: "sathyangopal4@gmail.com",
-      personalNote: "Quote by you"
+      personalNote: "Technology is our foremost weapon in the battle against pollution."
     }
   ];
 
