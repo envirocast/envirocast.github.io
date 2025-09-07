@@ -21,7 +21,7 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "arnavnemade1@gmail.com",
-      personalNote: "If we all pitch in, we can make this world a better place."
+      personalNote: "If we all do our part, we can make the world a better place."
     },
     {
       id: 2,
@@ -38,7 +38,7 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "ketechwiz@gmail.com",
-      personalNote: "Nature is beautiful. We cannot let it be destroyed."
+      personalNote: "Nature is too amazing to lose, so let's protect it however we can."
     },
     {
       id: 3,
