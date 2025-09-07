@@ -26,7 +26,7 @@ export default function TeamPage() {
     {
       id: 2,
       name: "Kavin Elangovan",
-      role: "Role",
+      role: "Web Applications and Graphics Developer",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=KE&font=inter",
       bio: "Bio",
       expertise: [
