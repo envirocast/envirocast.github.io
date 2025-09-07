@@ -25,20 +25,20 @@ export default function TeamPage() {
     },
     {
       id: 2,
-      name: "Ben Carter",
-      role: "Cloud & Data Architect",
-      image: "https://placehold.co/400x400/a78bfa/ffffff?text=BC&font=inter",
-      bio: "I architect the scalable cloud infrastructure that powers EnviroCast. My focus is on building robust, efficient data pipelines to process terabytes of real-time TEMPO, weather, and ground sensor data seamlessly.",
+      name: "Kavin Elangovan",
+      role: "Lead Quantum Developer",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=KE&font=inter",
+      bio: "A passionate student with the goal of making the world a cleaner place using machine learning models and advanced quantum algorithms. Focuses on creating impressive and interactive analytical applications to engage users and convey data.",
       expertise: [
-        "Cloud Computing (AWS/GCP)", "Big Data Technologies (Spark, Dask)", "Kubernetes & Docker", "Data Pipeline Orchestration (Airflow)", "CI/CD & DevOps", "Infrastructure as Code (Terraform)"
+        "Quantum Engineering", "Geospatial Analysis", "Machine Learning Algorithms", "Satellite Data Fusion", "Artificial Intelligence", "Weather Modeling (WRF)", "Python",
       ],
       achievements: [
-        "Designed a serverless architecture processing 1TB of data daily", "Reduced data ingestion latency by 60% for a major geospatial project", "Certified Kubernetes Application Developer (CKAD)", "Engineered a collaborative cloud environment for seamless team scaling and research"
+        "Co-president of a non-profit to help marginalized farmers in third-world countries", "Founder of an AI web application for exploration of student career choices", "Ranked 16th in the country in PicoCTF Cybersecurity", "Won local NASA Space Apps Hackathon in the Data Analysis category", "First place in school wide GT expo for developing an environmental & agricultural service application", "HUDL City Championship finalist",
       ],
       location: "Houston, TX",
-      joinedYear: "2024",
-      email: "ben.carter@envirocast.tech",
-      personalNote: "For me, the ultimate challenge is building a system that is not only powerful but also elegant and efficient. I'm driven to create the computational backbone that allows science to happen at scale, instantly."
+      joinedYear: "2025",
+      email: "ketechwiz@gmail.com",
+      personalNote: "Nature is beautiful. We cannot let it be destroyed."
     }
   ];
 
