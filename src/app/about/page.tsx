@@ -542,7 +542,8 @@ export default function AboutPage() {
       metrics: [
         { value: "87%", label: "Efficiency Gain" },
         // { value: "€2.3M", label: "Cost Savings" },
-        { value: "43%", label: "Waste Reduction" }
+        { value: "43%", label: "Waste Reduction" },
+        { value: "94%", label: "Less Energy Consumption" }
       ],
       technical: [
         {
