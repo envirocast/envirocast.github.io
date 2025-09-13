@@ -573,8 +573,8 @@ const ModelsPage = () => {
             Ready to Dive Deeper?
           </h2>
           <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-            Explore our team of experts, access raw datasets, or get in touch to learn more 
-            about our revolutionary air quality forecasting technology.
+            Explore the team of experts behind these advanced quantum models or 
+            dive headfirst into the power of our EnviroNex simulation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
@@ -589,9 +589,9 @@ const ModelsPage = () => {
               className="border-2 border-cyan-500 text-cyan-300 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-cyan-500 hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = "/resources"}
+              onClick={() => window.location.href = "/nex"}
             >
-              Access Data & Resources
+              Launch EnviroNex
             </motion.button>
           </div>
         </motion.div>
