@@ -68,7 +68,7 @@ const ModelsPage = () => {
   const tabs = [
     { id: 'quantum-particles', label: 'Quantum Particle Physics', icon: Atom },
     { id: 'quantum-viz', label: 'Quantum AI', icon: Brain },
-    { id: '3d-model', label: '3D Atmospheric', icon: Cloud }
+    { id: 'enviro-nex', label: 'EnviroNex', icon: Globe }
   ];
 
   useEffect(() => {
@@ -244,14 +244,16 @@ const ModelsPage = () => {
     </div>
   );
 
-  const AtmosphericModel3D = () => (
+  const EnviroNex = () => (
     <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-      <h3 className="text-2xl font-bold text-white mb-6">3D Atmospheric Transport Model</h3>
+      <h3 className="text-2xl font-bold text-white mb-6">
+        <span className="font-extrabold">EnviroNex</span>
+      </h3>
       
       <div className="bg-slate-900 rounded-xl p-8 min-h-96 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-green-900/20"></div>
         
-        {/* 3D Model Placeholder */}
+        {/* 3D Globe Placeholder */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
           <motion.div
             className="w-32 h-32 border-4 border-cyan-400 rounded-full mb-6 relative"
@@ -260,19 +262,21 @@ const ModelsPage = () => {
           >
             <div className="absolute inset-4 border-2 border-purple-400 rounded-full">
               <div className="absolute inset-2 border-2 border-pink-400 rounded-full flex items-center justify-center">
-                <Cloud className="w-8 h-8 text-white animate-pulse" />
+                <Globe className="w-8 h-8 text-white animate-pulse" />
               </div>
             </div>
           </motion.div>
           
-          <h4 className="text-2xl font-bold text-white mb-4">Interactive 3D Visualization</h4>
+          <h4 className="text-2xl font-bold text-white mb-4">Interactive 3D Globe & Quantum Forecasting</h4>
           <p className="text-slate-300 max-w-md">
-            Explore pollutant transport through atmospheric layers with real-time wind patterns 
-            and chemical transformations from TEMPO satellite data.
+            Explore real-time and long-term environmental predictions, including 24-hour pollution forecasts, multi-year projections, and health impact analysis.
           </p>
           
-          <button className="mt-6 inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg transition-all">
-            Launch 3D Model
+          <button
+            className="mt-6 inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg transition-all"
+            onClick={() => window.location.href = "/nex"}
+          >
+            Launch EnviroNex
             <ArrowRight className="w-5 h-5 ml-2" />
           </button>
         </div>
@@ -432,15 +436,15 @@ const ModelsPage = () => {
               </motion.div>
             )}
 
-            {activeTab === '3d-model' && (
+            {activeTab === 'enviro-nex' && (
               <motion.div
-                key="3d-model"
+                key="enviro-nex"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <AtmosphericModel3D />
+                <EnviroNex />
               </motion.div>
             )}
           </AnimatePresence>
