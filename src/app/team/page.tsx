@@ -112,8 +112,8 @@ export default function TeamPage() {
 
   const stats = [
     { label: "Data Points Processed Daily", value: "5B+", icon: Layers },
-    { label: "Forecast Accuracy", value: "97.5%", icon: Target },
-    { label: "Population Covered", value: "300M+", icon: Users },
+    { label: "Forecast Accuracy", value: "95.4%", icon: Target },
+    { label: "Population Covered", value: "7.5B+", icon: Users },
   ];
 
   const containerVariants = {
