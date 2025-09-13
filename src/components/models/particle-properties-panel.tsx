@@ -28,8 +28,9 @@ export const ParticlePropertiesPanel: React.FC<ParticlePropertiesPanelProps> = (
   // Inline version (inside canvas container)
   if (inline) {
     return (
-      <div className="bg-slate-900 border border-slate-600 rounded-xl h-full min-h-[500px] overflow-y-auto w-full">
-        <div className="sticky top-0 bg-slate-900 border-b border-slate-600 p-4 z-10">
+      <div className="bg-slate-900 border border-slate-600 rounded-xl h-full flex flex-col w-full">
+        {/* Fixed Header */}
+        <div className="flex-shrink-0 bg-slate-900 border-b border-slate-600 p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
@@ -49,7 +50,8 @@ export const ParticlePropertiesPanel: React.FC<ParticlePropertiesPanelProps> = (
           </div>
         </div>
 
-        <div className="p-4 space-y-4">
+        {/* Scrollable Content */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {/* Position & Velocity */}
           <div className="bg-slate-800 rounded-xl p-4">
             <div className="flex items-center space-x-2 mb-3">
@@ -153,7 +155,7 @@ export const ParticlePropertiesPanel: React.FC<ParticlePropertiesPanelProps> = (
           </div>
 
           {/* Visual Indicators */}
-          <div className="flex flex-wrap gap-4 text-xs">
+          <div className="flex flex-wrap gap-4 text-xs pb-4">
             <div className="flex items-center space-x-1">
               <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
               <span className="text-slate-300">Normal</span>
