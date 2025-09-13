@@ -32,18 +32,18 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
   useEffect(() => {
     const initializeEngine = () => {
       engineRef.current = new QuantumPhysicsEngine({ width: 800, height: 500 });
-      
+
       // Create initial particles
       for (let i = 0; i < particleCount; i++) {
         engineRef.current.createParticle();
       }
-      
+
       setIsEngineReady(true);
     };
 
     // Small delay to ensure DOM is ready
     const timer = setTimeout(initializeEngine, 100);
-    
+
     return () => {
       clearTimeout(timer);
       if (engineRef.current) {
@@ -55,10 +55,10 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
   // Update particle count (separate effect)
   useEffect(() => {
     if (!engineRef.current || !isEngineReady) return;
-    
+
     const currentParticles = engineRef.current.getAllParticles();
     const currentCount = currentParticles.length;
-    
+
     if (currentCount < particleCount) {
       // Add particles
       for (let i = 0; i < particleCount - currentCount; i++) {
@@ -79,7 +79,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
 
   const handleReset = () => {
     if (!engineRef.current) return;
-    
+
     // Clear existing particles and create new ones
     engineRef.current.clearAllParticles();
     for (let i = 0; i < particleCount; i++) {
@@ -120,7 +120,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
               Interactive quantum mechanics demonstration showing superposition, entanglement, and tunneling
             </p>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             {/* Particle Count Controls */}
             <div className="flex items-center space-x-2">
@@ -166,15 +166,15 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
               <button
                 onClick={onPlayToggle}
                 className={`p-3 rounded-lg font-semibold transition-all ${
-                  isPlaying 
-                    ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white hover:shadow-lg' 
+                  isPlaying
+                    ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white hover:shadow-lg'
                     : 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-lg'
                 }`}
               >
                 {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               </button>
-              
-              <button 
+
+              <button
                 onClick={handleReset}
                 className="p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
                 title="Reset simulation"
@@ -188,9 +188,18 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
 
       {/* Main Canvas Container */}
       <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-        <div className={`flex ${selectedParticle ? 'space-x-6' : 'justify-center'}`}>
+        {/*
+          Modified this line to add 'items-stretch' and 'min-h-[550px]'
+          This ensures both child elements stretch to a consistent minimum height.
+        */}
+        <div className={`flex items-stretch min-h-[550px] ${selectedParticle ? 'space-x-6' : 'justify-center'}`}>
           {/* Canvas Section */}
-          <div className={`${selectedParticle ? 'flex-shrink-0' : ''}`}>
+          {/*
+            Modified this line to add 'flex' and 'flex-col'
+            This makes the canvas and the text box below it stack vertically,
+            allowing the parent flex container to manage their total height.
+          */}
+          <div className={`flex flex-col ${selectedParticle ? 'flex-shrink-0' : ''}`}>
             <QuantumParticleCanvas
               isPlaying={isPlaying}
               speed={speed}
@@ -198,7 +207,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
               onParticleClick={setSelectedParticle}
               engine={engineRef.current}
             />
-            
+
             {/* Canvas Instructions */}
             <div className="mt-4 text-center">
               <p className="text-sm text-slate-400">
@@ -241,7 +250,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
           cursor: pointer;
           border: 2px solid #1e293b;
         }
-        
+
         .slider::-moz-range-thumb {
           height: 16px;
           width: 16px;
