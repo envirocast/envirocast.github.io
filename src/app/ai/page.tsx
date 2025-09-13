@@ -1,7 +1,6 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import { Brain, Zap, ArrowLeft, ExternalLink, Atom, Globe, Target, Activity, Maximize } from 'lucide-react';
-import Link from 'next/link';
 
 export default function AIPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -43,13 +42,13 @@ export default function AIPage() {
       <section className="relative z-40 px-6 pt-32 pb-8">
         <div className="max-w-7xl mx-auto">
           {/* Back Button */}
-          <Link 
-            href="/"
+          <a
+            href="#"
             className="inline-flex items-center px-4 py-2 rounded-lg bg-slate-800/50 backdrop-blur-md border border-slate-700/50 text-slate-300 hover:text-cyan-300 hover:border-cyan-500/30 transition-all duration-300 mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to Home
-          </Link>
+          </a>
 
           <div className="text-center space-y-8">
             {/* Badge */}
@@ -209,12 +208,12 @@ export default function AIPage() {
                 Experience real-time air quality predictions, pollution pattern analysis, and climate impact assessments.
               </p>
               <div className="flex justify-center space-x-6 pt-4">
-                <Link href="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
+                <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
                   Learn More About Our Technology
-                </Link>
-                <Link href="/models" className="text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
+                </a>
+                <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
                   Explore Our Models
-                </Link>
+                </a>
               </div>
             </div>
           </div>
