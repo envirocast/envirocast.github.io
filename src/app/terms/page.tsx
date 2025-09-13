@@ -247,10 +247,10 @@ const TermsPage = () => {
                 <div className="text-center">
                   <h3 className="font-semibold text-cyan-300 mb-2">General Inquiries</h3>
                   <a 
-                    href="mailto:ketechwiz@gmail.com" 
+                    href="mailto:envirocast.tech@gmail.com" 
                     className="text-slate-300 hover:text-cyan-300 transition-colors"
                   >
-                    ketechwiz@gmail.com
+                    envirocast.tech@gmail.com
                   </a>
                 </div>
                 
@@ -269,7 +269,7 @@ const TermsPage = () => {
               
               <div className="pt-4">
                 <a 
-                  href="mailto:ketechwiz@gmail.com" 
+                  href="mailto:envirocast.tech@gmail.com" 
                   className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold text-white hover:shadow-lg transition-all duration-300 inline-flex items-center"
                 >
                   <Mail className="w-4 h-4 mr-2" />
