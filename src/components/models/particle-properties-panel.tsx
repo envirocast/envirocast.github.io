@@ -28,7 +28,7 @@ export const ParticlePropertiesPanel: React.FC<ParticlePropertiesPanelProps> = (
   // Inline version (inside canvas container)
   if (inline) {
     return (
-      <div className="bg-slate-900 border border-slate-600 rounded-xl h-full max-h-[500px] overflow-y-auto">
+      <div className="bg-slate-900 border border-slate-600 rounded-xl h-full min-h-[500px] overflow-y-auto w-full">
         <div className="sticky top-0 bg-slate-900 border-b border-slate-600 p-4 z-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
