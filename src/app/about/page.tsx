@@ -341,7 +341,7 @@ export default function AboutPage() {
       description: "Leverages quantum superposition to simultaneously model multiple environmental scenarios, enabling parallel computation of thousands of potential outcomes.",
       metrics: [
         { value: "10,000x", label: "Parallel States" },
-        { value: "99.7%", label: "Accuracy" },
+        { value: "95.4%", label: "Accuracy" },
         { value: "0.3ms", label: "Processing Time" }
       ],
       technical: [
@@ -466,7 +466,7 @@ export default function AboutPage() {
         "  result = processor.process(data)"
       ],
       impacts: [
-        { value: "50x", label: "Faster Processing" },
+        { value: "1000x", label: "Faster Processing" },
         { value: "92%", label: "Resource Efficiency" }
       ],
       applications: [
@@ -491,8 +491,8 @@ export default function AboutPage() {
       description: "Uses quantum algorithms to model climate systems with unprecedented accuracy, predicting environmental changes months ahead.",
       metrics: [
         { value: "18mo", label: "Forecast Range" },
-        { value: "94.2%", label: "Accuracy" },
-        { value: "0.1°C", label: "Temperature Precision" }
+        { value: "95.4%", label: "Accuracy" },
+        { value: "95%", label: "Pollutant Analysis Accuracy" }
       ],
       technical: [
         {
@@ -541,7 +541,7 @@ export default function AboutPage() {
       description: "Optimizes environmental resource allocation using quantum annealing and variational algorithms for maximum efficiency.",
       metrics: [
         { value: "87%", label: "Efficiency Gain" },
-        { value: "€2.3M", label: "Cost Savings" },
+        // { value: "€2.3M", label: "Cost Savings" },
         { value: "43%", label: "Waste Reduction" }
       ],
       technical: [
@@ -850,7 +850,7 @@ export default function AboutPage() {
                 {[
                   { 
                     title: "Processing Speed", 
-                    value: "50,000x", 
+                    value: "1000x", 
                     subtitle: "Faster than classical", 
                     icon: Zap, 
                     color: "yellow",
@@ -858,7 +858,7 @@ export default function AboutPage() {
                   },
                   { 
                     title: "Prediction Accuracy", 
-                    value: "99.7%", 
+                    value: "95.4%", 
                     subtitle: "Environmental forecasts", 
                     icon: Target, 
                     color: "green",
@@ -866,7 +866,7 @@ export default function AboutPage() {
                   },
                   { 
                     title: "Data Throughput", 
-                    value: "2.3TB/s", 
+                    value: "1TB/s", 
                     subtitle: "Real-time processing", 
                     icon: Activity, 
                     color: "cyan",
@@ -907,8 +907,8 @@ export default function AboutPage() {
                       { 
                         task: "Climate Model Simulation", 
                         classical: "72 hours", 
-                        quantum: "4.3 minutes", 
-                        improvement: "1000x faster" 
+                        quantum: "0.7 seconds", 
+                        improvement: "350000x faster" 
                       },
                       { 
                         task: "Pollution Spread Analysis", 
@@ -969,7 +969,7 @@ export default function AboutPage() {
                       },
                       {
                         title: "Prediction Reliability",
-                        value: "94.8%",
+                        value: "95.4%",
                         description: "Accuracy in 30-day environmental forecasts",
                         icon: BarChart3,
                         color: "purple"
