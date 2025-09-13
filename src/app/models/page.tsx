@@ -392,15 +392,33 @@ const ModelsPage = () => {
                   key={stream.name}
                   className={`p-4 rounded-xl border transition-all ${
                     isActive 
-                      ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/30' 
+                      ? selectedProcessor === 'superposition' 
+                        ? 'bg-gradient-to-br from-cyan-500/10 to-cyan-600/10 border-cyan-500/30'
+                        : selectedProcessor === 'entanglement'
+                        ? 'bg-gradient-to-br from-purple-500/10 to-purple-600/10 border-purple-500/30'
+                        : 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/30'
                       : 'bg-slate-900 border-slate-700'
                   }`}
                 >
                   <div className="flex items-center space-x-3 mb-3">
-                    <Icon className={`w-5 h-5 ${isActive ? 'text-green-400' : 'text-slate-400'}`} />
+                    <Icon className={`w-5 h-5 ${isActive 
+                      ? selectedProcessor === 'superposition' 
+                        ? 'text-cyan-400'
+                        : selectedProcessor === 'entanglement'
+                        ? 'text-purple-400'
+                        : 'text-green-400'
+                      : 'text-slate-400'
+                    }`} />
                     <div>
                       <div className="font-medium text-white text-sm">{stream.name}</div>
-                      <div className={`text-xs ${isActive ? 'text-green-400' : 'text-slate-500'} capitalize`}>
+                      <div className={`text-xs ${isActive 
+                        ? selectedProcessor === 'superposition' 
+                          ? 'text-cyan-400'
+                          : selectedProcessor === 'entanglement'
+                          ? 'text-purple-400'
+                          : 'text-green-400'
+                        : 'text-slate-500'
+                      } capitalize`}>
                         {stream.status}
                       </div>
                     </div>
@@ -739,7 +757,7 @@ const ModelsPage = () => {
             )}
 
             {/* Quantum State Header */}
-            <div className="bg-slate-900/90 rounded-lg p-4 mb-4 border border-slate-700">
+            <div className="bg-slate-900/90 rounded-lg p-4 mt-4 border border-slate-700">
               <div className="flex items-center justify-between">
                 <div className="text-sm font-mono">
                   <span className="text-cyan-300">Current State: </span>
