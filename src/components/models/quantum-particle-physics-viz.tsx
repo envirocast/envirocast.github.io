@@ -211,10 +211,10 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
           {selectedParticle && (
             <motion.div
               initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: 320 }}
+              animate={{ opacity: 1, width: 'auto' }}
               exit={{ opacity: 0, width: 0 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="flex-shrink-0 overflow-hidden"
+              className="flex-1 overflow-hidden"
             >
               <ParticlePropertiesPanel
                 selectedParticle={selectedParticle}
