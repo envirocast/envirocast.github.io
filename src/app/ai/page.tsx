@@ -1,10 +1,12 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { Brain, Zap, ArrowLeft, ExternalLink, Atom, Globe, Target, Activity } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Brain, Zap, ArrowLeft, ExternalLink, Atom, Globe, Target, Activity, Maximize } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AIPage() {
   const [isLoading, setIsLoading] = useState(true);
+  // Create a ref to get a reference to the iframe element
+  const iframeRef = useRef(null);
 
   useEffect(() => {
     // Simulate loading time for iframe
@@ -14,6 +16,22 @@ export default function AIPage() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Function to handle fullscreen request for the iframe
+  const handleFullscreen = () => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -140,6 +158,7 @@ export default function AIPage() {
                   allow="accelerometer; autoplay; camera; encrypted-media; gyroscope; microphone"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                   onLoad={() => setIsLoading(false)}
+                  ref={iframeRef} // Attach the ref to the iframe
                 />
                 
                 {/* Gradient Overlay for Seamless Integration */}
@@ -157,11 +176,20 @@ export default function AIPage() {
               <button className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-all duration-300 group">
                 <Brain className="w-5 h-5 group-hover:animate-pulse" />
               </button>
+              {/* New fullscreen button */}
+              <button 
+                onClick={handleFullscreen}
+                className="w-12 h-12 bg-slate-800/80 backdrop-blur-md border border-slate-600 rounded-full flex items-center justify-center text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 shadow-lg hover:scale-110 transition-all duration-300"
+                title="View Fullscreen"
+              >
+                <Maximize className="w-5 h-5" />
+              </button>
               <a 
                 href="https://enviro-ai.streamlit.app/?embedded=True" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-slate-800/80 backdrop-blur-md border border-slate-600 rounded-full flex items-center justify-center text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 shadow-lg hover:scale-110 transition-all duration-300"
+                title="Open in new tab"
               >
                 <ExternalLink className="w-5 h-5" />
               </a>
