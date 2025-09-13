@@ -174,7 +174,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
       </div>
 
       {/* Information Panel */}
-      <QuantumInfoPanel />
+      <QuantumInfoPanel engine={engineRef.current} />
 
       {/* Particle Properties Panel (Floating) */}
       <ParticlePropertiesPanel
