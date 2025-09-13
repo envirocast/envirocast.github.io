@@ -50,8 +50,11 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
         engineRef.current.createParticle();
       }
     } else if (currentCount > particleCount) {
-      // Remove particles (in a real implementation, you'd need a removeParticle method)
-      console.log('Note: Particle removal not implemented in this demo');
+      // Remove particles
+      const particlesToRemove = currentParticles.slice(particleCount);
+      particlesToRemove.forEach(particle => {
+        engineRef.current?.removeParticle(particle.id);
+      });
     }
   }, [particleCount]);
 
@@ -59,7 +62,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
     if (!engineRef.current) return;
     
     // Clear existing particles and create new ones
-    engineRef.current = new QuantumPhysicsEngine({ width: 800, height: 500 });
+    engineRef.current.clearAllParticles();
     for (let i = 0; i < particleCount; i++) {
       engineRef.current.createParticle();
     }
