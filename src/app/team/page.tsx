@@ -95,7 +95,7 @@ export default function TeamPage() {
     {
       id: 6,
       name: "Ahaan Thota",
-      role: "Role",
+      role: "Model Systems Developer & Analyst",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
       bio: "Bio",
       expertise: [
