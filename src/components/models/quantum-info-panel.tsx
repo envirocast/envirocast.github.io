@@ -121,8 +121,7 @@ export const QuantumInfoPanel: React.FC<QuantumInfoPanelProps> = ({ engine }) =>
         <div className="grid md:grid-cols-4 gap-4">
           <motion.div 
             className="bg-slate-900 rounded-lg p-4 text-center"
-            key={activeParticles}
-            initial={{ scale: 1 }}
+            key="active-particles"
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 0.3 }}
           >
@@ -132,8 +131,7 @@ export const QuantumInfoPanel: React.FC<QuantumInfoPanelProps> = ({ engine }) =>
           
           <motion.div 
             className="bg-slate-900 rounded-lg p-4 text-center"
-            key={entangledPairs}
-            initial={{ scale: 1 }}
+            key="entangled-pairs"
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 0.3 }}
           >
@@ -143,8 +141,7 @@ export const QuantumInfoPanel: React.FC<QuantumInfoPanelProps> = ({ engine }) =>
           
           <motion.div 
             className="bg-slate-900 rounded-lg p-4 text-center"
-            key={totalTunnels}
-            initial={{ scale: 1 }}
+            key="total-tunnels"
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 0.3 }}
           >
@@ -154,8 +151,7 @@ export const QuantumInfoPanel: React.FC<QuantumInfoPanelProps> = ({ engine }) =>
           
           <motion.div 
             className="bg-slate-900 rounded-lg p-4 text-center"
-            key={superpositionCount}
-            initial={{ scale: 1 }}
+            key="superposition-count"
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 0.3 }}
           >
