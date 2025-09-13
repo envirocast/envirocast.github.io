@@ -236,7 +236,7 @@ export default function HomePage() {
       icon: Brain
     },
     {
-      title: "Real-time Data Processing",
+      title: "Real-Time Data Processing",
       description: "Instantaneous analysis of massive environmental datasets",
       icon: Zap
     },
@@ -251,12 +251,12 @@ export default function HomePage() {
       icon: Target
     },
     {
-      title: "Multi-dimensional Analysis",
+      title: "Multi-Dimensional Analysis",
       description: "Comprehensive environmental impact assessment",
       icon: BarChart3
     },
     {
-      title: "Quantum-enhanced Simulation",
+      title: "Quantum-Enhanced Simulation",
       description: "Ultra-precise environmental scenario modeling",
       icon: Waves
     }
@@ -376,104 +376,6 @@ export default function HomePage() {
                 </FloatingElement>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quantum Algorithm Highlights Section */}
-      <section className="relative z-40 px-6 py-20 bg-gradient-to-br from-slate-900/80 to-slate-800/60 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-md border border-cyan-500/30 mb-8">
-              <Brain className="w-6 h-6 text-cyan-300 mr-3 animate-pulse" />
-              <span className="text-cyan-300 font-semibold text-lg">Quantum Algorithm Suite</span>
-            </div>
-            
-            <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-cyan-300 via-purple-300 to-green-300 bg-clip-text text-transparent">
-                Revolutionary Algorithms
-              </span>
-            </h2>
-            
-            <p className="text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed">
-              Seven cutting-edge quantum algorithms working in perfect harmony to deliver environmental intelligence 
-              that was previously impossible with classical computing.
-            </p>
-          </div>
-
-          {/* Algorithm Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {algorithmPoints.map((algorithm, index) => {
-              const Icon = algorithm.icon;
-              const isActive = currentSlide === index;
-              
-              return (
-                <div
-                  key={index}
-                  className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer group
-                    ${isActive 
-                      ? 'bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border-cyan-500/50 scale-105 shadow-2xl shadow-cyan-500/20' 
-                      : 'bg-gradient-to-br from-slate-800/30 to-slate-900/30 border-slate-700/50 hover:border-cyan-500/30'
-                    } backdrop-blur-md hover:scale-105`}
-                >
-                  {/* Icon and Status */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300
-                      ${isActive ? 'bg-cyan-500/30' : 'bg-slate-700/30 group-hover:bg-cyan-500/20'}`}>
-                      <Icon className={`w-7 h-7 transition-colors duration-300
-                        ${isActive ? 'text-cyan-300' : 'text-slate-400 group-hover:text-cyan-300'}`} />
-                    </div>
-                    
-                    <div className="flex items-center space-x-2">
-                      <div className={`w-3 h-3 rounded-full transition-all duration-300
-                        ${isActive ? 'bg-cyan-400 animate-pulse scale-110' : 'bg-slate-500 group-hover:bg-cyan-400'}`}>
-                      </div>
-                      {isActive && (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
-                      )}
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <h3 className={`text-xl font-bold mb-3 transition-colors duration-300
-                    ${isActive ? 'text-cyan-300' : 'text-white group-hover:text-cyan-300'}`}>
-                    {algorithm.title}
-                  </h3>
-                  
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    {algorithm.description}
-                  </p>
-
-                  {/* Active indicator */}
-                  {isActive && (
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/5 to-purple-500/5 pointer-events-none"></div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Progress Indicators */}
-          <div className="flex justify-center space-x-3 mb-8">
-            {algorithmPoints.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300
-                  ${currentSlide === index 
-                    ? 'bg-cyan-400 scale-125' 
-                    : 'bg-slate-600 hover:bg-slate-500'
-                  }`}
-              />
-            ))}
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center">
-            <Link href="/about" className="px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl font-semibold text-white hover:from-purple-400 hover:to-cyan-400 transition-all duration-300 inline-flex items-center group">
-              Deep Dive into Algorithms
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
         </div>
       </section>
