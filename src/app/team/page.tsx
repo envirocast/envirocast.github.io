@@ -4,21 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Heart, Layers, Target, Users, Calendar, Star, Briefcase, BrainCircuit, Sparkles, Send, MapPin } from 'lucide-react';
 
-// import local images
-import ArnavImg from "./pfp/arnav.png";
-import KavinImg from "./pfp/kavin.png";
-// import VirImg from "./pfp/vir.png";
-// import DivinImg from "./pfp/divin.png";
-// import AhaanImg from "./pfp/ahaan.png";
-// import SathyanImg from "./pfp/sathyan.png";
-
 export default function TeamPage() {
   const teamMembers = [
     {
       id: 1,
       name: "Arnav Nemade",
       role: "Lead Quantum Developer",
-      image: ArnavImg,
+      image: "/pfp/arnav.png",
       bio: "A passionate student with the goal of making the world a cleaner place using machine learning models and advanced quantum algorithms. Built the main web application with interactive globe and satellite integration powered by custom hybrid quantum-classical integration.",
       expertise: [
         "Quantum Engineering", "Geospatial Analysis", "Machine Learning Algorithms", "Satellite Data Fusion", "Artificial Intelligence", "Weather Modeling (WRF)", "Python",
@@ -35,7 +27,7 @@ export default function TeamPage() {
       id: 2,
       name: "Kavin Elangovan",
       role: "Web Applications and Graphics Developer",
-      image: KavinImg,
+      image: "/pfp/kavin.png",
       bio: "A data-driven student with the goal of using the powers of innovation, creativity, and technology to improve connection and engagement using interactive interfaces. Created an informative and engaging website for EnviroCast and developed user interfaces and graphics for ML models and applications.",
       expertise: [
         "Web Development", "Software Applications", "Graphic Design", "Artificial Intelligence", "Machine Learning", "Image Editing", "API Interfaces",
