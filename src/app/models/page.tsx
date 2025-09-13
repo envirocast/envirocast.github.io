@@ -414,7 +414,7 @@ const ModelsPage = () => {
                         <span className="text-slate-300">{stream.throughput}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Latency:</span>
+                        <span className="text-slate-400">Network Latency:</span>
                         <span className="text-slate-300">{stream.latency}</span>
                       </div>
                     </div>
@@ -590,7 +590,7 @@ const ModelsPage = () => {
                     <div className="text-xs text-slate-400">Quantum processors running optimal</div>
                   </div>
                 </div>
-                <div className="text-lg font-bold text-cyan-300">-273°C</div>
+                <div className="text-lg font-bold text-cyan-300">Approaching -273°C</div>
               </div>
             </div>
           </div>
