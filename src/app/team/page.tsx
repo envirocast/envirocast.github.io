@@ -77,23 +77,6 @@ export default function TeamPage() {
     },
     {
       id: 5,
-      name: "Ahaan Thota",
-      role: "Role",
-      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
-      bio: "Bio",
-      expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
-      ],
-      achievements: [
-        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
-      ],
-      location: "Houston, TX",
-      joinedYear: "2025",
-      email: "ahaan.thota@gmail.com",
-      personalNote: "Quote by you"
-    },
-    {
-      id: 6,
       name: "Sathyan Gopal",
       role: "Social Media and Promotional Content Manager",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=SG&font=inter",
@@ -108,6 +91,23 @@ export default function TeamPage() {
       joinedYear: "2025",
       email: "sathyangopal4@gmail.com",
       personalNote: "Technology is our foremost weapon in the battle against pollution."
+    },
+    {
+      id: 6,
+      name: "Ahaan Thota",
+      role: "Role",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
+      bio: "Bio",
+      expertise: [
+        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+      ],
+      achievements: [
+        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+      ],
+      location: "Houston, TX",
+      joinedYear: "2025",
+      email: "ahaan.thota@gmail.com",
+      personalNote: "Quote by you"
     }
   ];
 
