@@ -3,7 +3,7 @@
 import React, { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Mail, MapPin, Send, Linkedin, Github, Rss, CheckCircle 
+  Mail, MapPin, Send, Linkedin, Github, Rss, CheckCircle, Instagram
 } from 'lucide-react';
 
 // Custom Input component for dark theme
@@ -111,21 +111,7 @@ export default function Contact() {
                   <Mail className="h-6 w-6 text-cyan-300 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-semibold text-slate-100">General Inquiries</p>
-                    <a href="mailto:contact@envirocast.tech" className="text-slate-400 hover:text-cyan-300 transition-colors">contact@envirocast.tech</a>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <Mail className="h-6 w-6 text-cyan-300 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-slate-100">Partnerships</p>
-                    <a href="mailto:partners@envirocast.tech" className="text-slate-400 hover:text-cyan-300 transition-colors">partners@envirocast.tech</a>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-6 w-6 text-cyan-300 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-slate-100">Our Lab</p>
-                    <p className="text-slate-400">123 Quantum Street<br/>Houston, TX 77002</p>
+                    <a href="mailto:contact@envirocast.tech" className="text-slate-400 hover:text-cyan-300 transition-colors">ketechwiz@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -140,7 +126,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-white mb-6">Follow Our Mission</h3>
               <div className="flex space-x-4">
                 <a 
-                  href="https://github.com/Divin2009/Envirocast" 
+                  href="https://github.com/envirocast/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="p-3 bg-slate-700/50 text-slate-300 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300"
@@ -148,20 +134,12 @@ export default function Contact() {
                   <Github className="w-6 h-6" />
                 </a>
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.instagram.com/envirocast_tech/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="p-3 bg-slate-700/50 text-slate-300 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300"
                 >
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a 
-                  href="#" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="p-3 bg-slate-700/50 text-slate-300 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300"
-                >
-                  <Rss className="w-6 h-6" />
+                  <Instagram className="w-6 h-6" />
                 </a>
               </div>
             </motion.div>

@@ -6,6 +6,7 @@ import {
   Cpu, Database, TrendingUp, Shield, Lightbulb, Layers,
   GitBranch, Activity, Settings, Eye
 } from 'lucide-react';
+import { redirect } from "next/navigation";
 
 // ---------- TYPE DEFINITIONS ----------
 type AlgorithmType = {
@@ -620,31 +621,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Navigation Tabs */}
       <section className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex space-x-8 overflow-x-auto py-4">
-            {sections.map(section => {
-              const Icon = section.icon;
-              const isActive = activeSection === section.id;
-              return (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all duration-300
-                    ${isActive 
-                      ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 border border-cyan-500/30' 
-                      : 'text-slate-400 hover:text-cyan-300 hover:bg-slate-800/50'
-                    }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="font-medium">{section.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+  <div className="max-w-7xl mx-auto px-6">
+    {/* 👇 Added justify-center here */}
+    <div className="flex justify-center space-x-8 overflow-x-auto py-4">
+      {sections.map(section => {
+        const Icon = section.icon;
+        const isActive = activeSection === section.id;
+        return (
+          <button
+            key={section.id}
+            onClick={() => setActiveSection(section.id)}
+            className={`flex items-center space-x-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all duration-300
+              ${isActive 
+                ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 border border-cyan-500/30' 
+                : 'text-slate-400 hover:text-cyan-300 hover:bg-slate-800/50'
+              }`}
+          >
+            <Icon className="w-4 h-4" />
+            <span className="font-medium">{section.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* Main Content */}
       <section className="px-6 py-16">
@@ -1005,13 +1006,9 @@ export default function AboutPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 transform group flex items-center justify-center">
+            <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 transform group flex items-center justify-center" onClick={() => redirect("/models")}>
               Try Interactive Models
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            
-            <button className="px-8 py-4 bg-slate-800/50 backdrop-blur-md border border-slate-600 rounded-xl font-semibold text-white hover:bg-slate-700/50 transition-all duration-300 flex items-center justify-center">
-              Download Technical Paper
             </button>
           </div>
         </div>

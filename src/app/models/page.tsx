@@ -28,9 +28,10 @@ import {
   Target,
   Activity
 } from 'lucide-react';
+import { redirect } from 'next/navigation';
 
 const ModelsPage = () => {
-  const [activeTab, setActiveTab] = useState('realtime-map');
+  const [activeTab, setActiveTab] = useState('simulations');
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [selectedCity, setSelectedCity] = useState('Houston');
@@ -64,7 +65,6 @@ const ModelsPage = () => {
   };
 
   const tabs = [
-    { id: 'realtime-map', label: 'Real-time Map', icon: Globe },
     { id: 'simulations', label: 'What-if Simulations', icon: Sliders },
     { id: 'quantum-viz', label: 'Quantum AI', icon: Atom },
     { id: '3d-model', label: '3D Atmospheric', icon: Cloud }
@@ -522,18 +522,6 @@ const ModelsPage = () => {
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
-            {activeTab === 'realtime-map' && (
-              <motion.div
-                key="realtime-map"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                <InteractiveMap />
-              </motion.div>
-            )}
-
             {activeTab === 'simulations' && (
               <motion.div
                 key="simulations"
@@ -680,7 +668,7 @@ const ModelsPage = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
         <motion.div
           className="max-w-4xl mx-auto text-center bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-3xl p-12 border border-cyan-500/30"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -700,6 +688,7 @@ const ModelsPage = () => {
               className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => redirect("/team")}
             >
               Meet Our Team
             </motion.button>
@@ -707,65 +696,13 @@ const ModelsPage = () => {
               className="border-2 border-cyan-500 text-cyan-300 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-cyan-500 hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => redirect("/resorces")}
             >
               Access Data & Resources
             </motion.button>
           </div>
         </motion.div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-black py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
-                  <Atom className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent">EnviroCast</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Revolutionary air quality forecasting powered by NASA's TEMPO satellite technology and quantum computing.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Navigation</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#home" className="block text-gray-400 hover:text-cyan-300 transition-colors">Home</a>
-                <a href="#about" className="block text-gray-400 hover:text-cyan-300 transition-colors">About</a>
-                <a href="#models" className="block text-cyan-300">Models</a>
-                <a href="#team" className="block text-gray-400 hover:text-cyan-300 transition-colors">Team</a>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Resources</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#resources" className="block text-gray-400 hover:text-cyan-300 transition-colors">Data Sources</a>
-                <a href="#contact" className="block text-gray-400 hover:text-cyan-300 transition-colors">Contact</a>
-                <a href="#" className="block text-gray-400 hover:text-cyan-300 transition-colors">API Documentation</a>
-                <a href="#" className="block text-gray-400 hover:text-cyan-300 transition-colors">Terms of Service</a>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Connect</h4>
-              <div className="space-y-2 text-sm">
-                <a href="#" className="block text-gray-400 hover:text-cyan-300 transition-colors">@envirocast_tech</a>
-                <a href="#" className="block text-gray-400 hover:text-cyan-300 transition-colors">GitHub</a>
-                <a href="#" className="block text-gray-400 hover:text-cyan-300 transition-colors">LinkedIn</a>
-                <a href="#" className="block text-gray-400 hover:text-cyan-300 transition-colors">Research Papers</a>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2025 EnviroCast. All rights reserved. Powered by NASA TEMPO mission data and quantum computing.</p>
-          </div>
-        </div>
-      </footer>
 
       {/* Custom Slider Styles */}
       <style jsx>{`

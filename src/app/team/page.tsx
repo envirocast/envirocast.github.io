@@ -236,31 +236,6 @@ export default function TeamPage() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          className="mt-24"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <div className="relative rounded-2xl p-8 sm:p-12 overflow-hidden bg-slate-800/50 border border-slate-700">
-             <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[radial-gradient(circle_400px_at_50%_200px,#581c8744,#0f172a)]"></div>
-             <div className="text-center">
-                <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent mb-6">
-                    Collaborate With Us
-                </h2>
-                <p className="text-lg text-slate-400 mb-8 max-w-3xl mx-auto">
-                   We partner with public health agencies, research institutions, and community organizations. If you're interested in leveraging our data and technology, let's connect.
-                </p>
-                <a href="mailto:partners@envirocast.tech" className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full overflow-hidden transition-all duration-300 hover:from-cyan-600 hover:to-purple-600 hover:shadow-lg hover:shadow-cyan-500/30">
-                    <span className="relative">Contact for Partnerships</span>
-                    <Send className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
-                </a>
-             </div>
-          </div>
-        </motion.div>
-
       </div>
     </div>
   );

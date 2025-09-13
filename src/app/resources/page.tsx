@@ -212,7 +212,7 @@ export default function Resources() {
                 <p className="text-slate-400 max-w-2xl mx-auto mb-8">
                     Our models, tools, and research are built on open-source principles. We invite collaboration to accelerate progress in environmental monitoring.
                 </p>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full overflow-hidden transition-all duration-300 hover:from-cyan-600 hover:to-purple-600 hover:shadow-lg hover:shadow-cyan-500/30">
+                <a href="https://github.com/envirocast/" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full overflow-hidden transition-all duration-300 hover:from-cyan-600 hover:to-purple-600 hover:shadow-lg hover:shadow-cyan-500/30">
                     <span className="relative">Explore on GitHub</span>
                     <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
                 </a>
