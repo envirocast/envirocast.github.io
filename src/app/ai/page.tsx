@@ -120,7 +120,7 @@ export default function AIPage() {
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                   <span className="text-xs text-slate-400">Live</span>
                   <a 
-                    href="https://enviro-ai.streamlit.app/" 
+                    href="https://enviro-ai.streamlit.app/?embedded=True" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-1 rounded hover:bg-slate-700/50 text-slate-400 hover:text-cyan-300 transition-colors"
@@ -134,7 +134,7 @@ export default function AIPage() {
               {/* Iframe */}
               <div className="relative rounded-2xl overflow-hidden" style={{ height: '80vh', minHeight: '600px' }}>
                 <iframe
-                  src="https://enviro-ai.streamlit.app/"
+                  src="https://enviro-ai.streamlit.app/?embedded=True"
                   className="w-full h-full border-0"
                   title="EnviroCast AI Demo"
                   allow="accelerometer; autoplay; camera; encrypted-media; gyroscope; microphone"
@@ -158,7 +158,7 @@ export default function AIPage() {
                 <Brain className="w-5 h-5 group-hover:animate-pulse" />
               </button>
               <a 
-                href="https://enviro-ai.streamlit.app/" 
+                href="https://enviro-ai.streamlit.app/?embedded=True" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-slate-800/80 backdrop-blur-md border border-slate-600 rounded-full flex items-center justify-center text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 shadow-lg hover:scale-110 transition-all duration-300"
