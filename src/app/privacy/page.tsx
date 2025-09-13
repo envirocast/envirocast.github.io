@@ -223,13 +223,13 @@ const PrivacyPage = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a 
-                  href="mailto:ketechwiz@gmail.com" 
+                  href="mailto:envirocast.tech@gmail.com" 
                   className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold text-white hover:shadow-lg transition-all duration-300 inline-flex items-center"
                 >
                   <Mail className="w-4 h-4 mr-2" />
                   Contact Us
                 </a>
-                <p className="text-slate-400 text-sm">ketechwiz@gmail.com</p>
+                <p className="text-slate-400 text-sm">envirocast.tech@gmail.com</p>
               </div>
             </div>
           </div>
