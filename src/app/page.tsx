@@ -225,41 +225,46 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const algorithmPoints = [
-    {
-      title: "Quantum Superposition Modeling",
-      description: "Parallel pollution modeling across thousands of scenarios simultaneously",
-      icon: Atom
-    },
-    {
-      title: "Machine Learning Integration", 
-      description: "AI-powered pattern recognition for complex environmental data",
-      icon: Brain
-    },
-    {
-      title: "Real-Time Data Processing",
-      description: "Instantaneous analysis of massive environmental datasets",
-      icon: Zap
-    },
-    {
-      title: "Predictive Climate Modeling",
-      description: "Long-term forecasting with unprecedented accuracy",
-      icon: Globe
-    },
-    {
-      title: "Resource Optimization",
-      description: "Quantum algorithms for maximum environmental efficiency",
-      icon: Target
-    },
-    {
-      title: "Multi-Dimensional Analysis",
-      description: "Comprehensive environmental impact assessment",
-      icon: BarChart3
-    },
-    {
-      title: "Quantum-Enhanced Simulation",
-      description: "Ultra-precise environmental scenario modeling",
-      icon: Waves
-    }
+    {
+      title: "Quantum Superposition Modeling",
+      description: "Parallel pollution modeling across thousands of scenarios simultaneously",
+      icon: Atom
+    },
+    {
+      title: "LLM Capabilities",
+      description: "AI to inform on environmental issues and provide actionable insights",
+      icon: Brain
+    },
+    {
+      title: "Machine Learning Integration", 
+      description: "AI-powered pattern recognition for complex environmental data",
+      icon: Brain
+    },
+    {
+      title: "Real-Time Data Processing",
+      description: "Instantaneous analysis of massive environmental datasets",
+      icon: Zap
+    },
+    {
+      title: "Predictive Climate Modeling",
+      description: "Long-term forecasting with unprecedented accuracy",
+      icon: Globe
+    },
+    {
+      title: "Resource Optimization",
+      description: "Quantum algorithms for maximum environmental efficiency",
+      icon: Target
+    },
+    {
+      title: "Multi-Dimensional Analysis",
+      description: "Comprehensive environmental impact assessment",
+      icon: BarChart3
+    },
+    {
+      title: "Quantum-Enhanced Simulation",
+      description: "Ultra-precise environmental scenario modeling",
+      icon: Waves
+    }
   ];
 
   useEffect(() => {
@@ -317,25 +322,29 @@ export default function HomePage() {
               </div>
 
               {/* Algorithm Showcase */}
-              <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-md border border-slate-700/50">
-                <div className="flex items-center mb-4">
-                  <Brain className="w-6 h-6 text-cyan-400 mr-3" />
-                  <h3 className="text-lg font-semibold text-cyan-300">Quantum Algorithm Highlights</h3>
-                </div>
-                <div className="h-16 overflow-hidden">
-                  <div 
-                    className="transition-transform duration-1000 ease-in-out"
-                    style={{ transform: `translateY(-${currentSlide * 64}px)` }}
-                  >
-                    {algorithmPoints.map((point, i) => (
-                      <div key={i} className="h-16 flex items-center text-slate-300 space-x-3">
-                        <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"></div>
-                        <point.icon className="w-4 h-4 text-cyan-300" />
-                        <span>{point.title}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="mt-20 lg:col-span-2 p-8 rounded-2xl bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-md border border-slate-700/50">
+                  <div className="flex items-center mb-6">
+                    <Brain className="w-8 h-8 text-cyan-400 mr-4" />
+                    <h3 className="text-xl lg:text-2xl font-semibold text-cyan-300">Quantum Algorithm Highlights</h3>
+                  </div>
+                  <div className="h-[200px] overflow-hidden">
+                    <div 
+                      className="transition-transform duration-1000 ease-in-out"
+                      style={{ transform: `translateY(-${currentSlide * 100}px)` }}
+                    >
+                      {algorithmPoints.map((point, i) => (
+                        <div key={i} className="p-4 flex items-start space-x-4">
+                          <div className="flex-shrink-0">
+                            <point.icon className="w-6 h-6 text-cyan-300" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-bold text-slate-200">{point.title}</h4>
+                            <p className="text-sm text-slate-400">{point.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
               </div>
             </div>
 
