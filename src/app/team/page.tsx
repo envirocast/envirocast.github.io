@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Mail, Heart, Layers, Target, Users, Calendar, Star, Briefcase, BrainCircuit, Sparkles, Send, MapPin } from 'lucide-react';
 
 // import local images
-// import ArnavImg from "./pfp/arnav.png";
+import ArnavImg from "./pfp/arnav.png";
 import KavinImg from "./pfp/kavin.png";
 // import VirImg from "./pfp/vir.png";
 // import DivinImg from "./pfp/divin.png";
@@ -18,7 +18,7 @@ export default function TeamPage() {
       id: 1,
       name: "Arnav Nemade",
       role: "Lead Quantum Developer",
-      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AN&font=inter",
+      image: ArnavImg,
       bio: "A passionate student with the goal of making the world a cleaner place using machine learning models and advanced quantum algorithms. Built the main web application with interactive globe and satellite integration powered by custom hybrid quantum-classical integration.",
       expertise: [
         "Quantum Engineering", "Geospatial Analysis", "Machine Learning Algorithms", "Satellite Data Fusion", "Artificial Intelligence", "Weather Modeling (WRF)", "Python",
