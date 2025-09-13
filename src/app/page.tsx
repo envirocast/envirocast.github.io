@@ -193,11 +193,12 @@ const MetricCard = ({ icon: Icon, value, label, color }: MetricCardProps) => {
 // Team Member Preview
 const TeamPreview = () => {
   const teamMembers = [
-    { name: "Dr. Sarah Chen", role: "Quantum Algorithm Lead", avatar: "👩‍💼" },
-    { name: "Marcus Rodriguez", role: "Environmental Data Scientist", avatar: "👨‍🔬" },
-    { name: "Aisha Patel", role: "Climate Modeling Expert", avatar: "👩‍🎓" },
-    { name: "Dr. James Wilson", role: "Quantum Computing Researcher", avatar: "👨‍💻" },
-    { name: "Elena Kowalski", role: "Environmental Policy Analyst", avatar: "👩‍🌾" },
+    { name: "Arnav Nemade", role: "Lead Quantum Developer", avatar: "⚛️" },
+    { name: "Kavin Elangovan", role: "Web Applications & Graphics Developer", avatar: "🌐" },
+    { name: "Vir Sanghavi", role: "AI Systems Engineer & Outreach Coordinator", avatar: "🤖" },
+    { name: "Divin Giddaluru", role: "Web Developer", avatar: "👨‍💻" },
+    { name: "Sathyan Gopal", role: "Social Media & Promotional Content Manager", avatar: "📲" },
+    { name: "Ahaan Thota", role: "[Add role...]", avatar: "❓" },
   ];
 
   return (
@@ -482,7 +483,7 @@ export default function HomePage() {
                           <Brain className="w-8 h-8 text-purple-300 animate-bounce" style={{animationDelay: '0.2s'}} />
                           <Globe className="w-8 h-8 text-green-300 animate-bounce" style={{animationDelay: '0.4s'}} />
                         </div>
-                        <div className="text-3xl font-bold text-white mb-2">5 Experts</div>
+                        <div className="text-3xl font-bold text-white mb-2">6 Experts</div>
                         <div className="text-slate-400">Quantum, Environmental & Data Science</div>
                         <div className="text-cyan-300 text-sm">Experts • Innovators</div>
                       </div>
