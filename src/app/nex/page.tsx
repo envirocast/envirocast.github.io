@@ -86,26 +86,22 @@ const NexPage = () => {
     {
       title: "Real-Time Environmental Data",
       description: "Access live atmospheric, pollution, and weather data from our quantum-enhanced processing systems",
-      icon: Activity,
-      endpoints: ["GET /api/v1/pollution/realtime", "GET /api/v1/weather/current", "GET /api/v1/atmospheric/live"]
+      icon: Activity
     },
     {
       title: "Predictive Forecasting API",
       description: "Quantum-powered predictions for air quality, weather patterns, and environmental changes",
-      icon: TrendingUp,
-      endpoints: ["POST /api/v1/forecast/pollution", "POST /api/v1/forecast/weather", "GET /api/v1/forecast/longterm"]
+      icon: TrendingUp
     },
     {
       title: "Health Impact Endpoints",
       description: "Health risk assessments and population impact analysis based on environmental conditions",
-      icon: Heart,
-      endpoints: ["GET /api/v1/health/risks", "POST /api/v1/health/assessment", "GET /api/v1/health/population"]
+      icon: Heart
     },
     {
       title: "Disaster Response Data",
       description: "Emergency environmental monitoring and disaster impact assessment APIs",
-      icon: Shield,
-      endpoints: ["GET /api/v1/disasters/active", "GET /api/v1/disasters/impact", "POST /api/v1/disasters/alert"]
+      icon: Shield
     }
   ];
 
@@ -223,22 +219,25 @@ const NexPage = () => {
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {features.map((feature, index) => {
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {apiFeatures.map((feature, index) => {
                       const Icon = feature.icon;
                       return (
                         <motion.div
                           key={index}
-                          className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 hover:border-cyan-500/30 transition-all duration-300 group"
+                          className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 hover:border-green-500/30 transition-all duration-300"
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1 }}
                           whileHover={{ scale: 1.02 }}
                         >
-                          <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${feature.color} bg-opacity-20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                            <Icon className="w-8 h-8 text-white" />
+                          <div className="flex items-center space-x-4 mb-6">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-green-500/20 to-blue-500/20 flex items-center justify-center">
+                              <Icon className="w-6 h-6 text-green-300" />
+                            </div>
+                            <h3 className="text-xl font-bold text-white">{feature.title}</h3>
                           </div>
-                          <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
+                          
                           <p className="text-slate-400 leading-relaxed">{feature.description}</p>
                         </motion.div>
                       );
@@ -411,6 +410,111 @@ const NexPage = () => {
                         </motion.div>
                       );
                     })}
+                  </div>
+                </div>
+
+                {/* API Endpoints Documentation */}
+                <div className="bg-gradient-to-br from-slate-800/30 to-slate-900/30 rounded-3xl p-12 border border-slate-700/50">
+                  <h3 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">
+                    Core API Endpoints
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-3 gap-8">
+                    {/* Forecast Endpoint */}
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 hover:border-green-400/50 transition-all duration-300">
+                      <div className="flex items-center space-x-3 mb-4">
+                        <div className="px-3 py-1 bg-green-500/20 rounded-lg text-green-300 text-sm font-mono font-semibold">
+                          GET
+                        </div>
+                        <code className="text-cyan-300 font-mono text-sm">/forecast</code>
+                      </div>
+                      
+                      <h4 className="text-xl font-bold text-white mb-3">Pollution Forecasting</h4>
+                      <p className="text-slate-400 text-sm mb-4">
+                        Predicts pollution levels and pollutant patterns using quantum-enhanced algorithms. 
+                        Provides detailed forecasts for air quality, particulate matter, and chemical dispersions 
+                        across specified geographic regions and time periods.
+                      </p>
+                      
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          <span className="text-slate-300">Real-time predictions</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          <span className="text-slate-300">Multi-pollutant analysis</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          <span className="text-slate-300">Geographic mapping</span>
+                        </div>
+                      </div>
+                    </div>
+                
+                    {/* Health Risk Endpoint */}
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-orange-500/10 to-red-500/10 border border-orange-500/30 hover:border-orange-400/50 transition-all duration-300">
+                      <div className="flex items-center space-x-3 mb-4">
+                        <div className="px-3 py-1 bg-orange-500/20 rounded-lg text-orange-300 text-sm font-mono font-semibold">
+                          POST
+                        </div>
+                        <code className="text-cyan-300 font-mono text-sm">/health-risk</code>
+                      </div>
+                      
+                      <h4 className="text-xl font-bold text-white mb-3">Health Risk Assessment</h4>
+                      <p className="text-slate-400 text-sm mb-4">
+                        Analyzes health risks based on environmental conditions in specific areas. 
+                        Correlates pollution data with population health metrics to predict potential 
+                        health impacts and provide risk assessments for vulnerable populations.
+                      </p>
+                      
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                          <span className="text-slate-300">Population risk analysis</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                          <span className="text-slate-300">Vulnerable group alerts</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                          <span className="text-slate-300">Health impact scoring</span>
+                        </div>
+                      </div>
+                    </div>
+                
+                    {/* Status Endpoint */}
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300">
+                      <div className="flex items-center space-x-3 mb-4">
+                        <div className="px-3 py-1 bg-blue-500/20 rounded-lg text-blue-300 text-sm font-mono font-semibold">
+                          GET
+                        </div>
+                        <code className="text-cyan-300 font-mono text-sm">/status</code>
+                      </div>
+                      
+                      <h4 className="text-xl font-bold text-white mb-3">API Status & Details</h4>
+                      <p className="text-slate-400 text-sm mb-4">
+                        Provides comprehensive information about API functionality, including system health, 
+                        available endpoints, rate limits, and quantum processing capabilities. 
+                        Essential for monitoring and integration planning.
+                      </p>
+                      
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                          <span className="text-slate-300">System health monitoring</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                          <span className="text-slate-300">Rate limit information</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-xs">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                          <span className="text-slate-300">Quantum processing status</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
