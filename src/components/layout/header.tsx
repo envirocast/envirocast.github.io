@@ -2,19 +2,20 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Atom } from 'lucide-react';
+import { Atom, Globe } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: 'about', label: 'About' },
-    { href: 'models', label: 'Models' },
-    { href: 'ai', label: "AI"},
-    { href: 'team', label: 'Team' },
+    { href: '/about', label: 'About' },
+    { href: '/models', label: 'Models' },
+    { href: '/ai', label: "AI"},
+    { href: '/team', label: 'Team' },
     // { href: 'resources', label: 'Resources' },
     // { href: 'contact', label: 'Contact' },
+    { href: '/nex', label: 'EnviroNex', icon: Globe, special: true },
   ];
 
   // Variants for the mobile menu animation
@@ -39,7 +40,7 @@ const Header = () => {
       >
         <div className="flex justify-between items-center max-w-7xl mx-auto p-6">
           {/* Logo and Brand Name */}
-          <a href="#home" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
+          <a href="/" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
             <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-lg flex items-center justify-center">
               <Atom className="w-6 h-6 text-white animate-spin" style={{ animationDuration: '8s' }} />
             </div>
@@ -50,16 +51,28 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-slate-300 hover:text-cyan-300 transition-colors duration-300 relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`transition-colors duration-300 relative group flex items-center space-x-2 ${
+                    item.special 
+                      ? 'text-blue-400 font-bold hover:text-blue-300' 
+                      : 'text-slate-300 hover:text-cyan-300'
+                  }`}
+                >
+                  {Icon && <Icon className="w-4 h-4" />}
+                  <span>{item.label}</span>
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 ${
+                    item.special 
+                      ? 'bg-gradient-to-r from-blue-400 to-blue-500' 
+                      : 'bg-gradient-to-r from-cyan-400 to-purple-400'
+                  } group-hover:w-full transition-all duration-300`}></span>
+                </a>
+              );
+            })}
           </nav>
 
           {/* Mobile menu button with animation */}
@@ -108,17 +121,25 @@ const Header = () => {
             <motion.nav 
               className="flex flex-col items-center space-y-8"
             >
-              {navItems.map((item) => (
-                <motion.div key={item.href} variants={mobileLinkVariants}>
-                  <a
-                    href={item.href}
-                    className="text-3xl font-semibold text-slate-200 hover:text-cyan-300 transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                </motion.div>
-              ))}
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div key={item.href} variants={mobileLinkVariants}>
+                    <a
+                      href={item.href}
+                      className={`text-3xl font-semibold transition-colors flex items-center space-x-3 ${
+                        item.special 
+                          ? 'text-blue-400 font-bold hover:text-blue-300' 
+                          : 'text-slate-200 hover:text-cyan-300'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {Icon && <Icon className="w-8 h-8" />}
+                      <span>{item.label}</span>
+                    </a>
+                  </motion.div>
+                );
+              })}
             </motion.nav>
           </motion.div>
         )}
