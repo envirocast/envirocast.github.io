@@ -188,25 +188,18 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
 
       {/* Main Canvas Container */}
       <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-        {/*
-          Modified this line to add 'items-stretch' and 'min-h-[550px]'
-          This ensures both child elements stretch to a consistent minimum height.
-        */}
-        <div className={`flex items-stretch min-h-[550px] ${selectedParticle ? 'space-x-6' : 'justify-center'}`}>
-          {/* Canvas Section */}
-          {/*
-            Modified this line to add 'flex' and 'flex-col'
-            This makes the canvas and the text box below it stack vertically,
-            allowing the parent flex container to manage their total height.
-          */}
-          <div className={`flex flex-col ${selectedParticle ? 'flex-shrink-0' : ''}`}>
-            <QuantumParticleCanvas
-              isPlaying={isPlaying}
-              speed={speed}
-              selectedParticle={selectedParticle}
-              onParticleClick={setSelectedParticle}
-              engine={engineRef.current}
-            />
+        <div className="flex gap-6 h-[550px]">
+          {/* Canvas Section - Fixed width when panel is open */}
+          <div className={`flex flex-col ${selectedParticle ? 'w-3/5' : 'w-full'} transition-all duration-300`}>
+            <div className="flex-1 flex items-center justify-center">
+              <QuantumParticleCanvas
+                isPlaying={isPlaying}
+                speed={speed}
+                selectedParticle={selectedParticle}
+                onParticleClick={setSelectedParticle}
+                engine={engineRef.current}
+              />
+            </div>
 
             {/* Canvas Instructions */}
             <div className="mt-4 text-center">
@@ -216,14 +209,14 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
             </div>
           </div>
 
-          {/* Particle Properties Panel (Inline) */}
+          {/* Particle Properties Panel - Fixed width when open */}
           {selectedParticle && (
             <motion.div
               initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: 'auto' }}
+              animate={{ opacity: 1, width: '40%' }}
               exit={{ opacity: 0, width: 0 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="flex-1 overflow-hidden"
+              className="flex-shrink-0"
             >
               <ParticlePropertiesPanel
                 selectedParticle={selectedParticle}
