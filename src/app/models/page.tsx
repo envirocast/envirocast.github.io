@@ -32,7 +32,7 @@ import { redirect } from 'next/navigation';
 import { QuantumParticlePhysicsViz } from '@/components/models/quantum-particle-physics-viz';
 
 const ModelsPage = () => {
-  const [activeTab, setActiveTab] = useState('simulations');
+  const [activeTab, setActiveTab] = useState('quantum-particles');
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [selectedCity, setSelectedCity] = useState('Houston');
