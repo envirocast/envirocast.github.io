@@ -66,7 +66,6 @@ const ModelsPage = () => {
   };
 
   const tabs = [
-    { id: 'simulations', label: 'What-if Simulations', icon: Sliders },
     { id: 'quantum-particles', label: 'Quantum Particle Physics', icon: Atom },
     { id: 'quantum-viz', label: 'Quantum AI', icon: Brain },
     { id: '3d-model', label: '3D Atmospheric', icon: Cloud }
@@ -165,135 +164,6 @@ const ModelsPage = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const WhatIfSimulation = () => (
-    <div className="space-y-6">
-      <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-        <h3 className="text-2xl font-bold text-white mb-6">What-If Scenario Builder</h3>
-        <p className="text-slate-300 mb-8">
-          Adjust environmental factors and see how they impact air quality predictions in real-time.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          {/* Traffic Level */}
-          <div className="bg-slate-900 rounded-xl p-6">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg flex items-center justify-center">
-                <Activity className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Traffic Level</h4>
-                <p className="text-slate-400 text-sm">Vehicle emissions impact</p>
-              </div>
-            </div>
-            <div className="space-y-3">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={trafficLevel}
-                onChange={(e) => setTrafficLevel(parseInt(e.target.value))}
-                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
-              />
-              <div className="flex justify-between text-sm text-slate-400">
-                <span>Low</span>
-                <span className="text-white font-semibold">{trafficLevel}%</span>
-                <span>High</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Industrial Emissions */}
-          <div className="bg-slate-900 rounded-xl p-6">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Industrial Emissions</h4>
-                <p className="text-slate-400 text-sm">Factory output levels</p>
-              </div>
-            </div>
-            <div className="space-y-3">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={emissionsLevel}
-                onChange={(e) => setEmissionsLevel(parseInt(e.target.value))}
-                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer slider"
-              />
-              <div className="flex justify-between text-sm text-slate-400">
-                <span>Clean</span>
-                <span className="text-white font-semibold">{emissionsLevel}%</span>
-                <span>Heavy</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Weather Conditions */}
-          <div className="bg-slate-900 rounded-xl p-6">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                <Wind className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-white">Weather</h4>
-                <p className="text-slate-400 text-sm">Atmospheric conditions</p>
-              </div>
-            </div>
-            <div className="space-y-3">
-              <select
-                value={weatherCondition}
-                onChange={(e) => setWeatherCondition(e.target.value)}
-                className="w-full bg-slate-700 text-white rounded-lg px-3 py-2 border border-slate-600"
-              >
-                <option value="clear">Clear Skies</option>
-                <option value="windy">Windy</option>
-                <option value="humid">High Humidity</option>
-                <option value="inversion">Temperature Inversion</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Prediction Results */}
-        <div className="bg-slate-900 rounded-xl p-6">
-          <h4 className="text-lg font-bold text-white mb-4">Predicted Impact</h4>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-slate-300">Predicted AQI</span>
-                <span className={`text-3xl font-bold bg-gradient-to-r ${getAQIColor(Math.round(50 + trafficLevel * 0.8 + emissionsLevel * 1.2))} bg-clip-text text-transparent`}>
-                  {Math.round(50 + trafficLevel * 0.8 + emissionsLevel * 1.2)}
-                </span>
-              </div>
-              <div className="w-full bg-slate-700 rounded-full h-2">
-                <div 
-                  className={`h-2 rounded-full bg-gradient-to-r ${getAQIColor(Math.round(50 + trafficLevel * 0.8 + emissionsLevel * 1.2))} transition-all duration-500`}
-                  style={{ width: `${Math.min(100, (50 + trafficLevel * 0.8 + emissionsLevel * 1.2) / 2)}%` }}
-                ></div>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="text-slate-300">Traffic Impact:</span>
-                <span className="text-red-400">+{Math.round(trafficLevel * 0.8)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-300">Industrial Impact:</span>
-                <span className="text-purple-400">+{Math.round(emissionsLevel * 1.2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-300">Weather Modifier:</span>
-                <span className="text-blue-400">{weatherCondition === 'windy' ? '-15' : weatherCondition === 'inversion' ? '+25' : '0'}</span>
-              </div>
             </div>
           </div>
         </div>
@@ -532,17 +402,6 @@ const ModelsPage = () => {
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
-            {activeTab === 'simulations' && (
-              <motion.div
-                key="simulations"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                <WhatIfSimulation />
-              </motion.div>
-            )}
 
             {activeTab === 'quantum-particles' && (
               <motion.div
