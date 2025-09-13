@@ -227,7 +227,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
         engine={engineRef.current}
       />
 
-      {/* Custom Slider and Scrollbar Styles */}
+      {/* Custom Slider Styles */}
       <style jsx global>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
@@ -246,28 +246,6 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
           background: linear-gradient(45deg, #06b6d4, #8b5cf6);
           cursor: pointer;
           border: 2px solid #1e293b;
-        }
-
-        .scrollbar-thin {
-          scrollbar-width: thin;
-        }
-
-        .scrollbar-track-slate-700::-webkit-scrollbar-track {
-          background: #334155;
-          border-radius: 4px;
-        }
-
-        .scrollbar-thumb-slate-500::-webkit-scrollbar-thumb {
-          background: #64748b;
-          border-radius: 4px;
-        }
-
-        .scrollbar-thumb-slate-500::-webkit-scrollbar-thumb:hover {
-          background: #475569;
-        }
-
-        .scrollbar-thin::-webkit-scrollbar {
-          width: 6px;
         }
       `}</style>
     </div>
