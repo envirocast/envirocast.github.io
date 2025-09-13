@@ -328,9 +328,10 @@ export default function HomePage() {
                     style={{ transform: `translateY(-${currentSlide * 64}px)` }}
                   >
                     {algorithmPoints.map((point, i) => (
-                      <div key={i} className="h-16 flex items-center text-slate-300">
-                        <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full mr-4"></div>
-                        {point}
+                      <div key={i} className="h-16 flex items-center text-slate-300 space-x-3">
+                        <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"></div>
+                        <point.icon className="w-4 h-4 text-cyan-300" />
+                        <span>{point.title}</span>
                       </div>
                     ))}
                   </div>
