@@ -383,6 +383,7 @@ const ModelsPage = () => {
           <div className="flex flex-wrap justify-center gap-2 bg-slate-800 rounded-2xl p-2 border border-slate-700">
             {tabs.map((tab) => {
               const Icon = tab.icon;
+              const isEnviroNex = tab.id === 'enviro-nex';
               return (
                 <button
                   key={tab.id}
@@ -390,6 +391,8 @@ const ModelsPage = () => {
                   className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg'
+                      : isEnviroNex
+                      ? 'text-blue-400 font-bold hover:text-blue-300 hover:bg-slate-700'
                       : 'text-slate-300 hover:text-white hover:bg-slate-700'
                   }`}
                 >
