@@ -29,6 +29,7 @@ import {
   Activity
 } from 'lucide-react';
 import { redirect } from 'next/navigation';
+import { QuantumParticlePhysicsViz } from '@/components/models/quantum-particle-physics-viz';
 
 const ModelsPage = () => {
   const [activeTab, setActiveTab] = useState('simulations');
@@ -66,7 +67,8 @@ const ModelsPage = () => {
 
   const tabs = [
     { id: 'simulations', label: 'What-if Simulations', icon: Sliders },
-    { id: 'quantum-viz', label: 'Quantum AI', icon: Atom },
+    { id: 'quantum-particles', label: 'Quantum Particle Physics', icon: Atom },
+    { id: 'quantum-viz', label: 'Quantum AI', icon: Brain },
     { id: '3d-model', label: '3D Atmospheric', icon: Cloud }
   ];
 
@@ -80,6 +82,14 @@ const ModelsPage = () => {
 
     return () => clearInterval(interval);
   }, [isPlaying, speed]);
+
+  const handlePlayToggle = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleSpeedChange = (newSpeed: number) => {
+    setSpeed(newSpeed);
+  };
 
   const InteractiveMap = () => (
     <div className="relative">
@@ -443,7 +453,7 @@ const ModelsPage = () => {
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-3">
                   <button
-                    onClick={() => setIsPlaying(!isPlaying)}
+                    onClick={handlePlayToggle}
                     className={`p-3 rounded-lg transition-all ${
                       isPlaying 
                         ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:shadow-lg' 
@@ -473,7 +483,7 @@ const ModelsPage = () => {
                     max="3"
                     step="0.1"
                     value={speed}
-                    onChange={(e) => setSpeed(parseFloat(e.target.value))}
+                    onChange={(e) => handleSpeedChange(parseFloat(e.target.value))}
                     className="w-24 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
                   />
                   <span className="text-white font-semibold text-sm">{speed}x</span>
@@ -531,6 +541,23 @@ const ModelsPage = () => {
                 transition={{ duration: 0.5 }}
               >
                 <WhatIfSimulation />
+              </motion.div>
+            )}
+
+            {activeTab === 'quantum-particles' && (
+              <motion.div
+                key="quantum-particles"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <QuantumParticlePhysicsViz 
+                  isPlaying={isPlaying}
+                  speed={speed}
+                  onPlayToggle={handlePlayToggle}
+                  onSpeedChange={handleSpeedChange}
+                />
               </motion.div>
             )}
 
@@ -696,7 +723,7 @@ const ModelsPage = () => {
               className="border-2 border-cyan-500 text-cyan-300 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-cyan-500 hover:text-white transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => redirect("/resorces")}
+              onClick={() => redirect("/resources")}
             >
               Access Data & Resources
             </motion.button>
