@@ -13,8 +13,8 @@ const Header = () => {
     { href: 'models', label: 'Models' },
     { href: 'ai', label: "AI"},
     { href: 'team', label: 'Team' },
-    { href: 'resources', label: 'Resources' },
-    { href: 'contact', label: 'Contact' },
+    // { href: 'resources', label: 'Resources' },
+    // { href: 'contact', label: 'Contact' },
   ];
 
   // Variants for the mobile menu animation
