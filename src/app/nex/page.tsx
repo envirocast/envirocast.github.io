@@ -121,7 +121,7 @@ const NexPage = () => {
         >
           <div className="inline-flex items-center px-6 py-3 bg-slate-800/50 rounded-full border border-cyan-500/30 mb-8">
             <Globe className="w-5 h-5 mr-3 text-cyan-400 animate-spin" style={{animationDuration: '8s'}} />
-            <span className="text-cyan-300 font-medium">EnviroNex Platform</span>
+            <span className="text-cyan-300 font-medium">Advanced Environmental Simulations</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
