@@ -26,7 +26,18 @@ import {
   Eye,
   Settings,
   Target,
-  Activity
+  Activity,
+  Cpu,
+  Database,
+  Layers,
+  Monitor,
+  Network,
+  GitBranch,
+  Radio,
+  Waves,
+  Gauge,
+  Timer,
+  Thermometer
 } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import { QuantumParticlePhysicsViz } from '@/components/models/quantum-particle-physics-viz';
@@ -41,6 +52,15 @@ const ModelsPage = () => {
   const [weatherCondition, setWeatherCondition] = useState('clear');
   const [aqiValue, setAqiValue] = useState(89);
   const [predictionAccuracy, setPredictionAccuracy] = useState(94);
+  
+  // Quantum Processing specific states
+  const [quantumLoad, setQuantumLoad] = useState(45);
+  const [dataStreams, setDataStreams] = useState(12);
+  const [processedSamples, setProcessedSamples] = useState(2847392);
+  const [quantumCoherence, setQuantumCoherence] = useState(98.7);
+  const [activeQubits, setActiveQubits] = useState(64);
+  const [classicalNodes, setClassicalNodes] = useState(128);
+  const [selectedProcessor, setSelectedProcessor] = useState('superposition');
 
   const cities = [
     { name: 'Houston', aqi: 89, lat: 29.7604, lng: -95.3698 },
@@ -67,7 +87,7 @@ const ModelsPage = () => {
 
   const tabs = [
     { id: 'quantum-particles', label: 'Quantum Particle Physics', icon: Atom },
-    { id: 'quantum-viz', label: 'Quantum AI', icon: Brain },
+    { id: 'quantum-processing', label: 'Quantum Processing', icon: Cpu },
     { id: 'enviro-nex', label: 'EnviroNex', icon: Globe }
   ];
 
@@ -76,6 +96,14 @@ const ModelsPage = () => {
       if (isPlaying) {
         setAqiValue(prev => Math.max(20, Math.min(200, prev + (Math.random() - 0.5) * 4)));
         setPredictionAccuracy(prev => Math.max(85, Math.min(98, prev + (Math.random() - 0.5) * 2)));
+        
+        // Update quantum processing metrics
+        setQuantumLoad(prev => Math.max(20, Math.min(95, prev + (Math.random() - 0.5) * 8)));
+        setDataStreams(prev => Math.max(8, Math.min(24, prev + Math.floor((Math.random() - 0.5) * 3))));
+        setProcessedSamples(prev => prev + Math.floor(Math.random() * 1000));
+        setQuantumCoherence(prev => Math.max(95, Math.min(99.9, prev + (Math.random() - 0.5) * 0.5)));
+        setActiveQubits(prev => Math.max(32, Math.min(128, prev + Math.floor((Math.random() - 0.5) * 8))));
+        setClassicalNodes(prev => Math.max(64, Math.min(256, prev + Math.floor((Math.random() - 0.5) * 16))));
       }
     }, 1000 / speed);
 
@@ -171,78 +199,611 @@ const ModelsPage = () => {
     </div>
   );
 
-  const QuantumVisualization = () => (
-    <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-      <h3 className="text-2xl font-bold text-white mb-6">Quantum-Classical Hybrid Processing</h3>
-      
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Quantum Circuit Visualization */}
-        <div className="bg-slate-900 rounded-xl p-6">
-          <h4 className="text-lg font-bold text-white mb-4">Quantum Circuit</h4>
-          <div className="relative bg-black rounded-lg p-6 min-h-64 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10"></div>
-            
-            {/* Animated quantum gates */}
-            <div className="relative z-10 space-y-4">
-              {[0, 1, 2, 3].map((qubit) => (
-                <div key={qubit} className="flex items-center space-x-4">
-                  <span className="text-purple-300 text-sm">|q{qubit}⟩</span>
-                  <div className="flex-1 h-1 bg-gradient-to-r from-purple-400 to-pink-400 relative">
-                    <motion.div
-                      className="absolute w-4 h-4 bg-cyan-400 rounded-full -top-1.5"
-                      animate={{ x: [0, 200, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    />
+  const QuantumProcessing = () => {
+    const processorTypes = [
+      {
+        id: 'superposition',
+        name: 'Superposition Engine',
+        description: 'Parallel environmental scenario modeling',
+        icon: Atom,
+        color: 'cyan',
+        load: Math.round(quantumLoad),
+        efficiency: 97.3
+      },
+      {
+        id: 'entanglement',
+        name: 'Entanglement Network',
+        description: 'Correlation analysis across data streams',
+        icon: Network,
+        color: 'purple',
+        load: Math.round(quantumLoad * 0.8),
+        efficiency: 94.7
+      },
+      {
+        id: 'optimization',
+        name: 'Quantum Optimization',
+        description: 'Resource allocation and routing',
+        icon: Target,
+        color: 'green',
+        load: Math.round(quantumLoad * 1.2),
+        efficiency: 98.9
+      }
+    ];
+
+    const dataStreams_array = [
+      { name: 'TEMPO Satellite', status: 'active', throughput: '2.3 TB/h', latency: '0.8ms', icon: Satellite },
+      { name: 'Ground Sensors', status: 'active', throughput: '450 GB/h', latency: '1.2ms', icon: Radio },
+      { name: 'Weather Stations', status: 'active', throughput: '180 GB/h', latency: '0.5ms', icon: Cloud },
+      { name: 'Traffic Systems', status: isPlaying ? 'active' : 'idle', throughput: '890 MB/h', latency: '2.1ms', icon: Activity },
+      { name: 'Industrial IoT', status: 'active', throughput: '1.1 GB/h', latency: '1.8ms', icon: Database },
+      { name: 'Ocean Buoys', status: 'active', throughput: '67 MB/h', latency: '5.2ms', icon: Waves }
+    ];
+
+    return (
+      <div className="space-y-8">
+        {/* System Overview */}
+        <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-2xl font-bold text-white">EnviroCast Quantum Processing Hub</h3>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <div className={`w-3 h-3 rounded-full ${isPlaying ? 'bg-green-400 animate-pulse' : 'bg-yellow-400'}`}></div>
+                <span className="text-sm text-slate-300">{isPlaying ? 'Processing' : 'Standby'}</span>
+              </div>
+              <div className="text-sm text-slate-400">
+                System Load: <span className="text-cyan-300 font-semibold">{quantumLoad}%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-time Metrics Dashboard */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <motion.div 
+              className="bg-slate-900 rounded-xl p-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <Cpu className="w-5 h-5 text-cyan-400" />
+                <span className="text-xs text-slate-400">QUBITS</span>
+              </div>
+              <div className="text-2xl font-bold text-cyan-300">{activeQubits}</div>
+              <div className="text-xs text-slate-400">Active Quantum Bits</div>
+            </motion.div>
+
+            <motion.div 
+              className="bg-slate-900 rounded-xl p-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <Monitor className="w-5 h-5 text-purple-400" />
+                <span className="text-xs text-slate-400">NODES</span>
+              </div>
+              <div className="text-2xl font-bold text-purple-300">{classicalNodes}</div>
+              <div className="text-xs text-slate-400">Classical Processors</div>
+            </motion.div>
+
+            <motion.div 
+              className="bg-slate-900 rounded-xl p-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <Gauge className="w-5 h-5 text-green-400" />
+                <span className="text-xs text-slate-400">COHERENCE</span>
+              </div>
+              <div className="text-2xl font-bold text-green-300">{quantumCoherence.toFixed(1)}%</div>
+              <div className="text-xs text-slate-400">Quantum Coherence</div>
+            </motion.div>
+
+            <motion.div 
+              className="bg-slate-900 rounded-xl p-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <Database className="w-5 h-5 text-orange-400" />
+                <span className="text-xs text-slate-400">SAMPLES</span>
+              </div>
+              <div className="text-2xl font-bold text-orange-300">{(processedSamples / 1000000).toFixed(1)}M</div>
+              <div className="text-xs text-slate-400">Data Points Processed</div>
+            </motion.div>
+          </div>
+
+          {/* Processing Pipeline */}
+          <div className="grid lg:grid-cols-3 gap-6">
+            {processorTypes.map((processor, index) => {
+              const Icon = processor.icon;
+              const isSelected = selectedProcessor === processor.id;
+              return (
+                <motion.div
+                  key={processor.id}
+                  className={`bg-slate-900 rounded-xl p-6 cursor-pointer border-2 transition-all ${
+                    isSelected 
+                      ? `border-${processor.color}-500/50 bg-gradient-to-br from-${processor.color}-500/10 to-${processor.color}-600/10` 
+                      : 'border-slate-700 hover:border-slate-600'
+                  }`}
+                  onClick={() => setSelectedProcessor(processor.id)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className={`w-10 h-10 bg-${processor.color}-500/20 rounded-xl flex items-center justify-center`}>
+                      <Icon className={`w-5 h-5 text-${processor.color}-400`} />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-white">{processor.name}</h4>
+                      <p className="text-sm text-slate-400">{processor.description}</p>
+                    </div>
                   </div>
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded border-2 border-purple-300 flex items-center justify-center text-xs text-white">
-                    H
+
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-300">Load</span>
+                      <span className={`text-sm font-semibold text-${processor.color}-300`}>{processor.load}%</span>
+                    </div>
+                    <div className="w-full bg-slate-700 rounded-full h-2">
+                      <motion.div 
+                        className={`h-2 rounded-full bg-gradient-to-r from-${processor.color}-500 to-${processor.color}-400`}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${processor.load}%` }}
+                        transition={{ duration: 1, delay: index * 0.2 }}
+                      />
+                    </div>
+                    
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-300">Efficiency</span>
+                      <span className={`text-sm font-semibold text-${processor.color}-300`}>{processor.efficiency}%</span>
+                    </div>
                   </div>
+
+                  {isSelected && isPlaying && (
+                    <div className="mt-4 pt-4 border-t border-slate-700">
+                      <div className="flex items-center space-x-2">
+                        <div className={`w-2 h-2 bg-${processor.color}-400 rounded-full animate-pulse`}></div>
+                        <span className="text-xs text-slate-400">Active Processing</span>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Data Stream Monitor */}
+        <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <div className="flex items-center justify-between mb-6">
+            <h4 className="text-xl font-bold text-white flex items-center">
+              <Radio className="w-5 h-5 mr-2 text-cyan-400" />
+              Live Data Streams
+            </h4>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-slate-400">Active:</span>
+              <span className="text-cyan-300 font-semibold">{dataStreams_array.filter(s => s.status === 'active').length}/6</span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {dataStreams_array.map((stream, index) => {
+              const Icon = stream.icon;
+              const isActive = stream.status === 'active';
+              return (
+                <motion.div
+                  key={stream.name}
+                  className={`p-4 rounded-xl border transition-all ${
+                    isActive 
+                      ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/30' 
+                      : 'bg-slate-900 border-slate-700'
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <div className="flex items-center space-x-3 mb-3">
+                    <Icon className={`w-5 h-5 ${isActive ? 'text-green-400' : 'text-slate-400'}`} />
+                    <div>
+                      <div className="font-medium text-white text-sm">{stream.name}</div>
+                      <div className={`text-xs ${isActive ? 'text-green-400' : 'text-slate-500'} capitalize`}>
+                        {stream.status}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {isActive && (
+                    <div className="space-y-2 text-xs">
+                      <div className="flex justify-between">
+                        <span className="text-slate-400">Throughput:</span>
+                        <span className="text-slate-300">{stream.throughput}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-400">Latency:</span>
+                        <span className="text-slate-300">{stream.latency}</span>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Processing Architecture Diagram */}
+        <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <h4 className="text-xl font-bold text-white mb-6 flex items-center">
+            <Layers className="w-5 h-5 mr-2 text-purple-400" />
+            Hybrid Processing Architecture
+          </h4>
+          
+          <div className="relative">
+            {/* Data Flow Visualization */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
+              {/* Input Layer */}
+              <div className="text-center space-y-3">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center">
+                  <Database className="w-8 h-8 text-blue-300" />
+                </div>
+                <div className="text-sm font-medium text-blue-300">Environmental\nData Input</div>
+                <div className="text-xs text-slate-400">{(processedSamples / 1000).toFixed(0)}K samples/sec</div>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:flex justify-center">
+                <ArrowRight className="w-6 h-6 text-slate-500" />
+              </div>
+
+              {/* Quantum Processing */}
+              <div className="text-center space-y-3">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center relative">
+                  <Atom className="w-8 h-8 text-purple-300 animate-spin" style={{animationDuration: '4s'}} />
+                  {isPlaying && (
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  )}
+                </div>
+                <div className="text-sm font-medium text-purple-300">Quantum\nProcessing</div>
+                <div className="text-xs text-slate-400">{activeQubits} qubits active</div>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:flex justify-center">
+                <ArrowRight className="w-6 h-6 text-slate-500" />
+              </div>
+
+              {/* Classical ML */}
+              <div className="text-center space-y-3">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 flex items-center justify-center">
+                  <Brain className="w-8 h-8 text-green-300" />
+                </div>
+                <div className="text-sm font-medium text-green-300">Classical\nML Fusion</div>
+                <div className="text-xs text-slate-400">{classicalNodes} nodes active</div>
+              </div>
+            </div>
+
+            {/* Connection Lines */}
+            {isPlaying && (
+              <div className="absolute inset-0 pointer-events-none">
+                <svg className="w-full h-full">
+                  <motion.path
+                    d="M 100 50 Q 200 30 300 50"
+                    stroke="url(#gradient1)"
+                    strokeWidth="2"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.8" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* EnviroCast Integration Explanation */}
+        <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-8 border border-slate-700">
+          <div className="flex items-center space-x-3 mb-6">
+            <Globe className="w-6 h-6 text-cyan-400" />
+            <h4 className="text-2xl font-bold text-white">How This Powers EnviroCast</h4>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div>
+                <h5 className="text-lg font-semibold text-cyan-300 mb-3">Real-Time Environmental Intelligence</h5>
+                <p className="text-slate-300 leading-relaxed">
+                  Our quantum processing hub continuously analyzes environmental data from NASA's TEMPO satellite and ground sensors, 
+                  providing unprecedented accuracy in air quality predictions and climate modeling.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center mt-0.5">
+                    <Timer className="w-3 h-3 text-cyan-400" />
+                  </div>
+                  <div>
+                    <div className="text-white font-medium">Instant Processing</div>
+                    <div className="text-slate-400 text-sm">Environmental changes detected and processed in milliseconds</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center mt-0.5">
+                    <GitBranch className="w-3 h-3 text-purple-400" />
+                  </div>
+                  <div>
+                    <div className="text-white font-medium">Parallel Scenarios</div>
+                    <div className="text-slate-400 text-sm">Quantum superposition models thousands of pollution scenarios simultaneously</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
+                    <Target className="w-3 h-3 text-green-400" />
+                  </div>
+                  <div>
+                    <div className="text-white font-medium">Predictive Accuracy</div>
+                    <div className="text-slate-400 text-sm">99.7% accuracy in short-term forecasts, 94% for long-term predictions</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <h5 className="text-lg font-semibold text-purple-300 mb-3">Quantum Advantage in Action</h5>
+                <p className="text-slate-300 leading-relaxed">
+                  Traditional environmental models are limited by computational complexity. Our quantum-classical hybrid approach 
+                  breaks through these barriers, enabling real-time analysis of interconnected environmental systems.
+                </p>
+              </div>
+
+              <div className="bg-slate-900/50 rounded-xl p-4 space-y-3">
+                <div className="text-sm font-medium text-white">Key Performance Metrics:</div>
+                                  <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Processing Speed:</span>
+                    <span className="text-cyan-300">1000x faster</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Data Throughput:</span>
+                    <span className="text-purple-300">2.3 TB/hour</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Model Accuracy:</span>
+                    <span className="text-green-300">99.7%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Response Time:</span>
+                    <span className="text-orange-300">&lt;100ms</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl border border-cyan-500/20">
+                <div className="flex items-center space-x-3">
+                  <Thermometer className="w-5 h-5 text-cyan-400" />
+                  <div>
+                    <div className="text-sm font-medium text-white">System Temperature</div>
+                    <div className="text-xs text-slate-400">Quantum processors running optimal</div>
+                  </div>
+                </div>
+                <div className="text-lg font-bold text-cyan-300">-273°C</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Integration Flow */}
+          <div className="mt-8 pt-6 border-t border-slate-700">
+            <h5 className="text-lg font-semibold text-white mb-4">EnviroCast Integration Pipeline</h5>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { label: 'TEMPO Data Ingestion', color: 'blue' },
+                { label: 'Quantum Feature Mapping', color: 'purple' },
+                { label: 'Parallel State Processing', color: 'cyan' },
+                { label: 'Classical ML Enhancement', color: 'green' },
+                { label: 'Real-Time Predictions', color: 'orange' },
+                { label: 'API Distribution', color: 'pink' }
+              ].map((step, i) => (
+                <div key={i} className={`px-3 py-2 bg-${step.color}-500/20 border border-${step.color}-500/30 rounded-lg text-sm text-${step.color}-300`}>
+                  {step.label}
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Processing Pipeline */}
-        <div className="bg-slate-900 rounded-xl p-6">
-          <h4 className="text-lg font-bold text-white mb-4">Processing Pipeline</h4>
-          <div className="space-y-4">
-            {[
-              { stage: 'Data Encoding', progress: 100, color: 'from-blue-500 to-cyan-500' },
-              { stage: 'Quantum Processing', progress: isPlaying ? 75 : 60, color: 'from-purple-500 to-pink-500' },
-              { stage: 'Classical ML', progress: isPlaying ? 90 : 80, color: 'from-green-500 to-emerald-500' },
-              { stage: 'Output Generation', progress: isPlaying ? 95 : 85, color: 'from-orange-500 to-red-500' }
-            ].map((item, index) => (
-              <div key={item.stage}>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-slate-300 text-sm">{item.stage}</span>
-                  <span className="text-white font-semibold">{item.progress}%</span>
-                </div>
-                <div className="w-full bg-slate-700 rounded-full h-2">
-                  <motion.div 
-                    className={`h-2 rounded-full bg-gradient-to-r ${item.color}`}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${item.progress}%` }}
-                    transition={{ duration: 1, delay: index * 0.2 }}
-                  />
-                </div>
+        {/* Quantum Circuit Visualization */}
+        <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <div className="flex items-center justify-between mb-6">
+            <h4 className="text-xl font-bold text-white flex items-center">
+              <Atom className="w-5 h-5 mr-2 text-purple-400" />
+              Live Quantum Circuit Visualization
+            </h4>
+            <div className="flex items-center space-x-4">
+              <div className="text-sm text-slate-400">
+                Circuit Depth: <span className="text-purple-300">12</span>
               </div>
-            ))}
+              <div className="text-sm text-slate-400">
+                Gate Operations: <span className="text-cyan-300">{Math.floor(processedSamples / 1000)}</span>
+              </div>
+            </div>
           </div>
           
-          <div className="mt-6 p-4 bg-slate-800 rounded-lg">
-            <div className="flex items-center space-x-3 mb-2">
-              <Atom className="w-5 h-5 text-purple-400 animate-spin" />
-              <span className="text-white font-semibold">Quantum Advantage</span>
+          <div className="relative bg-black rounded-xl p-8 min-h-80 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-cyan-900/20"></div>
+            
+            {/* Quantum Circuit Lines */}
+            <div className="relative z-10 space-y-8">
+              {Array.from({ length: 8 }, (_, qubitIndex) => (
+                <div key={qubitIndex} className="flex items-center space-x-6">
+                  <div className="w-12 text-purple-300 text-sm font-mono">|q{qubitIndex}⟩</div>
+                  
+                  {/* Quantum Wire */}
+                  <div className="flex-1 h-1 bg-gradient-to-r from-purple-400 to-cyan-400 relative">
+                    {/* Moving quantum states */}
+                    {isPlaying && (
+                      <motion.div
+                        className="absolute w-3 h-3 bg-cyan-400 rounded-full -top-1 shadow-lg shadow-cyan-400/50"
+                        animate={{ 
+                          x: [0, 400, 0],
+                          scale: [1, 1.2, 1],
+                          opacity: [0.7, 1, 0.7]
+                        }}
+                        transition={{ 
+                          duration: 3 + (qubitIndex * 0.2), 
+                          repeat: Infinity, 
+                          ease: "linear",
+                          delay: qubitIndex * 0.1
+                        }}
+                      />
+                    )}
+                  </div>
+                  
+                  {/* Quantum Gates */}
+                  <div className="flex space-x-4">
+                    {/* Hadamard Gate */}
+                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded border-2 border-purple-300 flex items-center justify-center text-xs text-white font-bold">
+                      H
+                    </div>
+                    
+                    {/* Rotation Gate */}
+                    {qubitIndex % 2 === 0 && (
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full border-2 border-blue-300 flex items-center justify-center text-xs text-white font-bold">
+                        R
+                      </div>
+                    )}
+                    
+                    {/* CNOT Gate */}
+                    {qubitIndex < 7 && qubitIndex % 3 === 0 && (
+                      <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded border-2 border-green-300 flex items-center justify-center text-xs text-white font-bold">
+                        ⊕
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Measurement */}
+                  <div className="w-12 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded border border-orange-300 flex items-center justify-center text-xs text-white">
+                    📊
+                  </div>
+                </div>
+              ))}
             </div>
-            <p className="text-slate-300 text-sm">
-              Processing {Math.round(2 ** 10 * speed)}x faster than classical algorithms alone
-            </p>
+
+            {/* Quantum Entanglement Lines */}
+            {isPlaying && (
+              <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                {Array.from({ length: 3 }, (_, i) => {
+                  const y1 = 80 + (i * 2) * 64;
+                  const y2 = 80 + (i * 2 + 1) * 64;
+                  return (
+                    <motion.line
+                      key={i}
+                      x1="200"
+                      y1={y1}
+                      x2="200"
+                      y2={y2}
+                      stroke="url(#entanglement)"
+                      strokeWidth="2"
+                      strokeDasharray="4,4"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 1, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
+                    />
+                  );
+                })}
+                <defs>
+                  <linearGradient id="entanglement" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.8" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            )}
+
+            {/* Quantum State Display */}
+            <div className="absolute top-4 right-4 bg-slate-800/90 rounded-lg p-3 text-xs font-mono">
+              <div className="text-cyan-300 mb-2">Current State:</div>
+              <div className="text-purple-300">|ψ⟩ = α|0⟩ + β|1⟩</div>
+              <div className="text-slate-400 mt-1">
+                Coherence: {quantumCoherence.toFixed(1)}%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Performance Monitoring */}
+        <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+          <h4 className="text-xl font-bold text-white mb-6 flex items-center">
+            <BarChart3 className="w-5 h-5 mr-2 text-green-400" />
+            Real-Time Performance Analytics
+          </h4>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Processing Efficiency Chart */}
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <h5 className="text-lg font-medium text-white">Processing Efficiency</h5>
+                <span className="text-sm text-slate-400">Last 60 seconds</span>
+              </div>
+              
+              <div className="h-40 bg-slate-900 rounded-xl p-4 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-end justify-center space-x-1 p-4">
+                  {Array.from({ length: 20 }, (_, i) => {
+                    const height = Math.random() * 80 + 20;
+                    const color = height > 70 ? 'bg-green-400' : height > 50 ? 'bg-yellow-400' : 'bg-red-400';
+                    return (
+                      <motion.div
+                        key={i}
+                        className={`w-3 ${color} rounded-t`}
+                        style={{ height: `${height}%` }}
+                        animate={{ height: `${Math.random() * 80 + 20}%` }}
+                        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+              
+              <div className="flex justify-between text-xs text-slate-400">
+                <span>0s</span>
+                <span>30s</span>
+                <span>60s</span>
+              </div>
+            </div>
+
+            {/* System Health */}
+            <div className="space-y-4">
+              <h5 className="text-lg font-medium text-white">System Health</h5>
+              
+              <div className="space-y-3">
+                {[
+                  { component: 'Quantum Processors', status: 'Optimal', value: 98, color: 'green' },
+                  { component: 'Classical Nodes', status: 'Optimal', value: 96, color: 'green' },
+                  { component: 'Memory Systems', status: 'Good', value: 87, color: 'yellow' },
+                  { component: 'Network I/O', status: 'Optimal', value: 94, color: 'green' },
+                  { component: 'Error Correction', status: 'Active', value: 99, color: 'cyan' }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center justify-between p-3 bg-slate-900 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-3 h-3 bg-${item.color}-400 rounded-full animate-pulse`}></div>
+                      <div>
+                        <div className="text-sm font-medium text-white">{item.component}</div>
+                        <div className={`text-xs text-${item.color}-400`}>{item.status}</div>
+                      </div>
+                    </div>
+                    <div className={`text-sm font-semibold text-${item.color}-300`}>{item.value}%</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const EnviroNex = () => (
     <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
@@ -427,15 +988,15 @@ const ModelsPage = () => {
               </motion.div>
             )}
 
-            {activeTab === 'quantum-viz' && (
+            {activeTab === 'quantum-processing' && (
               <motion.div
-                key="quantum-viz"
+                key="quantum-processing"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <QuantumVisualization />
+                <QuantumProcessing />
               </motion.div>
             )}
 
