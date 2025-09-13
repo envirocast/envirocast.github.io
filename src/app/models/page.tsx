@@ -61,6 +61,7 @@ const ModelsPage = () => {
   const [activeQubits, setActiveQubits] = useState(64);
   const [classicalNodes, setClassicalNodes] = useState(128);
   const [selectedProcessor, setSelectedProcessor] = useState('superposition');
+  const [systemTemp, setSystemTemp] = useState(-272.8);
 
   const cities = [
     { name: 'Houston', aqi: 89, lat: 29.7604, lng: -95.3698 },
@@ -104,6 +105,7 @@ const ModelsPage = () => {
         setQuantumCoherence(prev => Math.max(95, Math.min(99.9, prev + (Math.random() - 0.5) * 0.5)));
         setActiveQubits(prev => Math.max(32, Math.min(128, prev + Math.floor((Math.random() - 0.5) * 8))));
         setClassicalNodes(prev => Math.max(64, Math.min(256, prev + Math.floor((Math.random() - 0.5) * 16))));
+        setSystemTemp(prev => Math.max(-273.15, Math.min(-271.5, prev + (Math.random() - 0.5) * 0.3)));
       }
     }, 1000 / speed);
 
@@ -432,7 +434,6 @@ const ModelsPage = () => {
                       </div>
                     </div>
                   )}
-                </motion.div>
               );
             })}
           </div>
@@ -603,7 +604,7 @@ const ModelsPage = () => {
                     <div className="text-xs text-slate-400">Quantum processors running optimal</div>
                   </div>
                 </div>
-                <div className="text-lg font-bold text-cyan-300">Approaching -273°C</div>
+                <div className="text-lg font-bold text-cyan-300">{systemTemp.toFixed(4)}°C</div>
               </div>
             </div>
           </div>
@@ -736,12 +737,16 @@ const ModelsPage = () => {
               </svg>
             )}
 
-            {/* Quantum State Display */}
-            <div className="absolute top-4 right-4 bg-slate-800/90 rounded-lg p-3 text-xs font-mono">
-              <div className="text-cyan-300 mb-2">Current State:</div>
-              <div className="text-purple-300">|ψ⟩ = α|0⟩ + β|1⟩</div>
-              <div className="text-slate-400 mt-1">
-                Coherence: {quantumCoherence.toFixed(1)}%
+            {/* Quantum State Header */}
+            <div className="bg-slate-900/90 rounded-lg p-4 mb-4 border border-slate-700">
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-mono">
+                  <span className="text-cyan-300">Current State: </span>
+                  <span className="text-purple-300">|ψ⟩ = α|0⟩ + β|1⟩</span>
+                </div>
+                <div className="text-sm text-slate-400">
+                  Coherence: <span className="text-green-300 font-semibold">{quantumCoherence.toFixed(1)}%</span>
+                </div>
               </div>
             </div>
           </div>
@@ -755,15 +760,20 @@ const ModelsPage = () => {
               <h5 className="text-lg font-semibold text-white">Quantum Gates in Action</h5>
             </div>
             <div className="space-y-3 text-sm text-slate-300">
-              <p>
-                <span className="text-purple-300 font-semibold">Hadamard (H)</span> gates create superposition states, allowing each qubit to represent multiple environmental scenarios simultaneously.
-              </p>
-              <p>
-                <span className="text-cyan-300 font-semibold">Rotation (R)</span> gates encode environmental parameters like temperature, humidity, and pollution levels into quantum amplitudes.
-              </p>
-              <p>
-                <span className="text-green-300 font-semibold">CNOT (⊕)</span> gates create entanglement between qubits, modeling correlations between different environmental factors.
-              </p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded border border-purple-300 flex items-center justify-center text-xs text-white font-bold">H</div>
+                  <span className="text-slate-300"><span className="text-purple-300 font-semibold">Hadamard (H)</span> - Creates superposition states for parallel environmental scenario modeling</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full border border-blue-300 flex items-center justify-center text-xs text-white font-bold">R</div>
+                  <span className="text-slate-300"><span className="text-cyan-300 font-semibold">Rotation (R)</span> - Encodes environmental parameters like temperature and pollution levels</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded border border-green-300 flex items-center justify-center text-xs text-white font-bold">⊕</div>
+                  <span className="text-slate-300"><span className="text-green-300 font-semibold">CNOT (⊕)</span> - Creates entanglement between qubits to model environmental correlations</span>
+                </div>
+              </div>
             </div>
           </div>
         
