@@ -386,16 +386,13 @@ const ModelsPage = () => {
               const Icon = stream.icon;
               const isActive = stream.status === 'active';
               return (
-                <motion.div
+                <div
                   key={stream.name}
                   className={`p-4 rounded-xl border transition-all ${
                     isActive 
                       ? 'bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/30' 
                       : 'bg-slate-900 border-slate-700'
                   }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
                 >
                   <div className="flex items-center space-x-3 mb-3">
                     <Icon className={`w-5 h-5 ${isActive ? 'text-green-400' : 'text-slate-400'}`} />
@@ -411,11 +408,27 @@ const ModelsPage = () => {
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between">
                         <span className="text-slate-400">Throughput:</span>
-                        <span className="text-slate-300">{stream.throughput}</span>
+                        <motion.span 
+                          className="text-slate-300"
+                          key={`${stream.name}-throughput-${processedSamples}`}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {stream.throughput}
+                        </motion.span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Network Latency:</span>
-                        <span className="text-slate-300">{stream.latency}</span>
+                        <span className="text-slate-400">Latency:</span>
+                        <motion.span 
+                          className="text-slate-300"
+                          key={`${stream.name}-latency-${processedSamples}`}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {stream.latency}
+                        </motion.span>
                       </div>
                     </div>
                   )}
@@ -440,7 +453,7 @@ const ModelsPage = () => {
                 <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center">
                   <Database className="w-8 h-8 text-blue-300" />
                 </div>
-                <div className="text-sm font-medium text-blue-300">Environmental\nData Input</div>
+                <div className="text-sm font-medium text-blue-300">Environmental Data Input</div>
                 <div className="text-xs text-slate-400">{(processedSamples / 1000).toFixed(0)}K samples/sec</div>
               </div>
 
@@ -457,7 +470,7 @@ const ModelsPage = () => {
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                   )}
                 </div>
-                <div className="text-sm font-medium text-purple-300">Quantum\nProcessing</div>
+                <div className="text-sm font-medium text-purple-300">Quantum Processing</div>
                 <div className="text-xs text-slate-400">{activeQubits} qubits active</div>
               </div>
 
@@ -471,7 +484,7 @@ const ModelsPage = () => {
                 <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 flex items-center justify-center">
                   <Brain className="w-8 h-8 text-green-300" />
                 </div>
-                <div className="text-sm font-medium text-green-300">Classical\nML Fusion</div>
+                <div className="text-sm font-medium text-green-300">Classical-ML Fusion</div>
                 <div className="text-xs text-slate-400">{classicalNodes} nodes active</div>
               </div>
             </div>
@@ -685,8 +698,8 @@ const ModelsPage = () => {
                   </div>
                   
                   {/* Measurement */}
-                  <div className="w-12 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded border border-orange-300 flex items-center justify-center text-xs text-white">
-                    📊
+                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full border border-orange-300 flex items-center justify-center text-xs text-white">
+                    M
                   </div>
                 </div>
               ))}
@@ -734,12 +747,61 @@ const ModelsPage = () => {
           </div>
         </div>
 
+        {/* Quantum Processing Explanation */}
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
+          <div className="bg-slate-900/50 rounded-xl p-6">
+            <div className="flex items-center space-x-3 mb-4">
+              <Atom className="w-5 h-5 text-purple-400" />
+              <h5 className="text-lg font-semibold text-white">Quantum Gates in Action</h5>
+            </div>
+            <div className="space-y-3 text-sm text-slate-300">
+              <p>
+                <span className="text-purple-300 font-semibold">Hadamard (H)</span> gates create superposition states, allowing each qubit to represent multiple environmental scenarios simultaneously.
+              </p>
+              <p>
+                <span className="text-cyan-300 font-semibold">Rotation (R)</span> gates encode environmental parameters like temperature, humidity, and pollution levels into quantum amplitudes.
+              </p>
+              <p>
+                <span className="text-green-300 font-semibold">CNOT (⊕)</span> gates create entanglement between qubits, modeling correlations between different environmental factors.
+              </p>
+            </div>
+          </div>
+        
+          <div className="bg-slate-900/50 rounded-xl p-6">
+            <div className="flex items-center space-x-3 mb-4">
+              <Network className="w-5 h-5 text-cyan-400" />
+              <h5 className="text-lg font-semibold text-white">Environmental Modeling</h5>
+            </div>
+            <div className="space-y-3 text-sm text-slate-300">
+              <p>
+                Each qubit represents different atmospheric layers, with quantum superposition enabling parallel analysis of pollution dispersion across all altitudes.
+              </p>
+              <p>
+                Entangled qubits model the complex relationships between wind patterns, temperature gradients, and pollutant concentrations.
+              </p>
+              <p>
+                Quantum measurements collapse the superposition to reveal the most probable environmental outcomes for forecasting.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Performance Monitoring */}
         <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-          <h4 className="text-xl font-bold text-white mb-6 flex items-center">
-            <BarChart3 className="w-5 h-5 mr-2 text-green-400" />
-            Real-Time Performance Analytics
-          </h4>
+          <div className="flex items-center justify-between mb-6">
+            <h4 className="text-xl font-bold text-white flex items-center">
+              <BarChart3 className="w-5 h-5 mr-2 text-green-400" />
+              Real-Time Performance Analytics
+            </h4>
+          </div>
+          
+          <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Monitor live processing efficiency as our quantum algorithms analyze environmental data streams. 
+              The efficiency chart shows quantum processing performance over time, while system health indicators 
+              track the operational status of quantum processors, classical nodes, memory systems, and error correction protocols.
+            </p>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Processing Efficiency Chart */}
