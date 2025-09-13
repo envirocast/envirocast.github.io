@@ -47,7 +47,7 @@ export default function AIPage() {
             {/* Badge */}
             <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-md border border-cyan-500/30">
               <Brain className="w-5 h-5 text-cyan-300 mr-3 animate-pulse" />
-              <span className="text-cyan-300 font-semibold">Meet Enviro</span>
+              <span className="text-cyan-300 font-semibold">Unlimited Information</span>
             </div>
             
             {/* Title */}
