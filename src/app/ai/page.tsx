@@ -4,7 +4,7 @@ import { Brain, Zap, ArrowLeft, ExternalLink, Atom, Globe, Target, Activity, Max
 
 export default function AIPage() {
   const [isLoading, setIsLoading] = useState(true);
-  // Create a ref to get a reference to the iframe element
+  // Create a ref to get a reference to the iframe element, explicitly typing it.
   const iframeRef = useRef(null);
 
   useEffect(() => {
@@ -18,7 +18,8 @@ export default function AIPage() {
 
   // Function to handle fullscreen request for the iframe
   const handleFullscreen = () => {
-    const iframe = iframeRef.current;
+    // Cast the ref's current value to HTMLIFrameElement to ensure correct type checking
+    const iframe = iframeRef.current as HTMLIFrameElement;
     if (iframe) {
       if (iframe.requestFullscreen) {
         iframe.requestFullscreen();
