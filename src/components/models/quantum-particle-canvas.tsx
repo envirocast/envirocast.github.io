@@ -220,7 +220,7 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
     animationFrameRef.current = requestAnimationFrame(render);
 
     return () => {
-      if (animationFrameRef.current) {
+      if (animationFrameRef.current !== null) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
