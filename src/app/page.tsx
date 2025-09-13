@@ -483,8 +483,8 @@ export default function HomePage() {
                           <Globe className="w-8 h-8 text-green-300 animate-bounce" style={{animationDelay: '0.4s'}} />
                         </div>
                         <div className="text-3xl font-bold text-white mb-2">5 Experts</div>
-                        <div className="text-slate-400">Quantum + Climate Science</div>
-                        <div className="text-cyan-300 text-sm">PhD • Research • Innovation</div>
+                        <div className="text-slate-400">Quantum, Environmental & Data Science</div>
+                        <div className="text-cyan-300 text-sm">Experts • Innovators</div>
                       </div>
                     </div>
                   </div>
