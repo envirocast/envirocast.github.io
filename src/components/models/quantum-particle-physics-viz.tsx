@@ -50,7 +50,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
         engineRef.current.clearAllParticles();
       }
     };
-  }, []); // Remove particleCount dependency to avoid re-initialization
+  }, []);
 
   // Update particle count (separate effect)
   useEffect(() => {
@@ -186,28 +186,39 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
         </div>
       </div>
 
-      {/* Main Canvas */}
-      <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-        <div className="flex justify-center">
-          <QuantumParticleCanvas
-            isPlaying={isPlaying}
-            speed={speed}
-            selectedParticle={selectedParticle}
-            onParticleClick={setSelectedParticle}
-            engine={engineRef.current}
-          />
+      {/* Main Content Area - Split Layout */}
+      <div className="grid lg:grid-cols-5 gap-6">
+        {/* Canvas Section (3/5 width) */}
+        <div className="lg:col-span-3">
+          <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+            <div className="flex justify-center">
+              <QuantumParticleCanvas
+                isPlaying={isPlaying}
+                speed={speed}
+                selectedParticle={selectedParticle}
+                onParticleClick={setSelectedParticle}
+                engine={engineRef.current}
+              />
+            </div>
+            
+            {/* Canvas Instructions */}
+            <div className="mt-4 text-center">
+              <p className="text-sm text-slate-400">
+                Click on particles to view their quantum properties • Watch for entanglement when particles collide
+              </p>
+            </div>
+          </div>
         </div>
-        
-        {/* Canvas Instructions */}
-        <div className="mt-4 text-center">
-          <p className="text-sm text-slate-400">
-            Click on particles to view their quantum properties • Watch for entanglement when particles collide
-          </p>
+
+        {/* Information Panel (2/5 width) */}
+        <div className="lg:col-span-2">
+          <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700 h-full">
+            <div className="max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-track-slate-700 scrollbar-thumb-slate-500">
+              <QuantumInfoPanel engine={engineRef.current} />
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Information Panel */}
-      <QuantumInfoPanel />
 
       {/* Particle Properties Panel (Floating) */}
       <ParticlePropertiesPanel
@@ -216,8 +227,8 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
         engine={engineRef.current}
       />
 
-      {/* Custom Slider Styles */}
-      <style jsx>{`
+      {/* Custom Slider and Scrollbar Styles */}
+      <style jsx global>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
           height: 16px;
@@ -235,6 +246,28 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
           background: linear-gradient(45deg, #06b6d4, #8b5cf6);
           cursor: pointer;
           border: 2px solid #1e293b;
+        }
+
+        .scrollbar-thin {
+          scrollbar-width: thin;
+        }
+
+        .scrollbar-track-slate-700::-webkit-scrollbar-track {
+          background: #334155;
+          border-radius: 4px;
+        }
+
+        .scrollbar-thumb-slate-500::-webkit-scrollbar-thumb {
+          background: #64748b;
+          border-radius: 4px;
+        }
+
+        .scrollbar-thumb-slate-500::-webkit-scrollbar-thumb:hover {
+          background: #475569;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar {
+          width: 6px;
         }
       `}</style>
     </div>
