@@ -186,35 +186,49 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
         </div>
       </div>
 
-      {/* Main Canvas */}
+      {/* Main Canvas Container */}
       <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-        <div className="flex justify-center">
-          <QuantumParticleCanvas
-            isPlaying={isPlaying}
-            speed={speed}
-            selectedParticle={selectedParticle}
-            onParticleClick={setSelectedParticle}
-            engine={engineRef.current}
-          />
-        </div>
-        
-        {/* Canvas Instructions */}
-        <div className="mt-4 text-center">
-          <p className="text-sm text-slate-400">
-            Click on particles to view their quantum properties • Watch for entanglement when particles collide
-          </p>
+        <div className={`flex ${selectedParticle ? 'space-x-6' : 'justify-center'}`}>
+          {/* Canvas Section */}
+          <div className={`${selectedParticle ? 'flex-shrink-0' : ''}`}>
+            <QuantumParticleCanvas
+              isPlaying={isPlaying}
+              speed={speed}
+              selectedParticle={selectedParticle}
+              onParticleClick={setSelectedParticle}
+              engine={engineRef.current}
+            />
+            
+            {/* Canvas Instructions */}
+            <div className="mt-4 text-center">
+              <p className="text-sm text-slate-400">
+                Click on particles to view their quantum properties • Watch for entanglement when particles collide
+              </p>
+            </div>
+          </div>
+
+          {/* Particle Properties Panel (Inline) */}
+          {selectedParticle && (
+            <motion.div
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: 320 }}
+              exit={{ opacity: 0, width: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="flex-shrink-0 overflow-hidden"
+            >
+              <ParticlePropertiesPanel
+                selectedParticle={selectedParticle}
+                onClose={() => setSelectedParticle(null)}
+                engine={engineRef.current}
+                inline={true}
+              />
+            </motion.div>
+          )}
         </div>
       </div>
 
       {/* Information Panel */}
       <QuantumInfoPanel engine={engineRef.current} />
-
-      {/* Particle Properties Panel (Floating) */}
-      <ParticlePropertiesPanel
-        selectedParticle={selectedParticle}
-        onClose={() => setSelectedParticle(null)}
-        engine={engineRef.current}
-      />
 
       {/* Custom Slider Styles */}
       <style jsx>{`
