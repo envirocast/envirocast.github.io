@@ -320,32 +320,6 @@ export default function HomePage() {
                   Try AI Demo
                 </Link>
               </div>
-
-              {/* Algorithm Showcase */}
-              <div className="mt-20 lg:col-span-2 p-8 rounded-2xl bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-md border border-slate-700/50">
-                  <div className="flex items-center mb-6">
-                    <Brain className="w-8 h-8 text-cyan-400 mr-4" />
-                    <h3 className="text-xl lg:text-2xl font-semibold text-cyan-300">Quantum Algorithm Highlights</h3>
-                  </div>
-                  <div className="h-[200px] overflow-hidden">
-                    <div 
-                      className="transition-transform duration-1000 ease-in-out"
-                      style={{ transform: `translateY(-${currentSlide * 100}px)` }}
-                    >
-                      {algorithmPoints.map((point, i) => (
-                        <div key={i} className="p-4 flex items-start space-x-4">
-                          <div className="flex-shrink-0">
-                            <point.icon className="w-6 h-6 text-cyan-300" />
-                          </div>
-                          <div>
-                            <h4 className="text-lg font-bold text-slate-200">{point.title}</h4>
-                            <p className="text-sm text-slate-400">{point.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-              </div>
             </div>
 
             {/* Right Visual */}
