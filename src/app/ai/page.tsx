@@ -201,10 +201,10 @@ export default function AIPage() {
                 Learn from credible data sources using real-time data, analytics, and impact assessments.
               </p>
               <div className="flex justify-center space-x-6 pt-4">
-                <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
+                <a href="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
                   Learn More About Our Technology
                 </a>
-                <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
+                <a href="/models" className="text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
                   Explore Our Models
                 </a>
               </div>
