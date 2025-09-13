@@ -47,7 +47,7 @@ export default function AIPage() {
             {/* Badge */}
             <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-md border border-cyan-500/30">
               <Brain className="w-5 h-5 text-cyan-300 mr-3 animate-pulse" />
-              <span className="text-cyan-300 font-semibold">Live AI Demo</span>
+              <span className="text-cyan-300 font-semibold">Meet Enviro</span>
             </div>
             
             {/* Title */}
@@ -61,17 +61,17 @@ export default function AIPage() {
             
             {/* Description */}
             <p className="text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed">
-              Experience our quantum-enhanced environmental AI in real-time. Analyze air quality data, 
-              predict pollution patterns, and explore advanced climate modeling through our interactive interface.
+              Experience our enhanced environmental AI chatbot in real-time. Learn about environmental information, 
+              gain knowledge from credible sources, and explore advanced concpets through our interactive interface.
             </p>
 
             {/* Feature Highlights */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
               {[
-                { icon: Atom, label: "Quantum Processing", color: "cyan" },
-                { icon: Globe, label: "Real-time Data", color: "green" },
-                { icon: Target, label: "Precision Modeling", color: "purple" },
-                { icon: Activity, label: "Live Predictions", color: "yellow" }
+                { icon: Atom, label: "Powerful LLM Interface", color: "cyan" },
+                { icon: Globe, label: "Real-Time Information", color: "green" },
+                { icon: Target, label: "Precision Data", color: "purple" },
+                { icon: Activity, label: "Live Responses", color: "yellow" }
               ].map((feature, i) => {
                 const Icon = feature.icon;
                 return (
@@ -123,7 +123,7 @@ export default function AIPage() {
                   </div>
                   <div className="text-sm font-medium text-slate-300 flex items-center">
                     <Zap className="w-4 h-4 mr-2 text-cyan-400" />
-                    EnviroCast AI Console
+                    Enviro AI Console
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -195,10 +195,10 @@ export default function AIPage() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-md border border-slate-700/50 rounded-2xl p-8">
             <div className="text-center space-y-4">
-              <h3 className="text-xl font-bold text-white">Powered by Quantum Algorithms</h3>
+              <h3 className="text-xl font-bold text-white">Powered by Large Language Machine Learning Algorithms</h3>
               <p className="text-slate-400">
-                This interactive demo showcases our hybrid quantum-classical approach to environmental modeling. 
-                Experience real-time air quality predictions, pollution pattern analysis, and climate impact assessments.
+                This interactive demo showcases our interactive approach to providing environmental information to the public. 
+                Learn from credible data sources using real-time data, analytics, and impact assessments.
               </p>
               <div className="flex justify-center space-x-6 pt-4">
                 <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
