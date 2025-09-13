@@ -33,7 +33,7 @@ const Footer = () => {
                 <Github className="h-6 w-6" />
               </a>
               <a 
-                href="mailto:ketechwiz@gmail.com"
+                href="mailto:envirocast.tech@gmail.com"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
               >
                 <Mail className="h-6 w-6" />
@@ -64,7 +64,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400">
               <li><a href="https://github.com/envirocast" className="hover:text-white transition-colors">GitHub</a></li>
               <li><a href="https://instagram.com/envirocast_tech" className="hover:text-white transition-colors">Instagram</a></li>
-              <li><a href="mailto:ketechwiz@gmail.com" className="hover:text-white transition-colors">Email</a></li>
+              <li><a href="mailto:envirocast.tech@gmail.com" className="hover:text-white transition-colors">Email</a></li>
             </ul>
           </div>
         </div>
