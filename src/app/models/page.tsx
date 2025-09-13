@@ -578,7 +578,7 @@ const ModelsPage = () => {
                   </div>
                   <div>
                     <div className="text-white font-medium">Predictive Accuracy</div>
-                    <div className="text-slate-400 text-sm">99.7% accuracy in short-term forecasts, 94% for long-term predictions</div>
+                    <div className="text-slate-400 text-sm">95.4% accuracy in short-term forecasts, 87% for long-term predictions</div>
                   </div>
                 </div>
               </div>
@@ -602,15 +602,15 @@ const ModelsPage = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Data Throughput:</span>
-                    <span className="text-purple-300">2.3 TB/hour</span>
+                    <span className="text-purple-300">1 TB/hour</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Model Accuracy:</span>
-                    <span className="text-green-300">99.7%</span>
+                    <span className="text-green-300">95.4%</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Response Time:</span>
-                    <span className="text-orange-300">&lt;100ms</span>
+                    <span className="text-orange-300">&lt;1s</span>
                   </div>
                 </div>
               </div>
@@ -1188,7 +1188,7 @@ const ModelsPage = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Spatial Coverage</span>
-                  <span className="text-cyan-400 font-semibold">Continental</span>
+                  <span className="text-cyan-400 font-semibold">Global</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Update Frequency</span>
@@ -1196,7 +1196,7 @@ const ModelsPage = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Forecast Accuracy</span>
-                  <span className="text-green-400 font-semibold">~94%</span>
+                  <span className="text-green-400 font-semibold">95.4%</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Processing Speed</span>
