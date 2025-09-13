@@ -200,7 +200,13 @@ export default function TeamPage() {
             >
               <div className="p-8">
                 <div className="flex flex-col sm:flex-row items-center mb-6">
-                  <img src={member.image} alt={member.name} className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-slate-700" />
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={96}
+                    height={96}
+                    className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-slate-700 object-cover"
+                  />
                   <div>
                     <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
                     <p className="text-purple-400 font-medium text-center sm:text-left">{member.role}</p>
