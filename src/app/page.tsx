@@ -457,7 +457,7 @@ export default function HomePage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4 text-white">Meet Our Team</h3>
                   <p className="text-slate-400 leading-relaxed">
-                    World-class experts in quantum computing, environmental science, and climate modeling, 
+                    Experts in quantum computing, environmental science, and climate modeling, 
                     united by a shared vision of a sustainable future powered by advanced technology.
                   </p>
                 </div>
