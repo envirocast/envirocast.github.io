@@ -399,13 +399,29 @@ const NexPage = () => {
                           
                           <p className="text-slate-400 mb-6 leading-relaxed">{feature.description}</p>
                           
-                          <div className="space-y-2">
-                            <h4 className="text-sm font-semibold text-green-300 mb-3">Example Endpoints:</h4>
-                            {feature.endpoints.map((endpoint, i) => (
-                              <div key={i} className="bg-slate-900/50 rounded-lg p-3 border border-slate-700/30">
-                                <code className="text-cyan-300 text-sm font-mono">{endpoint}</code>
-                              </div>
-                            ))}
+                          <div className="grid md:grid-cols-2 gap-8">
+                            {apiFeatures.map((feature, index) => {
+                              const Icon = feature.icon;
+                              return (
+                                <motion.div
+                                  key={index}
+                                  className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 hover:border-green-500/30 transition-all duration-300"
+                                  initial={{ opacity: 0, y: 20 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: index * 0.1 }}
+                                  whileHover={{ scale: 1.02 }}
+                                >
+                                  <div className="flex items-center space-x-4 mb-6">
+                                    <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-green-500/20 to-blue-500/20 flex items-center justify-center">
+                                      <Icon className="w-6 h-6 text-green-300" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white">{feature.title}</h3>
+                                  </div>
+                                  
+                                  <p className="text-slate-400 leading-relaxed">{feature.description}</p>
+                                </motion.div>
+                              );
+                            })}
                           </div>
                         </motion.div>
                       );
