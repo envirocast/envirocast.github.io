@@ -316,8 +316,8 @@ export default function HomePage() {
                 </Link>
                 
                 <Link href="/ai" className="px-8 py-4 bg-slate-800/50 backdrop-blur-md border border-slate-600 rounded-xl font-semibold text-white hover:bg-slate-700/50 transition-all duration-300 flex items-center justify-center group">
-                  <Brain className="mr-2 w-5 h-5" />
-                  Try AI Chatbot
+                  <Globe className="mr-2 w-5 h-5" />
+                  Try EnviroNex
                 </Link>
               </div>
             </div>
