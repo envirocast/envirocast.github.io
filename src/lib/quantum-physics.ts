@@ -191,6 +191,19 @@ export class QuantumPhysicsEngine {
     }
   }
 
+  removeParticle(id: string): void {
+    this.particles.delete(id);
+    // Remove entanglements involving this particle
+    this.entanglements = this.entanglements.filter(
+      e => e.particle1 !== id && e.particle2 !== id
+    );
+  }
+
+  clearAllParticles(): void {
+    this.particles.clear();
+    this.entanglements = [];
+  }
+
   getParticle(id: string): Particle | undefined {
     return this.particles.get(id);
   }
