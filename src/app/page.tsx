@@ -333,7 +333,7 @@ export default function HomePage() {
                       <div className="w-full h-full bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-full backdrop-blur-md flex items-center justify-center">
                         <div className="text-center space-y-4">
                           <Globe className="w-16 h-16 text-cyan-300 mx-auto animate-spin" style={{animationDuration: '20s'}} />
-                          <div className="text-2xl font-bold text-cyan-300">99.7%</div>
+                          <div className="text-2xl font-bold text-cyan-300">90.1%</div>
                           <div className="text-sm text-slate-400">Prediction Accuracy</div>
                         </div>
                       </div>
@@ -430,7 +430,7 @@ export default function HomePage() {
               
               {/* Solution Metrics */}
               <div className="grid grid-cols-2 gap-4">
-                <MetricCard icon={Target} value="99.7" label="% Prediction Accuracy" color="cyan" />
+                <MetricCard icon={Target} value="90.1" label="% Prediction Accuracy" color="cyan" />
                 <MetricCard icon={Zap} value="1000" label="x Faster Processing" color="green" />
               </div>
             </div>
