@@ -434,6 +434,7 @@ const ModelsPage = () => {
                       </div>
                     </div>
                   )}
+                </div>
               );
             })}
           </div>
