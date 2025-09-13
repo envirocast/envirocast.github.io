@@ -20,16 +20,8 @@ export default function AIPage() {
   const handleFullscreen = () => {
     // The ref's current value is now typed to be either HTMLIFrameElement or null.
     const iframe = iframeRef.current;
-    if (iframe) {
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-      } else if (iframe.mozRequestFullScreen) { // Firefox
-        iframe.mozRequestFullScreen();
-      } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
-        iframe.webkitRequestFullscreen();
-      } else if (iframe.msRequestFullscreen) { // IE/Edge
-        iframe.msRequestFullscreen();
-      }
+    if (iframe && iframe.requestFullscreen) {
+      iframe.requestFullscreen();
     }
   };
 
