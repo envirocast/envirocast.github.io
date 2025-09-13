@@ -215,7 +215,7 @@ const TeamPreview = () => {
         </div>
       ))}
       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center ml-2 text-sm text-slate-300">
-        +1
+        +2
       </div>
     </div>
   );
