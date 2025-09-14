@@ -231,7 +231,7 @@ export default function TeamPage() {
       id: 5,
       name: "Divin Giddaluru",
       role: "Front-End Web Developer",
-      image: "https://placehold.co/400x400/60a5fa/ffffff?text=DG&font=inter",
+      image: "/divin.png",
       bio: "A developer and AI enthusiast passionate about using technology to break down barriers to education and information. Assisted in creating the EnviroCast website, integrating full-stack functionality, interactivity, and data management systems to deliver insightful user experiences.",
       expertise: [
         "Full-Stack Development", "Web Programming", "Data Systems", "Computer Vision", "Digital Learning Tools", "Cloud Integration",
