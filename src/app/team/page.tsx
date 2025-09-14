@@ -175,7 +175,7 @@ export default function TeamPage() {
     {
       id: 2,
       name: "Kavin Elangovan",
-      role: "Web Applications and Graphics Developer",
+      role: "Web Applications & Graphics Developer",
       leadRole: "Co-Lead",
       image: "/kavin.png",
       bio: "A data-driven student with the goal of using the powers of innovation, creativity, and technology to improve connection and engagement using interactive interfaces. Created the informative and engaging EnviroCast website and Enviro AI. Developed ML models and web applications with interactive interfaces.",
@@ -194,8 +194,8 @@ export default function TeamPage() {
     {
       id: 3,
       name: "Vir Sanghavi",
-      role: "Lead Presenter and AI Systems Engineer",
-      image: "https://placehold.co/400x400/60a5fa/ffffff?text=VS&font=inter",
+      role: "AI Systems Engineer & Outreach Manager",
+      image: "/vir.png",
       bio: "A student innovator applying AI and data-driven systems to solve environmental and societal challenges. Constructed resilient artificial intelligence and machine learning systems and algorithms complemented with scalable platforms to enhance real-world impact.",
       expertise: [
         "Machine Learning", "Artificial Intelligence", "Full-Stack Development", "Data Visualization", "Leadership", "Public Speaking", "STEM Outreach",
@@ -230,7 +230,7 @@ export default function TeamPage() {
     {
       id: 5,
       name: "Divin Giddaluru",
-      role: "Front-End Web Developer",
+      role: "Front-End Web Developer & Interface Engineer",
       image: "/divin.png",
       bio: "A developer and AI enthusiast passionate about using technology to break down barriers to education and information. Assisted in creating the EnviroCast website, integrating full-stack functionality, interactivity, and data management systems to deliver insightful user experiences.",
       expertise: [
@@ -248,7 +248,7 @@ export default function TeamPage() {
     {
       id: 6,
       name: "Sathyan Gopal",
-      role: "Social Media and Promotional Content Manager",
+      role: "Social Media & Promotional Content Manager",
       image: "/sathyan.png",
       bio: "A hard-working student with the goal of making the world a better place through the use of technology and machine learning. Organized social media compaigns and promotional multimedia to support the environment aligned with EnviroCast's mission and objectives.",
       expertise: [
