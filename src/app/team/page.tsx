@@ -232,7 +232,7 @@ export default function TeamPage() {
       name: "Divin Giddaluru",
       role: "Front-End Web Developer & Interface Engineer",
       image: "/divin.png",
-      bio: "A developer and AI enthusiast passionate about using technology to break down barriers to education and information. Assisted in creating the EnviroCast website, integrating full-stack functionality, interactivity, and data management systems to deliver insightful user experiences.",
+      bio: "A developer and AI enthusiast passionate about using technology to break down barriers to education and information. Constructed functional and interactive page interfaces for the EnviroCast website, integrating full-stack organization and data management systems to deliver insightful user experiences.",
       expertise: [
         "Full-Stack Development", "Web Programming", "Data Systems", "Computer Vision", "Digital Learning Tools", "Cloud Integration",
       ],
