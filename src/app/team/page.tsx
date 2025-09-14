@@ -1,9 +1,155 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import { Mail, Heart, Layers, Target, Users, Calendar, Star, Briefcase, BrainCircuit, Sparkles, Send, MapPin, Crown } from 'lucide-react';
+
+// Quantum Particles Component
+const QuantumParticles: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    interface Particle {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      opacity: number;
+      hue: number;
+      trail: { x: number; y: number; opacity: number }[];
+    }
+
+    const particles: Particle[] = [];
+    const numParticles = 8;
+
+    // Create particles
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.3 + 0.1,
+        hue: Math.random() * 60 + 30, // Yellow to orange range
+        trail: []
+      });
+    }
+
+    const animate = () => {
+      // Semi-transparent clear for trail effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(particle => {
+        // Add current position to trail
+        particle.trail.push({
+          x: particle.x,
+          y: particle.y,
+          opacity: particle.opacity
+        });
+
+        // Limit trail length
+        if (particle.trail.length > 20) {
+          particle.trail.shift();
+        }
+
+        // Update position with quantum tunneling effect
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        // Quantum tunneling - particles can "tunnel" through boundaries
+        if (Math.random() < 0.02) {
+          particle.x = Math.random() * canvas.width;
+          particle.y = Math.random() * canvas.height;
+        }
+
+        // Bounce off edges with some randomness
+        if (particle.x < 0 || particle.x > canvas.width) {
+          particle.vx *= -1;
+          particle.vx += (Math.random() - 0.5) * 0.2;
+        }
+        if (particle.y < 0 || particle.y > canvas.height) {
+          particle.vy *= -1;
+          particle.vy += (Math.random() - 0.5) * 0.2;
+        }
+
+        // Draw trail
+        particle.trail.forEach((point, index) => {
+          const trailOpacity = (index / particle.trail.length) * point.opacity * 0.3;
+          const trailSize = particle.size * (index / particle.trail.length) * 0.5;
+          
+          ctx.beginPath();
+          ctx.arc(point.x, point.y, trailSize, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${particle.hue}, 70%, 60%, ${trailOpacity})`;
+          ctx.fill();
+        });
+
+        // Draw main particle
+        const gradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, particle.size * 2
+        );
+        gradient.addColorStop(0, `hsla(${particle.hue}, 80%, 70%, ${particle.opacity})`);
+        gradient.addColorStop(1, `hsla(${particle.hue}, 80%, 70%, 0)`);
+
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        // Quantum glow effect
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${particle.hue}, 90%, 80%, ${particle.opacity * 0.8})`;
+        ctx.fill();
+
+        // Random quantum fluctuations
+        if (Math.random() < 0.05) {
+          particle.vx += (Math.random() - 0.5) * 0.1;
+          particle.vy += (Math.random() - 0.5) * 0.1;
+          particle.opacity = Math.random() * 0.3 + 0.1;
+        }
+
+        // Ensure velocities don't get too high
+        particle.vx = Math.max(-1, Math.min(1, particle.vx));
+        particle.vy = Math.max(-1, Math.min(1, particle.vy));
+      });
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-60"
+      style={{ mixBlendMode: 'screen' }}
+    />
+  );
+};
 
 export default function TeamPage() {
   const teamMembers = [
@@ -185,12 +331,16 @@ export default function TeamPage() {
               <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-400/20 to-amber-400/20 rounded-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-lg"></div>
               
               <div className="relative h-full bg-gradient-to-br from-slate-800/90 via-slate-800/60 to-slate-900/90 rounded-2xl border border-slate-700 group-hover:border-yellow-400/50 overflow-hidden transition-all duration-300 hover:shadow-2xl backdrop-blur-sm">
-                {/* Subtle leadership background pattern */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/8 via-orange-500/8 to-amber-500/8"></div>
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-yellow-400/5 to-transparent rounded-bl-full"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-500/5 to-transparent rounded-tr-full"></div>
+                {/* Enhanced translucent gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/12 via-orange-500/8 to-amber-500/4"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-yellow-400/8 via-orange-400/4 to-transparent rounded-bl-full"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-orange-500/8 via-amber-500/4 to-transparent rounded-tr-full"></div>
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent"></div>
                 
-                <div className="relative p-8 h-full flex flex-col">
+                {/* Quantum Particles */}
+                <QuantumParticles />
+                
+                <div className="relative p-8 h-full flex flex-col z-10">
                   {/* Leadership badge */}
                   <div className="absolute top-4 right-4">
                     <div className="flex items-center space-x-1 px-3 py-1 bg-gradient-to-r from-yellow-400/15 to-orange-400/15 border border-yellow-400/30 rounded-full">
