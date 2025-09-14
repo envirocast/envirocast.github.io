@@ -46,15 +46,15 @@ const QuantumParticles: React.FC = () => {
         vx: (Math.random() - 0.5) * 0.8,
         vy: (Math.random() - 0.5) * 0.8,
         size: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.3 + 0.1,
+        opacity: Math.random() * 0.2 + 0.05,
         hue: Math.random() * 60 + 30, // Yellow to orange range
         trail: []
       });
     }
 
     const animate = () => {
-      // Semi-transparent clear for trail effect
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      // More aggressive clear for trail erasure
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(particle => {
@@ -145,7 +145,7 @@ const QuantumParticles: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none opacity-60"
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-40"
       style={{ mixBlendMode: 'screen' }}
     />
   );
@@ -361,10 +361,10 @@ export default function TeamPage() {
                       <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
                       {/* Special role styling for leadership */}
                       <p className="text-center sm:text-left">
-                        <span className="bg-gradient-to-r from-yellow-400 via-blue-400 to-blue-500 bg-clip-text text-transparent font-bold text-lg">
+                        <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 bg-clip-text text-transparent font-bold text-lg">
                           {member.leadRole},
                         </span>
-                        <span className="text-blue-400 font-medium ml-1">
+                        <span className="text-blue-300 font-medium ml-1">
                           {member.role}
                         </span>
                       </p>
@@ -389,11 +389,11 @@ export default function TeamPage() {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-blue-400"/>Key Achievements</h4>
+                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-blue-300"/>Key Achievements</h4>
                       <ul className="space-y-2">
                         {member.achievements.map((achievement) => (
                           <li key={achievement} className="flex items-start">
-                            <Star className="w-3.5 h-3.5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <Star className="w-3.5 h-3.5 text-blue-300 mt-0.5 mr-3 flex-shrink-0" />
                             <span className="text-xs text-slate-300">{achievement}</span>
                           </li>
                         ))}
