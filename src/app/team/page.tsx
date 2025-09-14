@@ -183,7 +183,7 @@ export default function TeamPage() {
         "Web Development", "Software Applications", "Graphic Design", "Artificial Intelligence", "Machine Learning", "Image Editing", "API Interfaces",
       ],
       achievements: [
-        "Recipient of the United States Navy and Marine Corps' Office of Naval Research Gold Medal", "Developed an AI-powered application for scalable multicancer classification and diagnosis", "Finalist at TXSEF in Biomedical Engineering", "Presenter at SAIL2025, ENDO2025, and ISBI2025 international conferences", "AP and CollegeBoard-certified Computer Science & Mathematics tutor", "UNICEF Youth Training Advocate",
+        "Recipient of the United States Navy and Marine Corps' Office of Naval Research Gold Medal", "Developed an AI-powered application for scalable multicancer classification and diagnosis", "Finalist at the Texas Science & Engineering Fair in Biomedical Engineering", "Presenter at SAIL2025, ENDO2025, and ISBI2025 international conferences", "AP and CollegeBoard-certified Computer Science & Mathematics tutor", "UNICEF Youth Training Advocate",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
@@ -219,7 +219,7 @@ export default function TeamPage() {
         "Machine Learning", "Leadership", "Python", "Artificial Intelligence", "Data Science", "Scientific Communication", "Java",
       ],
       achievements: [
-        "Member of Sigma Xi (the International Scientific Research Honor Society)", "1st Place in Medicine & Health  at TXSEF", "[Recipient thing]", "Developed applications in gastroenterology, ophthalmology, and oncology", "Founded an international nonprofit delivering STEM education to K-12 students", "Served as a contributing researcher across professional laboratories, symposiums, and conferences",
+        "Member of Sigma Xi (the International Scientific Research Honor Society)", "1st Place in Medicine & Health  at the Texas Science & Engineering Fair", "Recipient of the Best in State of Texas Award in Life Sciences", "Developed applications in gastroenterology, ophthalmology, and oncology", "Founded an international nonprofit delivering STEM education to K-12 students", "Served as a contributing researcher across professional laboratories, symposiums, and conferences",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
@@ -255,7 +255,7 @@ export default function TeamPage() {
         "Python", "Java", "Artificial Intelligence", "API Integration", "Web Development", "Software Applications", "Data Management",
       ],
       achievements: [
-        "Created a user-friendly LLM application for student learning and educational assistance across school districts", "Finalist in SEFH in Physics & Astronomy Division", "2nd place in local NASA Space Apps state-wide hackathon", "Deployed integrated applications using Streamlit and Render", "Designed a career search application as an online intern for the STEM·E Youth Career Development Program", "Vice President of the Programming & Web Development Club at Carnegie Vanguard High School",
+        "Created a user-friendly LLM application for student learning and educational assistance across school districts", "Finalist in Science & Engineering Fair of Houston in Physics & Astronomy Division", "2nd place in local NASA Space Apps state-wide hackathon", "Deployed integrated applications using Streamlit and Render", "Designed a career search application as an online intern for the STEM·E Youth Career Development Program", "Vice President of the Programming & Web Development Club at Carnegie Vanguard High School",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
