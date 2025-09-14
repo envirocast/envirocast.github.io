@@ -67,7 +67,7 @@ export default function TeamPage() {
       id: 4,
       name: "Ahaan Thota",
       role: "Model Systems Developer & Analyst",
-      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
+      image: "/ahaan.png",
       bio: "Bio",
       expertise: [
         "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
@@ -119,12 +119,6 @@ export default function TeamPage() {
     }
   ];
 
-  const stats = [
-    { label: "Data Points Processed Daily", value: "5B+", icon: Layers },
-    { label: "Forecast Accuracy", value: "95.4%", icon: Target },
-    { label: "Population Covered", value: "7.5B+", icon: Users },
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -174,24 +168,6 @@ export default function TeamPage() {
             </div>
           </div>
         </motion.div>
-        
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {stats.map((stat) => (
-            <motion.div key={stat.label} variants={itemVariants} className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
-              <div className="p-3 rounded-full bg-cyan-900/50 mx-auto w-fit mb-3 border border-cyan-700">
-                <stat.icon className="w-6 h-6 text-cyan-400" />
-              </div>
-              <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-sm text-slate-400">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
 
         {/* All Team Members in One Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -199,22 +175,22 @@ export default function TeamPage() {
           {leadershipMembers.map(member => (
             <motion.div 
               key={member.id} 
-              className="relative group"
+              className="relative group h-full"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8 }}
             >
               {/* Glow effect on hover */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-purple-500/20 to-cyan-400/20 rounded-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-lg"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 via-orange-400/20 to-amber-400/20 rounded-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-lg"></div>
               
-              <div className="relative bg-gradient-to-br from-slate-800/90 via-slate-800/60 to-slate-900/90 rounded-2xl border border-gradient-to-r from-yellow-500/20 via-purple-500/20 to-cyan-500/20 overflow-hidden transition-all duration-300 hover:border-yellow-400/40 hover:shadow-2xl backdrop-blur-sm">
+              <div className="relative h-full bg-gradient-to-br from-slate-800/90 via-slate-800/60 to-slate-900/90 rounded-2xl border border-slate-700 group-hover:border-yellow-400/50 overflow-hidden transition-all duration-300 hover:shadow-2xl backdrop-blur-sm">
                 {/* Subtle leadership background pattern */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/3 via-purple-500/3 to-cyan-500/3"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/3 via-orange-500/3 to-amber-500/3"></div>
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-yellow-400/5 to-transparent rounded-bl-full"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-500/5 to-transparent rounded-tr-full"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-500/5 to-transparent rounded-tr-full"></div>
                 
-                <div className="relative p-8">
+                <div className="relative p-8 h-full flex flex-col">
                   {/* Leadership badge */}
                   <div className="absolute top-4 right-4">
                     <div className="flex items-center space-x-1 px-3 py-1 bg-gradient-to-r from-yellow-400/15 to-orange-400/15 border border-yellow-400/30 rounded-full">
@@ -229,33 +205,33 @@ export default function TeamPage() {
                       alt={member.name}
                       width={96}
                       height={96}
-                      className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-gradient-to-r from-yellow-400/50 to-purple-500/50 object-cover ring-2 ring-yellow-400/20"
+                      className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-slate-700 group-hover:border-yellow-400/50 object-cover ring-2 ring-yellow-400/20 transition-all duration-300"
                     />
                     <div>
                       <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
                       {/* Special role styling for leadership */}
                       <p className="text-center sm:text-left">
-                        <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-purple-400 bg-clip-text text-transparent font-bold text-lg">
+                        <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent font-bold text-lg">
                           {member.leadRole},
                         </span>
-                        <span className="text-purple-400 font-medium ml-1">
+                        <span className="text-blue-400 font-medium ml-1">
                           {member.role}
                         </span>
                       </p>
-                      <div className="flex items-center justify-center sm:justify-start text-sm text-slate-500 mt-2">
+                      <div className="flex items-center justify-center sm:justify-start text-sm text-slate-300 mt-2">
                         <MapPin className="w-4 h-4 mr-1.5" /> {member.location}
                         <Calendar className="w-4 h-4 ml-4 mr-1.5" /> Since {member.joinedYear}
                       </div>
                     </div>
                   </div>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{member.bio}</p>
+                  <p className="text-slate-300 text-sm leading-relaxed mb-6">{member.bio}</p>
                   
-                  <div className="space-y-6">
+                  <div className="space-y-6 flex-grow">
                     <div>
                       <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><BrainCircuit className="w-5 h-5 mr-2 text-cyan-400"/>Areas of Expertise</h4>
                       <div className="flex flex-wrap gap-2">
                         {member.expertise.map((skill) => (
-                          <span key={skill} className="px-3 py-1 bg-gradient-to-r from-cyan-900/50 to-purple-900/50 text-cyan-300 text-xs font-medium rounded-full border border-cyan-700/50">
+                          <span key={skill} className="px-3 py-1 bg-gradient-to-r from-yellow-600/30 to-orange-600/30 text-yellow-300 text-xs font-medium rounded-full border border-yellow-600/50">
                             {skill}
                           </span>
                         ))}
@@ -267,14 +243,14 @@ export default function TeamPage() {
                       <ul className="space-y-2">
                         {member.achievements.map((achievement) => (
                           <li key={achievement} className="flex items-start">
-                            <Star className="w-3.5 h-3.5 text-yellow-500 mt-1 mr-3 flex-shrink-0" />
-                            <span className="text-xs text-slate-400">{achievement}</span>
+                            <Star className="w-3.5 h-3.5 text-yellow-500 mt-0.5 mr-3 flex-shrink-0" />
+                            <span className="text-xs text-slate-300">{achievement}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                     
-                    <div className="border-l-4 border-gradient-to-b from-yellow-500 to-purple-500 pl-4 bg-gradient-to-r from-yellow-500/3 to-purple-500/3 rounded-r-lg py-2">
+                    <div className="border-l-4 border-gradient-to-b from-yellow-500 to-orange-500 pl-4 bg-gradient-to-r from-yellow-500/3 to-orange-500/3 rounded-r-lg py-2">
                       <p className="text-sm text-slate-300 italic font-medium">{member.personalNote}</p>
                     </div>
                   </div>
@@ -287,13 +263,13 @@ export default function TeamPage() {
           {regularMembers.map(member => (
             <motion.div 
               key={member.id} 
-              className="bg-slate-800/50 rounded-2xl border border-slate-700 overflow-hidden transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10 hover:shadow-xl"
+              className="bg-slate-800/50 rounded-2xl border border-slate-700 overflow-hidden transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10 hover:shadow-xl h-full"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="p-8">
+              <div className="p-8 h-full flex flex-col">
                 <div className="flex flex-col sm:flex-row items-center mb-6">
                   <Image
                     src={member.image}
@@ -305,15 +281,15 @@ export default function TeamPage() {
                   <div>
                     <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
                     <p className="text-purple-400 font-medium text-center sm:text-left">{member.role}</p>
-                    <div className="flex items-center justify-center sm:justify-start text-sm text-slate-500 mt-2">
+                    <div className="flex items-center justify-center sm:justify-start text-sm text-slate-300 mt-2">
                       <MapPin className="w-4 h-4 mr-1.5" /> {member.location}
                       <Calendar className="w-4 h-4 ml-4 mr-1.5" /> Since {member.joinedYear}
                     </div>
                   </div>
                 </div>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">{member.bio}</p>
+                <p className="text-slate-300 text-sm leading-relaxed mb-6">{member.bio}</p>
                 
-                <div className="space-y-6">
+                <div className="space-y-6 flex-grow">
                   <div>
                     <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><BrainCircuit className="w-5 h-5 mr-2 text-cyan-400"/>Areas of Expertise</h4>
                     <div className="flex flex-wrap gap-2">
@@ -330,8 +306,8 @@ export default function TeamPage() {
                     <ul className="space-y-2">
                       {member.achievements.map((achievement) => (
                         <li key={achievement} className="flex items-start">
-                          <Star className="w-3.5 h-3.5 text-yellow-500 mt-1 mr-3 flex-shrink-0" />
-                          <span className="text-xs text-slate-400">{achievement}</span>
+                          <Star className="w-3.5 h-3.5 text-yellow-500 mt-0.5 mr-3 flex-shrink-0" />
+                          <span className="text-xs text-slate-300">{achievement}</span>
                         </li>
                       ))}
                     </ul>
