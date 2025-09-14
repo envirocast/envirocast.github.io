@@ -364,13 +364,13 @@ export default function TeamPage() {
                         <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-400 bg-clip-text text-transparent font-bold text-lg">
                           {member.leadRole},
                         </span>
-                        <span className="text-blue-300 font-medium ml-1">
+                        <span className="text-blue-400 font-medium ml-1">
                           {member.role}
                         </span>
                       </p>
                       <div className="flex items-center justify-center sm:justify-start text-sm text-slate-300 mt-2">
-                        <MapPin className="w-4 h-4 mr-1.5 text-blue-400" /> {member.location}
-                        <Calendar className="w-4 h-4 ml-4 mr-1.5 text-blue-400" /> Since {member.joinedYear}
+                        <MapPin className="w-4 h-4 mr-1.5 text-blue-300" /> {member.location}
+                        <Calendar className="w-4 h-4 ml-4 mr-1.5 text-blue-300" /> Since {member.joinedYear}
                       </div>
                     </div>
                   </div>
@@ -389,11 +389,11 @@ export default function TeamPage() {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-blue-300"/>Key Achievements</h4>
+                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-blue-400"/>Key Achievements</h4>
                       <ul className="space-y-2">
                         {member.achievements.map((achievement) => (
                           <li key={achievement} className="flex items-start">
-                            <Star className="w-3.5 h-3.5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <Star className="w-3.5 h-3.5 text-blue-300 mt-0.5 mr-3 flex-shrink-0" />
                             <span className="text-xs text-slate-300">{achievement}</span>
                           </li>
                         ))}
