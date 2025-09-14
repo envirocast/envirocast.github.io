@@ -60,6 +60,23 @@ export default function TeamPage() {
     },
     {
       id: 4,
+      name: "Ahaan Thota",
+      role: "Model Systems Developer & Analyst",
+      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
+      bio: "Bio",
+      expertise: [
+        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+      ],
+      achievements: [
+        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+      ],
+      location: "Houston, TX",
+      joinedYear: "2025",
+      email: "ahaan.thota@gmail.com",
+      personalNote: "Quote by you"
+    },
+    {
+      id: 5,
       name: "Divin Giddaluru",
       role: "Front-End Web Developer",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=DG&font=inter",
@@ -76,7 +93,7 @@ export default function TeamPage() {
       personalNote: "Technology should be used to help people, especially those who often get overlooked."
     },
     {
-      id: 5,
+      id: 6,
       name: "Sathyan Gopal",
       role: "Social Media and Promotional Content Manager",
       image: "/sathyan.png",
@@ -91,23 +108,6 @@ export default function TeamPage() {
       joinedYear: "2025",
       email: "sathyangopal4@gmail.com",
       personalNote: "Technology is our foremost weapon in the battle against pollution."
-    },
-    {
-      id: 6,
-      name: "Ahaan Thota",
-      role: "Model Systems Developer & Analyst",
-      image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
-      bio: "Bio",
-      expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
-      ],
-      achievements: [
-        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
-      ],
-      location: "Houston, TX",
-      joinedYear: "2025",
-      email: "ahaan.thota@gmail.com",
-      personalNote: "Quote by you"
     }
   ];
 
