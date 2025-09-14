@@ -361,7 +361,7 @@ export default function TeamPage() {
                       <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
                       {/* Special role styling for leadership */}
                       <p className="text-center sm:text-left">
-                        <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 bg-clip-text text-transparent font-bold text-lg">
+                        <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-400 bg-clip-text text-transparent font-bold text-lg">
                           {member.leadRole},
                         </span>
                         <span className="text-blue-300 font-medium ml-1">
