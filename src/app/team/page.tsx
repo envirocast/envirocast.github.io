@@ -214,17 +214,17 @@ export default function TeamPage() {
       name: "Ahaan Thota",
       role: "Model Systems Developer & Analyst",
       image: "/ahaan.png",
-      bio: "Bio",
+      bio: "A problem-solving student interested in the intersection of medicine and artificial intelligence. Developed AI solutions using critical problem-solving skills. Developed interactive simulations and engaging models to convey EnviroCast's research and influence.",
       expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
+        "Machine Learning", "Leadership", "Python", "Artificial Intelligence", "Data Science", "Scientific Communication", "Java",
       ],
       achievements: [
-        "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
+        "Member of Sigma Xi (the International Scientific Research Honor Society)", "1st Place in Medicine & Health  at TXSEF", "[Recipient thing]", "Developed applications in gastroenterology, ophthalmology, and oncology", "Founded an international nonprofit delivering STEM education to K-12 students", "Served as a contributing researcher across professional laboratories, symposiums, and conferences",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
-      email: "ahaan.thota@gmail.com",
-      personalNote: "Quote by you",
+      email: "ahaanrajesham@gmail.com",
+      personalNote: "Nature and technology aren’t opposites. Nature gave us technology, and we must use technology to take care of nature.",
       isLeadership: false
     },
     {
@@ -369,8 +369,8 @@ export default function TeamPage() {
                         </span>
                       </p>
                       <div className="flex items-center justify-center sm:justify-start text-sm text-slate-300 mt-2">
-                        <MapPin className="w-4 h-4 mr-1.5 text-blue-300" /> {member.location}
-                        <Calendar className="w-4 h-4 ml-4 mr-1.5 text-blue-300" /> Since {member.joinedYear}
+                        <MapPin className="w-4 h-4 mr-1.5 text-blue-400" /> {member.location}
+                        <Calendar className="w-4 h-4 ml-4 mr-1.5 text-blue-400" /> Since {member.joinedYear}
                       </div>
                     </div>
                   </div>
@@ -393,7 +393,7 @@ export default function TeamPage() {
                       <ul className="space-y-2">
                         {member.achievements.map((achievement) => (
                           <li key={achievement} className="flex items-start">
-                            <Star className="w-3.5 h-3.5 text-blue-300 mt-0.5 mr-3 flex-shrink-0" />
+                            <Star className="w-3.5 h-3.5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" />
                             <span className="text-xs text-slate-300">{achievement}</span>
                           </li>
                         ))}
