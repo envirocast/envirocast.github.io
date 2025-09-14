@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Globe, Zap, Target, Users, ArrowRight, Play, Pause, Brain, Atom, Waves, CheckCircle } from 'lucide-react';
+import { ChevronDown, Globe, Zap, Target, Users, ArrowRight, Play, Pause, BarChart3, Brain, Atom, Waves, CheckCircle } from 'lucide-react';
 import { redirect } from "next/navigation";
 
 // Animated Background Component
