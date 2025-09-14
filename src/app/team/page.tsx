@@ -201,7 +201,7 @@ export default function TeamPage() {
         "Machine Learning", "Artificial Intelligence", "Full-Stack Development", "Data Visualization", "Leadership", "Public Speaking", "STEM Outreach",
       ],
       achievements: [
-        "Founder of an AI-powered debate platform with 2300+ users across 3 continents", "Executive director of a scaled nonprofit distributing $500K+ in robotics hardware", "Led an AI-powered bird strike prevention system using computer vision and bioacoustic deterrents", "Developed a machine learning tool for real-world contextual awareness using LAB color models", "2023 Texas State Champion in Congressional Debate & National Finalist", "Launched a global coding educational initiative, teaching 100+ students in India basic programming skills",
+        "Founder of an AI-powered debate platform with 2300+ users across 3 continents", "Executive director of a scaled nonprofit distributing $500K+ in robotics hardware", "Led an AI-powered bird strike prevention system using computer vision and bioacoustic deterrents", "Developed an ML tool for real-world contextual awareness using LAB color models", "2023 Texas State Champion in Congressional Debate & National Finalist", "Launched a global coding educational initiative, teaching 100+ students in India basic programming skills",
       ],
       location: "Houston, TX",
       joinedYear: "2025",
