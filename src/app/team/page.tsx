@@ -45,7 +45,7 @@ const QuantumParticles: React.FC = () => {
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.8,
         vy: (Math.random() - 0.5) * 0.8,
-        size: Math.random() * 2 + 1,
+        size: Math.random() * 3 + 2,
         opacity: Math.random() * 0.2 + 0.05,
         hue: Math.random() * 60 + 30, // Yellow to orange range
         trail: []
@@ -75,7 +75,7 @@ const QuantumParticles: React.FC = () => {
         particle.y += particle.vy;
 
         // Quantum tunneling - particles can "tunnel" through boundaries
-        if (Math.random() < 0.02) {
+        if (Math.random() < 0.005) {
           particle.x = Math.random() * canvas.width;
           particle.y = Math.random() * canvas.height;
         }
