@@ -578,7 +578,7 @@ const ModelsPage = () => {
                   </div>
                   <div>
                     <div className="text-white font-medium">Predictive Accuracy</div>
-                    <div className="text-slate-400 text-sm">95.4% accuracy in short-term forecasts, 87% for long-term predictions</div>
+                    <div className="text-slate-400 text-sm">95% accuracy in short-term forecasts, 87% for long-term predictions</div>
                   </div>
                 </div>
               </div>
@@ -606,7 +606,7 @@ const ModelsPage = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Model Accuracy:</span>
-                    <span className="text-green-300">95.4%</span>
+                    <span className="text-green-300">95%</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Response Time:</span>
@@ -1196,7 +1196,7 @@ const ModelsPage = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Forecast Accuracy</span>
-                  <span className="text-green-400 font-semibold">95.4%</span>
+                  <span className="text-green-400 font-semibold">96.9%</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-300">Processing Speed</span>
