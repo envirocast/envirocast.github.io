@@ -334,7 +334,7 @@ export default function HomePage() {
                       <div className="w-full h-full bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-full backdrop-blur-md flex items-center justify-center">
                         <div className="text-center space-y-4">
                           <Globe className="w-16 h-16 text-cyan-300 mx-auto animate-spin" style={{animationDuration: '20s'}} />
-                          <div className="text-2xl font-bold text-cyan-300">95.4%</div>
+                          <div className="text-2xl font-bold text-cyan-300">95+%</div>
                           <div className="text-sm text-slate-400">Prediction Accuracy</div>
                         </div>
                       </div>
