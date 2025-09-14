@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from "next/image";
-import { Mail, Heart, Layers, Target, Users, Calendar, Star, Briefcase, BrainCircuit, Sparkles, Send, MapPin } from 'lucide-react';
+import { Mail, Heart, Layers, Target, Users, Calendar, Star, Briefcase, BrainCircuit, Sparkles, Send, MapPin, Crown } from 'lucide-react';
 
 export default function TeamPage() {
   const teamMembers = [
@@ -11,6 +11,7 @@ export default function TeamPage() {
       id: 1,
       name: "Arnav Nemade",
       role: "Lead Quantum Developer",
+      leadRole: "Lead",
       image: "/arnav.png",
       bio: "A passionate student with the goal of making the world a cleaner place using machine learning models and advanced quantum algorithms. Built the main web application with interactive globe and satellite integration powered by custom hybrid quantum-classical integration.",
       expertise: [
@@ -22,12 +23,14 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "arnavnemade1@gmail.com",
-      personalNote: "If we all do our part, we can make the world a better place."
+      personalNote: "If we all do our part, we can make the world a better place.",
+      isLeadership: true
     },
     {
       id: 2,
       name: "Kavin Elangovan",
       role: "Web Applications and Graphics Developer",
+      leadRole: "Co-Lead",
       image: "/kavin.png",
       bio: "A data-driven student with the goal of using the powers of innovation, creativity, and technology to improve connection and engagement using interactive interfaces. Created the informative and engaging EnviroCast website and Enviro AI. Developed ML models and web applications with interactive interfaces.",
       expertise: [
@@ -39,7 +42,8 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "ketechwiz@gmail.com",
-      personalNote: "Nature is too amazing to lose, so let's protect it however we can."
+      personalNote: "Nature is too amazing to lose, so let's protect it however we can.",
+      isLeadership: true
     },
     {
       id: 3,
@@ -56,7 +60,8 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "vir.sanghavi@gmail.com",
-      personalNote: "Innovation should scale beyond people. It should serve the planet too."
+      personalNote: "Innovation should scale beyond people. It should serve the planet too.",
+      isLeadership: false
     },
     {
       id: 4,
@@ -73,7 +78,8 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "ahaan.thota@gmail.com",
-      personalNote: "Quote by you"
+      personalNote: "Quote by you",
+      isLeadership: false
     },
     {
       id: 5,
@@ -90,7 +96,8 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "divin.giddaluru@gmail.com",
-      personalNote: "Technology should be used to help people, especially those who often get overlooked."
+      personalNote: "Technology should be used to help people, especially those who often get overlooked.",
+      isLeadership: false
     },
     {
       id: 6,
@@ -107,7 +114,8 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "sathyangopal4@gmail.com",
-      personalNote: "Technology is our foremost weapon in the battle against pollution."
+      personalNote: "Technology is our foremost weapon in the battle against pollution.",
+      isLeadership: false
     }
   ];
 
@@ -126,6 +134,10 @@ export default function TeamPage() {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
+
+  // Separate leadership members from regular team members
+  const leadershipMembers = teamMembers.filter(member => member.isLeadership);
+  const regularMembers = teamMembers.filter(member => !member.isLeadership);
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-200 py-24 sm:py-32">
@@ -181,68 +193,189 @@ export default function TeamPage() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {teamMembers.map(member => (
-            <motion.div 
-              key={member.id} 
-              className="bg-slate-800/50 rounded-2xl border border-slate-700 overflow-hidden transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="p-8">
-                <div className="flex flex-col sm:flex-row items-center mb-6">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    width={96}
-                    height={96}
-                    className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-slate-700 object-cover"
-                  />
-                  <div>
-                    <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
-                    <p className="text-purple-400 font-medium text-center sm:text-left">{member.role}</p>
-                    <div className="flex items-center justify-center sm:justify-start text-sm text-slate-500 mt-2">
-                      <MapPin className="w-4 h-4 mr-1.5" /> {member.location}
-                      <Calendar className="w-4 h-4 ml-4 mr-1.5" /> Since {member.joinedYear}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">{member.bio}</p>
+        {/* Leadership Section */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-300 via-orange-300 to-purple-300 bg-clip-text text-transparent mb-4 flex items-center justify-center">
+              <Crown className="w-8 h-8 text-yellow-400 mr-3" />
+              Project Leadership
+            </h2>
+            <p className="text-slate-400">Leading the quantum revolution in environmental intelligence</p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {leadershipMembers.map(member => (
+              <motion.div 
+                key={member.id} 
+                className="relative group"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+              >
+                {/* Glow effect on hover */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400 via-purple-500 to-cyan-400 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-lg"></div>
                 
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><BrainCircuit className="w-5 h-5 mr-2 text-cyan-400"/>Areas of Expertise</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.expertise.map((skill) => (
-                        <span key={skill} className="px-3 py-1 bg-cyan-900/50 text-cyan-300 text-xs font-medium rounded-full border border-cyan-800">
-                          {skill}
-                        </span>
-                      ))}
+                <div className="relative bg-gradient-to-br from-slate-800/80 via-slate-800/50 to-slate-900/80 rounded-2xl border border-gradient-to-r from-yellow-500/30 via-purple-500/30 to-cyan-500/30 overflow-hidden transition-all duration-300 hover:border-yellow-400/60 hover:shadow-2xl backdrop-blur-sm">
+                  {/* Special leadership background pattern */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-purple-500/5 to-cyan-500/5"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-yellow-400/10 to-transparent rounded-bl-full"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-500/10 to-transparent rounded-tr-full"></div>
+                  
+                  <div className="relative p-8">
+                    {/* Leadership badge */}
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center space-x-1 px-3 py-1 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 border border-yellow-400/40 rounded-full">
+                        <Crown className="w-3 h-3 text-yellow-400" />
+                        <span className="text-xs font-semibold text-yellow-300">LEADER</span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row items-center mb-6">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={96}
+                        height={96}
+                        className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-gradient-to-r from-yellow-400 to-purple-500 object-cover ring-2 ring-yellow-400/30"
+                      />
+                      <div>
+                        <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
+                        {/* Special role styling for leadership */}
+                        <p className="text-center sm:text-left">
+                          <span className="bg-gradient-to-r from-yellow-300 via-orange-300 to-purple-300 bg-clip-text text-transparent font-bold text-lg">
+                            {member.leadRole}
+                          </span>
+                          <span className="text-purple-400 font-medium ml-1">
+                            {member.role}
+                          </span>
+                        </p>
+                        <div className="flex items-center justify-center sm:justify-start text-sm text-slate-500 mt-2">
+                          <MapPin className="w-4 h-4 mr-1.5" /> {member.location}
+                          <Calendar className="w-4 h-4 ml-4 mr-1.5" /> Since {member.joinedYear}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-6">{member.bio}</p>
+                    
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><BrainCircuit className="w-5 h-5 mr-2 text-cyan-400"/>Areas of Expertise</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {member.expertise.map((skill) => (
+                            <span key={skill} className="px-3 py-1 bg-gradient-to-r from-cyan-900/50 to-purple-900/50 text-cyan-300 text-xs font-medium rounded-full border border-cyan-700/50">
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-yellow-400"/>Key Achievements</h4>
+                        <ul className="space-y-2">
+                          {member.achievements.map((achievement) => (
+                            <li key={achievement} className="flex items-start">
+                              <Star className="w-3.5 h-3.5 text-yellow-500 mt-1 mr-3 flex-shrink-0" />
+                              <span className="text-xs text-slate-400">{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="border-l-4 border-gradient-to-b from-yellow-500 to-purple-500 pl-4 bg-gradient-to-r from-yellow-500/5 to-purple-500/5 rounded-r-lg py-2">
+                        <p className="text-sm text-slate-300 italic font-medium">{member.personalNote}</p>
+                      </div>
                     </div>
                   </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-                  <div>
-                    <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-yellow-400"/>Key Achievements</h4>
-                    <ul className="space-y-2">
-                      {member.achievements.map((achievement) => (
-                        <li key={achievement} className="flex items-start">
-                          <Star className="w-3.5 h-3.5 text-yellow-500 mt-1 mr-3 flex-shrink-0" />
-                          <span className="text-xs text-slate-400">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
+        {/* Regular Team Members */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent mb-4">
+              Core Team Members
+            </h2>
+            <p className="text-slate-400">Dedicated specialists driving innovation across all domains</p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {regularMembers.map(member => (
+              <motion.div 
+                key={member.id} 
+                className="bg-slate-800/50 rounded-2xl border border-slate-700 overflow-hidden transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10 hover:shadow-xl"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="p-8">
+                  <div className="flex flex-col sm:flex-row items-center mb-6">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={96}
+                      height={96}
+                      className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-slate-700 object-cover"
+                    />
+                    <div>
+                      <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
+                      <p className="text-purple-400 font-medium text-center sm:text-left">{member.role}</p>
+                      <div className="flex items-center justify-center sm:justify-start text-sm text-slate-500 mt-2">
+                        <MapPin className="w-4 h-4 mr-1.5" /> {member.location}
+                        <Calendar className="w-4 h-4 ml-4 mr-1.5" /> Since {member.joinedYear}
+                      </div>
+                    </div>
                   </div>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{member.bio}</p>
                   
-                  <div className="border-l-4 border-purple-500 pl-4">
-                    <p className="text-sm text-slate-300 italic">{member.personalNote}</p>
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><BrainCircuit className="w-5 h-5 mr-2 text-cyan-400"/>Areas of Expertise</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {member.expertise.map((skill) => (
+                          <span key={skill} className="px-3 py-1 bg-cyan-900/50 text-cyan-300 text-xs font-medium rounded-full border border-cyan-800">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-yellow-400"/>Key Achievements</h4>
+                      <ul className="space-y-2">
+                        {member.achievements.map((achievement) => (
+                          <li key={achievement} className="flex items-start">
+                            <Star className="w-3.5 h-3.5 text-yellow-500 mt-1 mr-3 flex-shrink-0" />
+                            <span className="text-xs text-slate-400">{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="border-l-4 border-purple-500 pl-4">
+                      <p className="text-sm text-slate-300 italic">{member.personalNote}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
