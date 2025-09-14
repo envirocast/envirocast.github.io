@@ -186,7 +186,7 @@ export default function TeamPage() {
               
               <div className="relative h-full bg-gradient-to-br from-slate-800/90 via-slate-800/60 to-slate-900/90 rounded-2xl border border-slate-700 group-hover:border-yellow-400/50 overflow-hidden transition-all duration-300 hover:shadow-2xl backdrop-blur-sm">
                 {/* Subtle leadership background pattern */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/3 via-orange-500/3 to-amber-500/3"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/8 via-orange-500/8 to-amber-500/8"></div>
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-yellow-400/5 to-transparent rounded-bl-full"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-orange-500/5 to-transparent rounded-tr-full"></div>
                 
@@ -211,7 +211,7 @@ export default function TeamPage() {
                       <h3 className="text-2xl font-bold text-white text-center sm:text-left">{member.name}</h3>
                       {/* Special role styling for leadership */}
                       <p className="text-center sm:text-left">
-                        <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent font-bold text-lg">
+                        <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-blue-400 bg-clip-text text-transparent font-bold text-lg">
                           {member.leadRole},
                         </span>
                         <span className="text-blue-400 font-medium ml-1">
@@ -228,7 +228,7 @@ export default function TeamPage() {
                   
                   <div className="space-y-6 flex-grow">
                     <div>
-                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><BrainCircuit className="w-5 h-5 mr-2 text-cyan-400"/>Areas of Expertise</h4>
+                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><BrainCircuit className="w-5 h-5 mr-2 text-yellow-400"/>Areas of Expertise</h4>
                       <div className="flex flex-wrap gap-2">
                         {member.expertise.map((skill) => (
                           <span key={skill} className="px-3 py-1 bg-gradient-to-r from-yellow-600/30 to-orange-600/30 text-yellow-300 text-xs font-medium rounded-full border border-yellow-600/50">
@@ -239,11 +239,11 @@ export default function TeamPage() {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-yellow-400"/>Key Achievements</h4>
+                      <h4 className="font-semibold text-slate-100 mb-3 flex items-center"><Sparkles className="w-5 h-5 mr-2 text-blue-400"/>Key Achievements</h4>
                       <ul className="space-y-2">
                         {member.achievements.map((achievement) => (
                           <li key={achievement} className="flex items-start">
-                            <Star className="w-3.5 h-3.5 text-yellow-500 mt-0.5 mr-3 flex-shrink-0" />
+                            <Star className="w-3.5 h-3.5 text-blue-400 mt-0.5 mr-3 flex-shrink-0" />
                             <span className="text-xs text-slate-300">{achievement}</span>
                           </li>
                         ))}
