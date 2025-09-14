@@ -36,7 +36,7 @@ const QuantumParticles: React.FC = () => {
     }
 
     const particles: Particle[] = [];
-    const numParticles = 8;
+    const numParticles = 18;
 
     // Create particles
     for (let i = 0; i < numParticles; i++) {
@@ -45,7 +45,7 @@ const QuantumParticles: React.FC = () => {
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.8,
         vy: (Math.random() - 0.5) * 0.8,
-        size: Math.random() * 3 + 2,
+        size: Math.random() * 2 + 1,
         opacity: Math.random() * 0.2 + 0.05,
         hue: Math.random() * 60 + 30, // Yellow to orange range
         trail: []
