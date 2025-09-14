@@ -3,9 +3,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from "next/image";
-import { Mail, Heart, Layers, Target, Users, Calendar, Star, Briefcase, BrainCircuit, Sparkles, Send, MapPin } from 'lucide-react';
+import { Mail, Heart, Layers, Target, Users, Calendar, Star, BrainCircuit, Sparkles, MapPin } from 'lucide-react';
 
 export default function TeamPage() {
+  // --- Team Data ---
   const teamMembers = [
     {
       id: 1,
@@ -22,7 +23,8 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "arnavnemade1@gmail.com",
-      personalNote: "If we all do our part, we can make the world a better place."
+      personalNote: "If we all do our part, we can make the world a better place.",
+      title: "Lead"
     },
     {
       id: 2,
@@ -39,7 +41,8 @@ export default function TeamPage() {
       location: "Houston, TX",
       joinedYear: "2025",
       email: "ketechwiz@gmail.com",
-      personalNote: "Nature is too amazing to lose, so let's protect it however we can."
+      personalNote: "Nature is too amazing to lose, so let's protect it however we can.",
+      title: "Co-Lead"
     },
     {
       id: 3,
@@ -64,9 +67,7 @@ export default function TeamPage() {
       role: "Model Systems Developer & Analyst",
       image: "https://placehold.co/400x400/60a5fa/ffffff?text=AT&font=inter",
       bio: "Bio",
-      expertise: [
-        "Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7",
-      ],
+      expertise: ["Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5", "Skill 6", "Skill 7"],
       achievements: [
         "Achivement 1", "Achievement 2", "Achievement 3", "Achievement 4", "Achivement 5", "Achievement 6",
       ],
@@ -111,12 +112,11 @@ export default function TeamPage() {
     }
   ];
 
-  const stats = [
-    { label: "Data Points Processed Daily", value: "5B+", icon: Layers },
-    { label: "Forecast Accuracy", value: "95.4%", icon: Target },
-    { label: "Population Covered", value: "7.5B+", icon: Users },
-  ];
+  // Split leads from rest
+  const leads = teamMembers.filter(m => m.id === 1 || m.id === 2);
+  const others = teamMembers.filter(m => m.id !== 1 && m.id !== 2);
 
+  // --- Animations ---
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -130,7 +130,8 @@ export default function TeamPage() {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-200 py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
+        {/* Header */}
         <motion.div 
           className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
@@ -145,44 +146,56 @@ export default function TeamPage() {
           </p>
         </motion.div>
 
+        {/* Leadership Section */}
         <motion.div 
-          className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 mb-16"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
+          className="mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="flex items-start sm:items-center">
-            <Heart className="w-8 h-8 text-purple-400 mt-1 mr-4 flex-shrink-0" />
-            <div>
-              <h3 className="font-bold text-xl text-slate-100 mb-2">Our Mission with TEMPO</h3>
-              <p className="text-slate-400">
-               Our mission is to harness the revolutionary data from NASA's TEMPO satellite, integrating it with ground and weather data to provide timely, accurate air quality alerts that help communities and individuals reduce their exposure to pollutants.
-              </p>
-            </div>
+          <h2 className="text-center text-3xl font-bold text-cyan-400 mb-10">
+            Leadership Team
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {leads.map((lead) => (
+              <motion.div 
+                key={lead.id}
+                className="bg-gradient-to-tr from-cyan-900/70 to-purple-900/50 border border-cyan-500/40 rounded-2xl p-8 shadow-lg hover:shadow-cyan-400/20 transition-all"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex flex-col sm:flex-row items-center mb-6">
+                  <Image
+                    src={lead.image}
+                    alt={lead.name}
+                    width={96}
+                    height={96}
+                    className="w-24 h-24 rounded-full mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-cyan-500 object-cover"
+                  />
+                  <div>
+                    <h3 className="text-2xl font-bold text-white text-center sm:text-left">
+                      {lead.name}
+                    </h3>
+                    <p className="text-cyan-300 font-semibold text-center sm:text-left">
+                      {lead.title} • {lead.role}
+                    </p>
+                    <div className="flex items-center justify-center sm:justify-start text-sm text-slate-400 mt-2">
+                      <MapPin className="w-4 h-4 mr-1.5" /> {lead.location}
+                      <Calendar className="w-4 h-4 ml-4 mr-1.5" /> Since {lead.joinedYear}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm mb-4">{lead.bio}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
-        
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {stats.map((stat) => (
-            <motion.div key={stat.label} variants={itemVariants} className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
-              <div className="p-3 rounded-full bg-cyan-900/50 mx-auto w-fit mb-3 border border-cyan-700">
-                <stat.icon className="w-6 h-6 text-cyan-400" />
-              </div>
-              <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-sm text-slate-400">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
 
+        {/* Other Members */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {teamMembers.map(member => (
+          {others.map(member => (
             <motion.div 
               key={member.id} 
               className="bg-slate-800/50 rounded-2xl border border-slate-700 overflow-hidden transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
