@@ -491,7 +491,7 @@ export default function AboutPage() {
       description: "Uses quantum algorithms to model climate systems with unprecedented accuracy, predicting environmental changes months ahead.",
       metrics: [
         { value: "18mo", label: "Forecast Range" },
-        { value: "95.4%", label: "Accuracy" },
+        { value: "96.9%", label: "Accuracy" },
         { value: "95%", label: "Pollutant Analysis Accuracy" }
       ],
       technical: [
@@ -859,7 +859,7 @@ export default function AboutPage() {
                   },
                   { 
                     title: "Prediction Accuracy", 
-                    value: "95.4%", 
+                    value: "94.7%", 
                     subtitle: "Environmental forecasts", 
                     icon: Target, 
                     color: "green",
@@ -970,7 +970,7 @@ export default function AboutPage() {
                       },
                       {
                         title: "Prediction Reliability",
-                        value: "95.4%",
+                        value: "98.2%",
                         description: "Accuracy in 30-day environmental forecasts",
                         icon: BarChart3,
                         color: "purple"
