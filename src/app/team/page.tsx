@@ -369,8 +369,8 @@ export default function TeamPage() {
                         </span>
                       </p>
                       <div className="flex items-center justify-center sm:justify-start text-sm text-slate-300 mt-2">
-                        <MapPin className="w-4 h-4 mr-1.5 text-yellow-400" /> {member.location}
-                        <Calendar className="w-4 h-4 ml-4 mr-1.5 text-yellow-400" /> Since {member.joinedYear}
+                        <MapPin className="w-4 h-4 mr-1.5 text-blue-300" /> {member.location}
+                        <Calendar className="w-4 h-4 ml-4 mr-1.5 text-blue-300" /> Since {member.joinedYear}
                       </div>
                     </div>
                   </div>
