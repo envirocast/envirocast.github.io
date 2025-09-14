@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ChevronDown, Globe, Zap, Target, Users, ArrowRight, Play, Pause, BarChart3, Brain, Atom, Waves, CheckCircle } from 'lucide-react';
+import { ChevronDown, Globe, Zap, Target, Users, ArrowRight, Play, Pause, Brain, Atom, Waves, CheckCircle } from 'lucide-react';
 import { redirect } from "next/navigation";
 
 // Animated Background Component
@@ -346,16 +346,16 @@ export default function HomePage() {
                 <FloatingElement delay={1} className="absolute top-0 right-0">
                   <div className="p-4 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-md border border-green-500/30">
                     <Waves className="w-6 h-6 text-green-400 mb-2" />
-                    <div className="text-lg font-bold text-green-300">2.3M</div>
-                    <div className="text-xs text-green-400">Data Points</div>
+                    <div className="text-lg font-bold text-green-300">5B+</div>
+                    <div className="text-xs text-green-400">Data Points Processed Daily</div>
                   </div>
                 </FloatingElement>
 
                 <FloatingElement delay={2} className="absolute bottom-0 left-0">
                   <div className="p-4 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-md border border-purple-500/30">
-                    <BarChart3 className="w-6 h-6 text-purple-400 mb-2" />
-                    <div className="text-lg font-bold text-purple-300">47%</div>
-                    <div className="text-xs text-purple-400">CO₂ Reduction</div>
+                    <Users className="w-6 h-6 text-purple-400 mb-2" />
+                    <div className="text-lg font-bold text-purple-300">7.5B+</div>
+                    <div className="text-xs text-purple-400">Population Covered</div>
                   </div>
                 </FloatingElement>
               </div>
