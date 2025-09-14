@@ -369,8 +369,8 @@ export default function TeamPage() {
                         </span>
                       </p>
                       <div className="flex items-center justify-center sm:justify-start text-sm text-slate-300 mt-2">
-                        <MapPin className="w-4 h-4 mr-1.5" /> {member.location}
-                        <Calendar className="w-4 h-4 ml-4 mr-1.5" /> Since {member.joinedYear}
+                        <MapPin className="w-4 h-4 mr-1.5 text-yellow-400" /> {member.location}
+                        <Calendar className="w-4 h-4 ml-4 mr-1.5 text-yellow-400" /> Since {member.joinedYear}
                       </div>
                     </div>
                   </div>
@@ -400,7 +400,7 @@ export default function TeamPage() {
                       </ul>
                     </div>
                     
-                    <div className="border-l-4 border-gradient-to-b from-yellow-500 to-orange-500 pl-4 bg-gradient-to-r from-yellow-500/3 to-orange-500/3 rounded-r-lg py-2">
+                    <div className="border-l-4 border-yellow-400 pl-4 bg-gradient-to-r from-yellow-500/3 to-orange-500/3 rounded-r-lg py-2">
                       <p className="text-sm text-slate-300 italic font-medium">{member.personalNote}</p>
                     </div>
                   </div>
