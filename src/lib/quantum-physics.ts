@@ -34,9 +34,10 @@ export class QuantumPhysicsEngine {
       trail: [],
       lastUpdate: Date.now(),
       flickerPhase: Math.random() * Math.PI * 2,
-      visible: true
+      visible: true,
+      radius: 5, // Add this line with a default value
     };
-
+  
     this.particles.set(id, particle);
     return particle;
   }
