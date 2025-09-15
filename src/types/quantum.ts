@@ -22,6 +22,9 @@ export interface Particle {
   lastUpdate: number;
   flickerPhase: number;
   visible: boolean;
+  
+  // Add the missing property
+  radius: number;
 }
 
 export interface TrailPoint {
