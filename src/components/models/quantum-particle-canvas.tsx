@@ -2,8 +2,191 @@
 
 'use client';
 
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { Particle } from '@/types/quantum';
+import React, { useRef, useEffect }
+
+function drawParticleTrail(ctx: CanvasRenderingContext2D, particle: any) {
+  if (particle.trail.length < 2) return;
+  
+  ctx.save();
+  
+  for (let i = 1; i < particle.trail.length; i++) {
+    const current = particle.trail[i];
+    const previous = particle.trail[i - 1];
+    
+    ctx.globalAlpha = current.opacity * 0.5;
+    ctx.strokeStyle = particle.isEntangled ? '#ef4444' : '#06b6d4';
+    ctx.lineWidth = 2 * current.opacity;
+    
+    ctx.beginPath();
+    ctx.moveTo(previous.x, previous.y);
+    ctx.lineTo(current.x, current.y);
+    ctx.stroke();
+  }
+  
+  ctx.restore();
+}
+
+function drawUncertaintyCloud(ctx: CanvasRenderingContext2D, particle: any, isSelected: boolean) {
+  if (!isSelected) return;
+  
+  ctx.save();
+  ctx.globalAlpha = 0.2;
+  
+  const radius = particle.uncertainty;
+  const gradient = ctx.createRadialGradient(particle.x, particle.y, 0, particle.x, particle.y, radius);
+  gradient.addColorStop(0, 'rgba(139, 92, 246, 0.3)');
+  gradient.addColorStop(1, 'rgba(139, 92, 246, 0)');
+  
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.arc(particle.x, particle.y, radius, 0, Math.PI * 2);
+  ctx.fill();
+  
+  ctx.restore();
+}
+
+function drawQuantumStateVisualization(ctx: CanvasRenderingContext2D, particle: any, isSelected: boolean) {
+  if (!isSelected) return;
+  
+  const stateRadius = 30;
+  const centerX = particle.x + 40;
+  const centerY = particle.y - 40;
+  
+  ctx.save();
+  
+  // Draw Bloch sphere representation
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+  ctx.lineWidth = 1;
+  
+  // Draw sphere outline
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, stateRadius, 0, Math.PI * 2);
+  ctx.stroke();
+  
+  // Draw axes
+  ctx.beginPath();
+  ctx.moveTo(centerX - stateRadius, centerY);
+  ctx.lineTo(centerX + stateRadius, centerY);
+  ctx.moveTo(centerX, centerY - stateRadius);
+  ctx.lineTo(centerX, centerY + stateRadius);
+  ctx.stroke();
+  
+  // Draw state vector
+  const theta = particle.qubitState.probability * Math.PI;
+  const phi = Date.now() * 0.001;
+  
+  const stateX = centerX + stateRadius * 0.8 * Math.sin(theta) * Math.cos(phi);
+  const stateY = centerY - stateRadius * 0.8 * Math.cos(theta);
+  
+  ctx.strokeStyle = '#8b5cf6';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(centerX, centerY);
+  ctx.lineTo(stateX, stateY);
+  ctx.stroke();
+  
+  // Draw state point
+  ctx.fillStyle = '#8b5cf6';
+  ctx.beginPath();
+  ctx.arc(stateX, stateY, 3, 0, Math.PI * 2);
+  ctx.fill();
+  
+  ctx.restore();
+}
+
+function drawEntanglements(ctx: CanvasRenderingContext2D, engine: QuantumPhysicsEngine) {
+  const entanglements = engine.getEntanglements();
+  const particles = engine.getAllParticles();
+  
+  entanglements.forEach(entanglement => {
+    const particle1 = particles.find(p => p.id === entanglement.particle1);
+    const particle2 = particles.find(p => p.id === entanglement.particle2);
+    
+    if (!particle1 || !particle2) return;
+    
+    ctx.save();
+    
+    // Animated entanglement line
+    const time = Date.now() * 0.005;
+    const opacity = 0.5 + 0.3 * Math.sin(time);
+    ctx.globalAlpha = opacity;
+    
+    // Create gradient line
+    const gradient = ctx.createLinearGradient(particle1.x, particle1.y, particle2.x, particle2.y);
+    gradient.addColorStop(0, '#ef4444');
+    gradient.addColorStop(0.5, '#f59e0b');
+    gradient.addColorStop(1, '#ef4444');
+    
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 3;
+    ctx.setLineDash([5, 5]);
+    ctx.lineDashOffset = -time * 10;
+    
+    ctx.beginPath();
+    ctx.moveTo(particle1.x, particle1.y);
+    ctx.lineTo(particle2.x, particle2.y);
+    ctx.stroke();
+    
+    // Draw entanglement strength indicator
+    const midX = (particle1.x + particle2.x) / 2;
+    const midY = (particle1.y + particle2.y) / 2;
+    
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '10px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(`${(entanglement.strength * 100).toFixed(0)}%`, midX, midY - 10);
+    
+    ctx.restore();
+  });
+}
+
+function drawInterferencePatterns(ctx: CanvasRenderingContext2D, engine: QuantumPhysicsEngine) {
+  const particles = engine.getAllParticles();
+  
+  // Draw wave interference between superposition particles
+  const superpositionParticles = particles.filter(p => p.superposition && p.visible);
+  
+  if (superpositionParticles.length < 2) return;
+  
+  ctx.save();
+  ctx.globalAlpha = 0.1;
+  
+  for (let i = 0; i < superpositionParticles.length; i++) {
+    for (let j = i + 1; j < superpositionParticles.length; j++) {
+      const p1 = superpositionParticles[i];
+      const p2 = superpositionParticles[j];
+      
+      const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+      
+      if (distance < 150) {
+        // Draw interference pattern
+        const midX = (p1.x + p2.x) / 2;
+        const midY = (p1.y + p2.y) / 2;
+        
+        const time = Date.now() * 0.001;
+        const waveLength = 20;
+        const amplitude = 10 * (1 - distance / 150);
+        
+        ctx.strokeStyle = '#8b5cf6';
+        ctx.lineWidth = 1;
+        
+        for (let k = 0; k < 5; k++) {
+          const offset = k * waveLength;
+          const radius = offset + amplitude * Math.sin(time * 2 + k);
+          
+          if (radius > 0) {
+            ctx.beginPath();
+            ctx.arc(midX, midY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+  }
+  
+  ctx.restore();
+} from 'react';
 import { QuantumPhysicsEngine } from '@/lib/quantum-physics';
 
 interface QuantumParticleCanvasProps {
@@ -22,168 +205,58 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
   engine
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameRef = useRef<number | null>(null);
+  const animationRef = useRef<number>();
   const lastTimeRef = useRef<number>(0);
 
-  const drawParticle = useCallback((ctx: CanvasRenderingContext2D, particle: Particle) => {
-    if (!particle.visible && particle.superposition) {
-      // Flickering due to superposition
-      if (Math.random() < 0.3) return;
-    }
-
-    const isSelected = selectedParticle === particle.id;
-    const isHighlighted = selectedParticle && particle.entangledWith === selectedParticle;
-
-    // Draw uncertainty halo
-    if (isSelected || isHighlighted) {
-      const gradient = ctx.createRadialGradient(
-        particle.x, particle.y, 0,
-        particle.x, particle.y, particle.uncertainty
-      );
-      gradient.addColorStop(0, 'rgba(100, 200, 255, 0.1)');
-      gradient.addColorStop(1, 'rgba(100, 200, 255, 0.02)');
-      
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.uncertainty, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    // Draw particle
-    const size = particle.energy / 20 + 3;
-    let color = '#00D4FF';
-    
-    if (particle.isEntangled) {
-      color = '#FF6B6B';
-    } else if (particle.hasTunneled) {
-      color = '#FFD93D';
-    } else if (particle.superposition) {
-      color = `hsl(${(Date.now() * 0.1) % 360}, 70%, 60%)`;
-    }
-
-    // Outer glow
-    const glowGradient = ctx.createRadialGradient(
-      particle.x, particle.y, 0,
-      particle.x, particle.y, size * 3
-    );
-    glowGradient.addColorStop(0, color);
-    glowGradient.addColorStop(1, 'transparent');
-    
-    ctx.fillStyle = glowGradient;
-    ctx.beginPath();
-    ctx.arc(particle.x, particle.y, size * 3, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Core particle
-    ctx.fillStyle = color;
-    ctx.shadowColor = color;
-    ctx.shadowBlur = size * 2;
-    ctx.beginPath();
-    ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-
-    // Selection highlight
-    if (isSelected || isHighlighted) {
-      ctx.strokeStyle = isSelected ? '#FFFFFF' : '#FFD93D';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(particle.x, particle.y, size + 5, 0, Math.PI * 2);
-      ctx.stroke();
-    }
-  }, [selectedParticle]);
-
-  const drawTrail = useCallback((ctx: CanvasRenderingContext2D, particle: Particle) => {
-    if (particle.trail.length < 2) return;
-
-    ctx.strokeStyle = '#00D4FF';
-    ctx.lineWidth = 2;
-
-    for (let i = 1; i < particle.trail.length; i++) {
-      const current = particle.trail[i];
-      const previous = particle.trail[i - 1];
-      
-      ctx.globalAlpha = current.opacity * 0.5;
-      ctx.beginPath();
-      ctx.moveTo(previous.x, previous.y);
-      ctx.lineTo(current.x, current.y);
-      ctx.stroke();
-    }
-
-    ctx.globalAlpha = 1;
-  }, []);
-
-  const drawEntanglementLines = useCallback((ctx: CanvasRenderingContext2D) => {
-    const particles = engine.getAllParticles();
-    
-    particles.forEach(particle => {
-      if (particle.isEntangled && particle.entangledWith) {
-        const entangled = engine.getParticle(particle.entangledWith);
-        if (entangled && particle.id < entangled.id) { // Draw line only once per pair
-          ctx.strokeStyle = '#FF6B6B';
-          ctx.lineWidth = 1;
-          ctx.globalAlpha = 0.6;
-          ctx.setLineDash([5, 5]);
-          
-          ctx.beginPath();
-          ctx.moveTo(particle.x, particle.y);
-          ctx.lineTo(entangled.x, entangled.y);
-          ctx.stroke();
-          
-          ctx.setLineDash([]);
-          ctx.globalAlpha = 1;
-        }
-      }
-    });
-  }, [engine]);
-
-  const render = useCallback((currentTime: number) => {
+  useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || !engine) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const deltaTime = currentTime - lastTimeRef.current;
-    lastTimeRef.current = currentTime;
+    const animate = (timestamp: number) => {
+      const deltaTime = timestamp - lastTimeRef.current;
+      lastTimeRef.current = timestamp;
 
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Dark background
-    ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (isPlaying) {
-      // Update physics
-      const particles = engine.getAllParticles();
-      particles.forEach(particle => {
-        engine.updateParticle(particle, deltaTime, speed);
-      });
-      
-      // Check for collisions/entanglements
-      engine.checkCollisions();
-    }
+      // Draw background
+      drawBackground(ctx, canvas);
 
-    // Draw trails first
-    engine.getAllParticles().forEach(particle => {
-      drawTrail(ctx, particle);
-    });
+      if (isPlaying) {
+        // Update particles
+        const particles = engine.getAllParticles();
+        particles.forEach(particle => {
+          engine.updateParticle(particle, deltaTime, speed);
+        });
 
-    // Draw entanglement lines
-    drawEntanglementLines(ctx);
+        // Check for collisions
+        engine.checkCollisions();
+      }
 
-    // Draw particles
-    engine.getAllParticles().forEach(particle => {
-      drawParticle(ctx, particle);
-    });
+      // Draw particles and effects
+      drawQuantumField(ctx, canvas);
+      drawParticles(ctx, engine, selectedParticle);
+      drawEntanglements(ctx, engine);
+      drawInterferencePatterns(ctx, engine);
 
-    animationFrameRef.current = requestAnimationFrame(render);
-  }, [isPlaying, speed, drawParticle, drawTrail, drawEntanglementLines, engine]);
+      animationRef.current = requestAnimationFrame(animate);
+    };
 
-  const handleCanvasClick = useCallback((event: React.MouseEvent<HTMLCanvasElement>) => {
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isPlaying, speed, selectedParticle, engine]);
+
+  const handleCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || !engine) return;
 
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
@@ -191,47 +264,76 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
 
     // Check if click is on a particle
     const particles = engine.getAllParticles();
-    let clickedParticle = null;
+    let clickedParticle: string | null = null;
 
     for (const particle of particles) {
-      const dx = x - particle.x;
-      const dy = y - particle.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const particleSize = particle.energy / 20 + 3;
-
-      if (distance <= particleSize + 5) {
+      const distance = Math.sqrt((x - particle.x) ** 2 + (y - particle.y) ** 2);
+      if (distance < 15) { // Click radius
         clickedParticle = particle.id;
         break;
       }
     }
 
-    onParticleClick(clickedParticle);
-  }, [engine, onParticleClick]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    // Set canvas size
-    canvas.width = 800;
-    canvas.height = 500;
-
-    // Start animation
-    animationFrameRef.current = requestAnimationFrame(render);
-
-    return () => {
-      if (animationFrameRef.current !== null) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [render]);
+    onParticleClick(clickedParticle === selectedParticle ? null : clickedParticle);
+  };
 
   return (
     <canvas
       ref={canvasRef}
-      className="border border-slate-700 rounded-xl cursor-pointer bg-slate-900"
+      width={800}
+      height={500}
+      className="border border-slate-600 rounded-lg cursor-pointer bg-black"
       onClick={handleCanvasClick}
-      style={{ maxWidth: '100%', height: 'auto' }}
+      style={{ background: 'radial-gradient(circle at center, #0f172a 0%, #000000 100%)' }}
     />
   );
 };
+
+function drawBackground(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+  // Draw quantum vacuum fluctuations
+  ctx.save();
+  ctx.globalAlpha = 0.1;
+  
+  for (let i = 0; i < 50; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const size = Math.random() * 2;
+    
+    ctx.fillStyle = '#06b6d4';
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  
+  ctx.restore();
+}
+
+function drawQuantumField(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+  // Draw quantum field grid
+  ctx.save();
+  ctx.strokeStyle = 'rgba(6, 182, 212, 0.1)';
+  ctx.lineWidth = 0.5;
+  
+  const gridSize = 40;
+  
+  for (let x = 0; x < canvas.width; x += gridSize) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+  }
+  
+  for (let y = 0; y < canvas.height; y += gridSize) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
+  }
+  
+  ctx.restore();
+}
+
+function drawParticles(ctx: CanvasRenderingContext2D, engine: QuantumPhysicsEngine, selectedParticle: string | null) {
+  const particles = engine.getAllParticles();
+  
+  particles.forEach(
