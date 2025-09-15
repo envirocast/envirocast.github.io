@@ -26,7 +26,7 @@ export const GlobalEnvironmentCanvas: React.FC<GlobalEnvironmentCanvasProps> = (
   showAtmosphere
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
 
   useEffect(() => {
