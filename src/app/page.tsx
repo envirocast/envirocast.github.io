@@ -196,9 +196,9 @@ const TeamPreview = () => {
     { name: "Arnav Nemade", role: "Lead Quantum Developer", avatar: "⚛️" },
     { name: "Kavin Elangovan", role: "Web Applications & Graphics Developer", avatar: "🌐" },
     { name: "Vir Sanghavi", role: "AI Systems Engineer & Outreach Coordinator", avatar: "🤖" },
-    { name: "Divin Giddaluru", role: "Web Developer", avatar: "👨‍💻" },
-    { name: "Sathyan Gopal", role: "Social Media & Promotional Content Manager", avatar: "📲" },
     { name: "Ahaan Thota", role: "Model Systems Developer & Analyst", avatar: "🖥️" },
+    { name: "Divin Giddaluru", role: "Web Developer", avatar: "👨‍💻" },
+    { name: "Sathyan Gopal", role: "Social Media & Promotional Content Manager", avatar: "📲" }
   ];
 
   return (
