@@ -16,7 +16,22 @@ import {
   Minus,
   Zap,
   Target,
-  Atom
+  Atom,
+  Cpu,
+  Database,
+  Network,
+  Globe,
+  BarChart3,
+  Factory,
+  Satellite,
+  AlertTriangle,
+  Wind,
+  Brain,
+  Settings,
+  ArrowRight,
+  TrendingUp,
+  Cloud,
+  Thermometer
 } from 'lucide-react';
 
 interface QuantumParticlePhysicsVizProps {
