@@ -11,7 +11,7 @@ import {
   Play,
   Pause,
   RefreshCw,
-  RefreshCCw,
+  RefreshCcw,
   Factory,
   AlertTriangle,
   TrendingDown,
