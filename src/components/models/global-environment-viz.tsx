@@ -576,4 +576,49 @@ const EnvironmentalConceptsPanel: React.FC = () => {
     {
       icon: Wind,
       title: "Pollution Dispersion",
-      description:
+      description: "Wind patterns and atmospheric circulation transport pollutants across continents, affecting air quality globally.",
+      color: "from-green-500 to-teal-500"
+    },
+    {
+      icon: TreePine,
+      title: "Biodiversity Impact",
+      description: "Species migrations, habitat loss, and ecosystem disruption cascade through interconnected food webs.",
+      color: "from-emerald-500 to-green-500"
+    }
+  ];
+
+  return (
+    <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+      <h4 className="text-xl font-bold text-white mb-6 flex items-center">
+        <Lightbulb className="w-5 h-5 mr-2 text-yellow-400" />
+        Understanding Environmental Interactions
+      </h4>
+      
+      <div className="grid md:grid-cols-2 gap-6">
+        {concepts.map((concept, index) => {
+          const Icon = concept.icon;
+          return (
+            <motion.div
+              key={index}
+              className="bg-slate-900/50 rounded-xl p-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-start space-x-4">
+                <div className={`w-12 h-12 bg-gradient-to-r ${concept.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                  <Icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-white mb-2">{concept.title}</h5>
+                  <p className="text-slate-300 text-sm">{concept.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
