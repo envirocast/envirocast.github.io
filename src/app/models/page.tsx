@@ -956,12 +956,12 @@ const ModelsPage = () => {
               Explore Live
             </span>
             <br />
-            <span className="text-white">Air Quality Models</span>
+            <span className="text-white">Interactive Models</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">
-            Experience our quantum-enhanced forecasting system through interactive simulations, 
-            real-time maps, and what-if scenarios powered by NASA TEMPO data.
+            Experience our quantum-enhanced forecasting system through interactive simulations and 
+             in-depth looks into our core concepts, processes, and algorithms powered by NASA TEMPO data.
           </p>
         </motion.div>
       </section>
