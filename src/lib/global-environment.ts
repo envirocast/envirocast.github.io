@@ -110,7 +110,18 @@ export class GlobalEnvironmentEngine {
     this.canvas = canvasSize;
     this.initializeRegions();
     this.initializeAtmosphericLayers();
-    this.initializeClimateData();
+    
+    // Initialize climateData directly in the constructor to fix the build error
+    this.climateData = {
+      globalTemp: 15.2,
+      seaLevelRise: 0.33,
+      co2Concentration: 421,
+      ozoneDepletion: 12,
+      deforestation: 18.5,
+      extinctionRate: 1000,
+      globalHealthImpact: 65,
+      economicLoss: 2.3,
+    };
   }
 
   private initializeRegions(): void {
@@ -204,58 +215,45 @@ export class GlobalEnvironmentEngine {
     ];
   }
 
-  private initializeClimateData(): void {
-    this.climateData = {
-      globalTemp: 15.2,
-      seaLevelRise: 0.33,
-      co2Concentration: 421,
-      ozoneDepletion: 12,
-      deforestation: 18.5,
-      extinctionRate: 1000,
-      globalHealthImpact: 65,
-      economicLoss: 2.3
-    };
-  }
-
   updateEnvironment(deltaTime: number, isPlaying: boolean, speed: number): void {
     if (!isPlaying) return;
 
     const timeStep = deltaTime * speed * 0.001;
-    
+
     // Update global climate based on controls
     this.updateClimate(timeStep);
-    
+
     // Update regions based on controls and climate
     this.updateRegions(timeStep);
-    
+
     // Update atmospheric layers
     this.updateAtmosphericLayers(timeStep);
-    
+
     // Process environmental events
     this.updateEvents(timeStep);
-    
+
     // Update interconnected systems
     this.updateInterconnections();
   }
 
   private updateClimate(timeStep: number): void {
     const { industrialization, deforestation, renewableEnergy, emissions } = this.controls;
-    
+
     // Global temperature change based on emissions and renewable energy
     const tempChange = (emissions - renewableEnergy) * 0.001 * timeStep;
     this.climateData.globalTemp += tempChange;
     this.climateData.globalTemp = Math.max(12, Math.min(25, this.climateData.globalTemp));
-    
+
     // CO2 concentration
     const co2Change = (industrialization + deforestation - renewableEnergy * 0.5) * 0.01 * timeStep;
     this.climateData.co2Concentration += co2Change;
     this.climateData.co2Concentration = Math.max(350, Math.min(500, this.climateData.co2Concentration));
-    
+
     // Sea level rise
     const seaLevelChange = (this.climateData.globalTemp - 14) * 0.001 * timeStep;
     this.climateData.seaLevelRise += seaLevelChange;
     this.climateData.seaLevelRise = Math.max(0, Math.min(2, this.climateData.seaLevelRise));
-    
+
     // Deforestation rate
     this.climateData.deforestation += (industrialization - this.controls.conservation) * 0.01 * timeStep;
     this.climateData.deforestation = Math.max(0, Math.min(50, this.climateData.deforestation));
@@ -266,27 +264,27 @@ export class GlobalEnvironmentEngine {
       // Temperature influenced by global climate
       const targetTemp = this.climateData.globalTemp + (Math.random() - 0.5) * 10;
       region.temperature += (targetTemp - region.temperature) * 0.1 * timeStep;
-      
+
       // Pollution based on industrialization and wind
       const pollutionChange = (this.controls.industrialization - this.controls.renewableEnergy) * 0.1 * timeStep;
       region.pollution += pollutionChange;
       region.pollution = Math.max(0, Math.min(100, region.pollution));
-      
+
       // Biodiversity affected by habitat loss and conservation
       const biodiversityChange = (this.controls.conservation - this.controls.deforestation) * 0.05 * timeStep;
       region.biodiversity += biodiversityChange;
       region.biodiversity = Math.max(0, Math.min(100, region.biodiversity));
-      
+
       // Health risk based on pollution and temperature extremes
       const tempRisk = Math.abs(region.temperature - 20) * 2;
       region.healthRisk = (region.pollution + tempRisk) * 0.5;
-      
+
       // Species count based on biodiversity
       region.species = Math.floor(region.biodiversity * 100) + 1000;
-      
+
       // Economic impact based on environmental factors
       region.economicImpact = (region.pollution * 0.5 + region.healthRisk * 0.3 + region.habitatLoss * 0.2);
-      
+
       // Update other metrics
       region.co2Emissions = region.pollution * 1.2;
       region.waterQuality = 100 - region.pollution * 0.8;
@@ -300,7 +298,7 @@ export class GlobalEnvironmentEngine {
         // Update troposphere CO2
         layer.composition.co2 = this.climateData.co2Concentration / 10000;
       }
-      
+
       if (layer.id === 'stratosphere') {
         // Update ozone levels
         layer.composition.ozone = Math.max(5, 10 - this.climateData.ozoneDepletion);
@@ -314,12 +312,12 @@ export class GlobalEnvironmentEngine {
       const age = Date.now() - event.startTime;
       return age < event.duration;
     });
-    
+
     // Randomly spawn new events based on environmental conditions
     if (Math.random() < 0.001) {
       this.spawnRandomEvent();
     }
-    
+
     // Update existing events
     this.events.forEach(event => {
       const age = (Date.now() - event.startTime) / event.duration;
@@ -336,14 +334,14 @@ export class GlobalEnvironmentEngine {
         region.temperature += oceanEffect;
       }
     });
-    
+
     // Wind patterns disperse pollution
     const windEffect = this.controls.windIntensity * 0.1;
     this.regions.forEach(region => {
       const neighborPollution = Array.from(this.regions.values())
         .filter(r => r.id !== region.id)
         .reduce((sum, r) => sum + r.pollution, 0) / this.regions.size;
-      
+
       region.pollution += (neighborPollution - region.pollution) * windEffect * 0.01;
     });
   }
@@ -351,7 +349,7 @@ export class GlobalEnvironmentEngine {
   private spawnRandomEvent(): void {
     const eventTypes: EnvironmentalEvent['type'][] = ['wildfire', 'hurricane', 'drought', 'flood', 'industrial'];
     const type = eventTypes[Math.floor(Math.random() * eventTypes.length)];
-    
+
     const event: EnvironmentalEvent = {
       id: `event_${Date.now()}`,
       type,
@@ -364,7 +362,7 @@ export class GlobalEnvironmentEngine {
       active: true,
       effects: this.getEventEffects(type)
     };
-    
+
     this.events.push(event);
   }
 
@@ -377,7 +375,7 @@ export class GlobalEnvironmentEngine {
       volcanic: { pollution: 50, temperature: -1, species: -30, health: 40 },
       industrial: { pollution: 40, temperature: 2, species: -5, health: 30 }
     };
-    
+
     return effects[type] || { pollution: 0, temperature: 0, species: 0, health: 0 };
   }
 
@@ -390,7 +388,7 @@ export class GlobalEnvironmentEngine {
     const avgPollution = regions.reduce((sum, r) => sum + r.pollution, 0) / regions.length;
     const avgBiodiversity = regions.reduce((sum, r) => sum + r.biodiversity, 0) / regions.length;
     const tempDeviation = Math.abs(this.climateData.globalTemp - 15);
-    
+
     return Math.max(0, 100 - (avgPollution * 0.4 + (100 - avgBiodiversity) * 0.4 + tempDeviation * 5));
   }
 
