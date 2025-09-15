@@ -20,6 +20,7 @@ import {
   Cpu,
   Database,
   Network,
+  Radio,
   Globe,
   BarChart3,
   Factory,
