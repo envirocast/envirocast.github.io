@@ -11,6 +11,7 @@ import {
   Wind, 
   Users, 
   TreePine,
+  Satellite,
   AlertTriangle,
   TrendingUp,
   TrendingDown,
