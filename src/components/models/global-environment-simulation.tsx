@@ -470,7 +470,7 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             
             {/* Region Cards */}
             <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-4 h-full"
-                 style={{ marginLeft: '160px', maxWidth: 'calc(100% - 160px)' }}>
+                 style={{ marginLeft: '120px', maxWidth: 'calc(100% - 120px)' }}>
               {regions.map((region, index) => (
                 <motion.div
                   key={region.name}
@@ -1226,6 +1226,18 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
         
         <div className="grid md:grid-cols-3 gap-4">
           <div className="bg-slate-800 rounded-lg p-4">
+            <h5 className="text-sm font-semibold text-white mb-2">EnviroNex API</h5>
+            <p className="text-xs text-slate-400 mb-3">Uses original EnviroCast data</p>
+            <button 
+              onClick={() => window.open('https://quantum-sky-probe.vercel.app', '_blank')}
+              className="w-full px-3 py-2 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-300 hover:bg-green-500/30 transition-colors"
+            >
+              Access Our API
+            </button>
+
+          </div>
+          
+          <div className="bg-slate-800 rounded-lg p-4">
             <h5 className="text-sm font-semibold text-white mb-2">NASA TEMPO Satellite</h5>
             <p className="text-xs text-slate-400 mb-3">Hourly atmospheric composition data</p>
             <button 
@@ -1242,21 +1254,9 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             <p className="text-xs text-slate-400 mb-3">Global climate and weather patterns</p>
             <button 
               onClick={() => window.open('https://www.ncei.noaa.gov/data/', '_blank')}
-              className="w-full px-3 py-2 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-300 hover:bg-green-500/30 transition-colors"
-            >
-              Access NOAA API
-            </button>
-
-          </div>
-          
-          <div className="bg-slate-800 rounded-lg p-4">
-            <h5 className="text-sm font-semibold text-white mb-2">EnviroNex API</h5>
-            <p className="text-xs text-slate-400 mb-3">Processed environmental predictions</p>
-            <button 
-              onClick={() => window.open('https://quantum-sky-probe.vercel.app', '_blank')}
               className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors"
             >
-              Access Our API
+              Access NOAA API
             </button>
 
           </div>
