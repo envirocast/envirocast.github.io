@@ -472,12 +472,11 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-4 h-full"
                  style={{ marginLeft: '260px', maxWidth: 'calc(100% - 260px)' }}>
               {regions.map((region, index) => (
-                <motion.div key={region.name} ...>
+                <motion.div
                   key={region.name}
-                  className={`bg-slate-800/80 backdrop-blur rounded-xl p-4 cursor-pointer border-2 transition-all ${
-                    selectedRegion === region.name
-                      ? 'border-cyan-500/50 bg-gradient-to-br from-cyan-500/10 to-purple-500/10'
-                      : 'border-slate-600 hover:border-slate-500'
+                  className={`bg-slate-800/80 backdrop-blur rounded-xl p-4 cursor-pointer border-2 transition-all ${selectedRegion === region.name
+                    ? 'border-cyan-500/50 bg-gradient-to-br from-cyan-500/10 to-purple-500/10'
+                    : 'border-slate-600 hover:border-slate-500'
                   }`}
                   onClick={() => setSelectedRegion(selectedRegion === region.name ? null : region.name)}
                   whileHover={{ scale: 1.02 }}
@@ -487,50 +486,43 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
                     <MapPin className="w-4 h-4 text-cyan-400" />
                     <h6 className="font-semibold text-white text-sm">{region.name}</h6>
                   </div>
-                  
                   <div className="space-y-2 text-xs">
+                    {/* More region sub-fields here, as in your summary */}
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Temperature</span>
                       <span className="text-orange-300 font-semibold">{region.temperature.toFixed(1)}°C</span>
                     </div>
-                    
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Air Quality</span>
                       <span className={`font-semibold ${
-                        region.airQuality <= 50 ? 'text-green-300' :
-                        region.airQuality <= 100 ? 'text-yellow-300' :
-                        region.airQuality <= 150 ? 'text-orange-300' : 'text-red-300'
-                      }`}>
-                        AQI {region.airQuality}
-                      </span>
+                        region.airQuality < 50 ? 'text-green-300' :
+                        region.airQuality < 100 ? 'text-yellow-300' :
+                        region.airQuality < 150 ? 'text-orange-300' : 'text-red-300'
+                      }`}>{region.airQuality} AQI</span>
                     </div>
-                    
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Health Risk</span>
-                      <span className={`font-semibold ${getHealthRiskColor(region.healthRisk)} capitalize`}>
-                        {region.healthRisk}
-                      </span>
+                      <span className={`font-semibold ${getHealthRiskColor(region.healthRisk)}`}>{region.healthRisk.charAt(0).toUpperCase() + region.healthRisk.slice(1)}</span>
                     </div>
-                    
                     <div className="flex justify-between items-center">
                       <span className="text-slate-400">Species</span>
                       <span className="text-green-300 font-semibold">{region.species.toLocaleString()}</span>
                     </div>
                   </div>
-
                   {selectedRegion === region.name && (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       className="mt-3 pt-3 border-t border-slate-600 space-y-1 text-xs"
                     >
+                      {/* Expanded info here */}
                       <div className="flex justify-between">
                         <span className="text-slate-400">Precipitation</span>
-                        <span className="text-blue-300">{region.precipitation}mm/yr</span>
+                        <span className="text-blue-300">{region.precipitation} mm/yr</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-400">Pop. Density</span>
-                        <span className="text-purple-300">{region.populationDensity}/km²</span>
+                        <span className="text-purple-300">{region.populationDensity} /km²</span>
                       </div>
                     </motion.div>
                   )}
