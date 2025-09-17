@@ -394,60 +394,7 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
       </div>
 
       {/* Main Simulation Area */}
-      <div className="grid lg:grid-cols-4 gap-6">
-        {/* Environmental Events Sidebar */}
-        <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
-          <h4 className="text-lg font-bold text-white mb-4 flex items-center">
-            <AlertTriangle className="w-5 h-5 mr-2 text-orange-400" />
-            Live Events
-          </h4>
-          <div className="space-y-3">
-            {metrics.temperature > 18 && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="flex items-center space-x-2 bg-red-500/20 border border-red-500/30 rounded-lg px-3 py-2"
-              >
-                <AlertTriangle className="w-4 h-4 text-red-400" />
-                <span className="text-red-300 text-sm">Heat Wave</span>
-              </motion.div>
-            )}
-            
-            {metrics.pollutionIndex > 120 && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="flex items-center space-x-2 bg-orange-500/20 border border-orange-500/30 rounded-lg px-3 py-2"
-              >
-                <Factory className="w-4 h-4 text-orange-400" />
-                <span className="text-orange-300 text-sm">High Pollution</span>
-              </motion.div>
-            )}
-            
-            {metrics.seaLevel > 0.5 && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="flex items-center space-x-2 bg-blue-500/20 border border-blue-500/30 rounded-lg px-3 py-2"
-              >
-                <Waves className="w-4 h-4 text-blue-400" />
-                <span className="text-blue-300 text-sm">Rising Seas</span>
-              </motion.div>
-            )}
-            
-            {metrics.biodiversityIndex < 60 && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="flex items-center space-x-2 bg-yellow-500/20 border border-yellow-500/30 rounded-lg px-3 py-2"
-              >
-                <TreePine className="w-4 h-4 text-yellow-400" />
-                <span className="text-yellow-300 text-sm">Habitat Loss</span>
-              </motion.div>
-            )}
-          </div>
-        </div>
-        
+      <div className="grid lg:grid-cols-3 gap-6">
         {/* Global Map Panel */}
         <div className="lg:col-span-2 bg-slate-800 rounded-2xl p-6 border border-slate-700">
           <div className="flex items-center justify-between mb-6">
@@ -588,6 +535,43 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
                 </motion.div>
               ))}
             </div>
+
+            {/* Environmental Event Indicators */}
+            <div className="absolute top-4 left-4 space-y-2">
+              {metrics.temperature > 18 && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="flex items-center space-x-2 bg-red-500/20 border border-red-500/30 rounded-lg px-3 py-2"
+                >
+                  <AlertTriangle className="w-4 h-4 text-red-400" />
+                  <span className="text-red-300 text-sm">Heat Wave</span>
+                </motion.div>
+              )}
+              
+              {metrics.pollutionIndex > 120 && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="flex items-center space-x-2 bg-orange-500/20 border border-orange-500/30 rounded-lg px-3 py-2"
+                >
+                  <Factory className="w-4 h-4 text-orange-400" />
+                  <span className="text-orange-300 text-sm">High Pollution</span>
+                </motion.div>
+              )}
+              
+              {metrics.seaLevel > 0.5 && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="flex items-center space-x-2 bg-blue-500/20 border border-blue-500/30 rounded-lg px-3 py-2"
+                >
+                  <Waves className="w-4 h-4 text-blue-400" />
+                  <span className="text-blue-300 text-sm">Rising Seas</span>
+                </motion.div>
+              )}
+            </div>
+          </div>
 
           {/* Layer Toggle Controls */}
           <div className="mt-6 flex flex-wrap gap-2">
@@ -1250,10 +1234,7 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
           <div className="bg-slate-800 rounded-lg p-4">
             <h5 className="text-sm font-semibold text-white mb-2">NASA TEMPO Satellite</h5>
             <p className="text-xs text-slate-400 mb-3">Hourly atmospheric composition data</p>
-            <button 
-              onClick={() => window.open('https://tempo.si.edu/', '_blank')}
-              className="w-full px-3 py-2 bg-blue-500/20 border border-blue-500/30 rounded text-xs text-blue-300 hover:bg-blue-500/30 transition-colors"
-            >
+            <button className="w-full px-3 py-2 bg-blue-500/20 border border-blue-500/30 rounded text-xs text-blue-300 hover:bg-blue-500/30 transition-colors">
               Access TEMPO API
             </button>
           </div>
@@ -1261,21 +1242,15 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
           <div className="bg-slate-800 rounded-lg p-4">
             <h5 className="text-sm font-semibold text-white mb-2">NOAA Climate Data</h5>
             <p className="text-xs text-slate-400 mb-3">Global climate and weather patterns</p>
-            <button 
-              onClick={() => window.open('https://www.ncei.noaa.gov/data/', '_blank')}
-              className="w-full px-3 py-2 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-300 hover:bg-green-500/30 transition-colors"
-            >
+            <button className="w-full px-3 py-2 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-300 hover:bg-green-500/30 transition-colors">
               Access NOAA API
             </button>
           </div>
           
           <div className="bg-slate-800 rounded-lg p-4">
-            <h5 className="text-sm font-semibold text-white mb-2">EnviroNex API</h5>
-            <p className="text-xs text-slate-400 mb-3">Processed powenvironmental predictions</p>
-            <button 
-              onClick={() => window.open('https://quantum-sky-probe.vercel.app/', '_blank')}
-              className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors"
-            >
+            <h5 className="text-sm font-semibold text-white mb-2">EnviroCast API</h5>
+            <p className="text-xs text-slate-400 mb-3">Processed environmental predictions</p>
+            <button className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors">
               Access Our API
             </button>
           </div>
