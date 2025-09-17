@@ -8,6 +8,7 @@ import {
   Globe, 
   Thermometer, 
   Droplets, 
+  Database,
   Wind, 
   Users, 
   TreePine,
@@ -307,8 +308,17 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
           <div className="flex items-center space-x-4">
             {/* Timeline */}
             <div className="text-center">
-              <div className="text-lg font-bold text-cyan-300">{timeScale}</div>
+              <div className="text-lg font-bold text-cyan-300">{timeScale.toFixed(2)}</div>
               <div className="text-xs text-slate-400">Timeline Year</div>
+              <input
+                type="range"
+                min="2025"
+                max="2100"
+                step="0.01"
+                value={timeScale}
+                onChange={(e) => setTimeScale(parseFloat(e.target.value))}
+                className="w-20 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer mt-1"
+              />
             </div>
 
             {/* Scenario Selector */}
@@ -431,6 +441,21 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
                         <span className="text-sm text-slate-400">{layer.height}</span>
                       </div>
                       <p className="text-sm text-slate-300">{layer.description}</p>
+                      
+                      <div className="grid grid-cols-3 gap-2 mt-2 text-xs">
+                        <div className="bg-slate-800/50 rounded px-2 py-1">
+                          <div className="text-slate-400">Density</div>
+                          <div className="text-white">{(Math.random() * 100 + index * 20).toFixed(1)}%</div>
+                        </div>
+                        <div className="bg-slate-800/50 rounded px-2 py-1">
+                          <div className="text-slate-400">Temp</div>
+                          <div className="text-white">{(15 - index * 10 + Math.random() * 5).toFixed(1)}°C</div>
+                        </div>
+                        <div className="bg-slate-800/50 rounded px-2 py-1">
+                          <div className="text-slate-400">Press</div>
+                          <div className="text-white">{(1013 - index * 200 + Math.random() * 50).toFixed(0)}hPa</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -512,7 +537,7 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             </div>
 
             {/* Environmental Event Indicators */}
-            <div className="absolute top-4 right-4 space-y-2">
+            <div className="absolute top-4 left-4 space-y-2">
               {metrics.temperature > 18 && (
                 <motion.div
                   initial={{ scale: 0 }}
@@ -1192,6 +1217,42 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
                 <div className="text-lg font-bold text-cyan-300">Live</div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Data Sources & API Access */}
+      <div className="mt-8 bg-slate-900/50 rounded-2xl p-6 border border-slate-700">
+        <div className="flex items-center justify-between mb-4">
+          <h4 className="text-lg font-bold text-white flex items-center">
+            <Database className="w-5 h-5 mr-2 text-blue-400" />
+            Data Sources & API Access
+          </h4>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-slate-800 rounded-lg p-4">
+            <h5 className="text-sm font-semibold text-white mb-2">NASA TEMPO Satellite</h5>
+            <p className="text-xs text-slate-400 mb-3">Hourly atmospheric composition data</p>
+            <button className="w-full px-3 py-2 bg-blue-500/20 border border-blue-500/30 rounded text-xs text-blue-300 hover:bg-blue-500/30 transition-colors">
+              Access TEMPO API
+            </button>
+          </div>
+          
+          <div className="bg-slate-800 rounded-lg p-4">
+            <h5 className="text-sm font-semibold text-white mb-2">NOAA Climate Data</h5>
+            <p className="text-xs text-slate-400 mb-3">Global climate and weather patterns</p>
+            <button className="w-full px-3 py-2 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-300 hover:bg-green-500/30 transition-colors">
+              Access NOAA API
+            </button>
+          </div>
+          
+          <div className="bg-slate-800 rounded-lg p-4">
+            <h5 className="text-sm font-semibold text-white mb-2">EnviroCast API</h5>
+            <p className="text-xs text-slate-400 mb-3">Processed environmental predictions</p>
+            <button className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors">
+              Access Our API
+            </button>
           </div>
         </div>
       </div>
