@@ -470,7 +470,7 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             
             {/* Region Cards */}
             <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-4 h-full"
-                 style={{ marginLeft: '140px', maxWidth: 'calc(100% - 140px)' }}>
+                 style={{ marginLeft: '130px', maxWidth: 'calc(100% - 130px)' }}>
               {regions.map((region, index) => (
                 <motion.div
                   key={region.name}
