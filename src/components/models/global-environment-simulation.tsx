@@ -251,11 +251,12 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
 
         // Update environmental damage indicator
         setEnvironmentalDamage(prev => {
-          const tempFactor = Math.max(0, (metrics.temperature - 14) * 5);
-          const pollutionFactor = (metrics.pollutionIndex - 50) * 0.5;
-          const biodiversityFactor = (100 - metrics.biodiversityIndex) * 0.3;
-          const newDamage = (tempFactor + pollutionFactor + biodiversityFactor) / 3;
-          return Math.max(0, Math.min(100, newDamage));
+          // More aggressive (pessimistic) environmental damage calculation:
+          const tempFactor = Math.max(0, Math.pow(metrics.temperature - 14, 2) * 1.2); // squared escalation
+          const pollutionFactor = Math.max(0, Math.pow(metrics.pollutionIndex - 50, 1.2) * 0.7);
+          const biodiversityFactor = Math.max(0, Math.pow(100 - metrics.biodiversityIndex, 1.3) * 0.45);
+          const newDamage = Math.min(100, tempFactor + pollutionFactor + biodiversityFactor);
+          return newDamage;
         });
 
         // Update timeline
@@ -468,9 +469,10 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-green-900/20 to-brown-900/20"></div>
             
             {/* Region Cards */}
-            <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-4 h-full">
+            <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-4 h-full"
+                 style={{ marginLeft: '260px', maxWidth: 'calc(100% - 260px)' }}>
               {regions.map((region, index) => (
-                <motion.div
+                <motion.div key={region.name} ...>
                   key={region.name}
                   className={`bg-slate-800/80 backdrop-blur rounded-xl p-4 cursor-pointer border-2 transition-all ${
                     selectedRegion === region.name
@@ -1234,25 +1236,37 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
           <div className="bg-slate-800 rounded-lg p-4">
             <h5 className="text-sm font-semibold text-white mb-2">NASA TEMPO Satellite</h5>
             <p className="text-xs text-slate-400 mb-3">Hourly atmospheric composition data</p>
-            <button className="w-full px-3 py-2 bg-blue-500/20 border border-blue-500/30 rounded text-xs text-blue-300 hover:bg-blue-500/30 transition-colors">
+            <button 
+              onClick={() => window.open('https://quantum-sky-probe.vercel.app', '_blank')}
+              className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors"
+            >
               Access TEMPO API
             </button>
+
           </div>
           
           <div className="bg-slate-800 rounded-lg p-4">
             <h5 className="text-sm font-semibold text-white mb-2">NOAA Climate Data</h5>
             <p className="text-xs text-slate-400 mb-3">Global climate and weather patterns</p>
-            <button className="w-full px-3 py-2 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-300 hover:bg-green-500/30 transition-colors">
+            <button 
+              onClick={() => window.open('https://quantum-sky-probe.vercel.app', '_blank')}
+              className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors"
+            >
               Access NOAA API
             </button>
+
           </div>
           
           <div className="bg-slate-800 rounded-lg p-4">
-            <h5 className="text-sm font-semibold text-white mb-2">EnviroCast API</h5>
+            <h5 className="text-sm font-semibold text-white mb-2">EnviroNex API</h5>
             <p className="text-xs text-slate-400 mb-3">Processed environmental predictions</p>
-            <button className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors">
+            <button 
+              onClick={() => window.open('https://quantum-sky-probe.vercel.app', '_blank')}
+              className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors"
+            >
               Access Our API
             </button>
+
           </div>
         </div>
       </div>
