@@ -470,7 +470,7 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             
             {/* Region Cards */}
             <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-4 h-full"
-                 style={{ marginLeft: '260px', maxWidth: 'calc(100% - 260px)' }}>
+                 style={{ marginLeft: '160px', maxWidth: 'calc(100% - 160px)' }}>
               {regions.map((region, index) => (
                 <motion.div
                   key={region.name}
@@ -1229,8 +1229,8 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             <h5 className="text-sm font-semibold text-white mb-2">NASA TEMPO Satellite</h5>
             <p className="text-xs text-slate-400 mb-3">Hourly atmospheric composition data</p>
             <button 
-              onClick={() => window.open('https://quantum-sky-probe.vercel.app', '_blank')}
-              className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors"
+              onClick={() => window.open('https://tempo.si.edu/', '_blank')}
+              className="w-full px-3 py-2 bg-blue-500/20 border border-blue-500/30 rounded text-xs text-blue-300 hover:bg-blue-500/30 transition-colors"
             >
               Access TEMPO API
             </button>
@@ -1241,8 +1241,8 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             <h5 className="text-sm font-semibold text-white mb-2">NOAA Climate Data</h5>
             <p className="text-xs text-slate-400 mb-3">Global climate and weather patterns</p>
             <button 
-              onClick={() => window.open('https://quantum-sky-probe.vercel.app', '_blank')}
-              className="w-full px-3 py-2 bg-purple-500/20 border border-purple-500/30 rounded text-xs text-purple-300 hover:bg-purple-500/30 transition-colors"
+              onClick={() => window.open('https://www.ncei.noaa.gov/data/', '_blank')}
+              className="w-full px-3 py-2 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-300 hover:bg-green-500/30 transition-colors"
             >
               Access NOAA API
             </button>
