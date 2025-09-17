@@ -251,12 +251,23 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
 
         // Update environmental damage indicator
         setEnvironmentalDamage(prev => {
-          // More aggressive (pessimistic) environmental damage calculation:
-          const tempFactor = Math.max(0, Math.pow(metrics.temperature - 14, 2) * 1.2); // squared escalation
-          const pollutionFactor = Math.max(0, Math.pow(metrics.pollutionIndex - 50, 1.2) * 0.7);
-          const biodiversityFactor = Math.max(0, Math.pow(100 - metrics.biodiversityIndex, 1.3) * 0.45);
-          const newDamage = Math.min(100, tempFactor + pollutionFactor + biodiversityFactor);
+          const tempFactor = Math.max(0, (metrics.temperature - 14) * 5);
+          const pollutionFactor = Math.max(0, (metrics.pollutionIndex - 50) * 0.5);
+          const biodiversityFactor = Math.max(0, (100 - metrics.biodiversityIndex) * 0.3);
+          
+          // Safeguard: check all operands are valid numbers
+          const numbers = [tempFactor, pollutionFactor, biodiversityFactor].every(n => typeof n === 'number' && !isNaN(n));
+          
+          let newDamage = 0;
+          if (numbers) {
+            newDamage = (tempFactor + pollutionFactor + biodiversityFactor) / 3;
+            newDamage = Math.max(0, Math.min(100, newDamage));
+          } else {
+            newDamage = 0; // or your preferred default
+          }
+          if (isNaN(newDamage) || !isFinite(newDamage)) return 0;
           return newDamage;
+
         });
 
         // Update timeline
@@ -597,7 +608,7 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             <div className="flex justify-between items-center mb-2">
               <span className="text-slate-300">Global Damage Level</span>
               <span className={`font-bold text-lg bg-gradient-to-r ${getDamageColor(environmentalDamage)} bg-clip-text text-transparent`}>
-                {Math.round(environmentalDamage)}%
+                {isNaN(environmentalDamage) || !isFinite(environmentalDamage) ? "0%" : Math.round(environmentalDamage) + "%"}
               </span>
             </div>
             
