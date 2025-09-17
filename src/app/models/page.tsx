@@ -997,15 +997,6 @@ const ModelsPage = () => {
                   />
                   <span className="text-white font-semibold text-sm">{speed}x</span>
                 </div>
-                
-                <div className="flex items-center space-x-2">
-                  <button className="p-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors">
-                    <Download className="w-4 h-4 text-slate-300" />
-                  </button>
-                  <button className="p-2 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors">
-                    <Share2 className="w-4 h-4 text-slate-300" />
-                  </button>
-                </div>
               </div>
             </div>
           </div>
