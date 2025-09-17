@@ -37,10 +37,12 @@ import {
   Waves,
   Gauge,
   Timer,
-  Thermometer
+  Thermometer,
+  TreePine
 } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import { QuantumParticlePhysicsViz } from '@/components/models/quantum-particle-physics-viz';
+import { GlobalEnvironmentSimulation } from '@/components/models/global-environment-simulation';
 
 const ModelsPage = () => {
   const [activeTab, setActiveTab] = useState('quantum-particles');
@@ -88,6 +90,7 @@ const ModelsPage = () => {
 
   const tabs = [
     { id: 'quantum-particles', label: 'Quantum Particle Physics', icon: Atom },
+    { id: 'global-environment', label: 'Global Environment', icon: TreePine },
     { id: 'quantum-processing', label: 'Quantum Processing', icon: Cpu },
     { id: 'enviro-nex', label: 'EnviroNex', icon: Globe }
   ];
@@ -553,26 +556,6 @@ const ModelsPage = () => {
 
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center mt-0.5">
-                    <Timer className="w-3 h-3 text-cyan-400" />
-                  </div>
-                  <div>
-                    <div className="text-white font-medium">Instant Processing</div>
-                    <div className="text-slate-400 text-sm">Environmental changes detected and processed in milliseconds</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center mt-0.5">
-                    <GitBranch className="w-3 h-3 text-purple-400" />
-                  </div>
-                  <div>
-                    <div className="text-white font-medium">Parallel Scenarios</div>
-                    <div className="text-slate-400 text-sm">Quantum superposition models thousands of pollution scenarios simultaneously</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
                     <Target className="w-3 h-3 text-green-400" />
                   </div>
@@ -595,7 +578,7 @@ const ModelsPage = () => {
 
               <div className="bg-slate-900/50 rounded-xl p-4 space-y-3">
                 <div className="text-sm font-medium text-white">Key Performance Metrics:</div>
-                                  <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Processing Speed:</span>
                     <span className="text-cyan-300">1000x faster</span>
@@ -1071,6 +1054,23 @@ const ModelsPage = () => {
                 transition={{ duration: 0.5 }}
               >
                 <QuantumParticlePhysicsViz 
+                  isPlaying={isPlaying}
+                  speed={speed}
+                  onPlayToggle={handlePlayToggle}
+                  onSpeedChange={handleSpeedChange}
+                />
+              </motion.div>
+            )}
+
+            {activeTab === 'global-environment' && (
+              <motion.div
+                key="global-environment"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <GlobalEnvironmentSimulation 
                   isPlaying={isPlaying}
                   speed={speed}
                   onPlayToggle={handlePlayToggle}
