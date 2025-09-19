@@ -41,8 +41,8 @@ import {
   TreePine
 } from 'lucide-react';
 import { redirect } from 'next/navigation';
-import { QuantumParticlePhysicsViz } from '@/components/models/quantum-particle-physics-viz';
-import { GlobalEnvironmentSimulation } from '@/components/models/global-environment-simulation';
+import { QuantumParticlePhysicsViz } from '@/components/mods/quantum-particle-physics-viz';
+import { GlobalEnvironmentSimulation } from '@/components/mods/global-environment-simulation';
 
 const ModelsPage = () => {
   const [activeTab, setActiveTab] = useState('quantum-particles');
