@@ -1,4 +1,4 @@
-// src/components/models/quantum-particle-physics-viz.tsx
+// src/components/mods/quantum-particle-physics-viz.tsx
 
 'use client';
 
