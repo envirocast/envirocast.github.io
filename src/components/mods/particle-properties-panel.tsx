@@ -1,4 +1,4 @@
-// src/components/models/particle-properties-panel.tsx
+// src/components/mods/particle-properties-panel.tsx
 
 'use client';
 
