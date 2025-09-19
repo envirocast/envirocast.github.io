@@ -1,4 +1,4 @@
-// src/components/models/quantum-info-panel.tsx
+// src/components/mods/quantum-info-panel.tsx
 
 'use client';
 
