@@ -196,7 +196,7 @@ export default function AIPage() {
                 <a href="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
                   Learn More About Our Technology
                 </a>
-                <a href="/models" className="text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
+                <a href="/mods" className="text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
                   Explore Our Models
                 </a>
               </div>
