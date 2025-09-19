@@ -1,4 +1,4 @@
-// src/components/models/quantum-particle-canvas.tsx
+// src/components/mods/quantum-particle-canvas.tsx
 
 'use client';
 
