@@ -1,4 +1,4 @@
-// src/components/models/global-environment-simulation.tsx
+// src/components/mods/global-environment-simulation.tsx
 
 'use client';
 
