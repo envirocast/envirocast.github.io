@@ -143,13 +143,11 @@ type MetricCardProps = {
 };
 
 // Interactive Metric Card
-// Interactive Metric Card
 const MetricCard = ({ icon: Icon, value, label, color }: MetricCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [animatedValue, setAnimatedValue] = useState(0);
 
   useEffect(() => {
-    // Only animate numbers
     if (typeof value === 'string') return;
 
     const timer = setTimeout(() => {
@@ -190,7 +188,6 @@ const MetricCard = ({ icon: Icon, value, label, color }: MetricCardProps) => {
   );
 };
 
-// Team Member Preview
 const TeamPreview = () => {
   const teamMembers = [
     { name: "Arnav Nemade", role: "Lead Quantum Developer", avatar: "⚛️" },
@@ -277,7 +274,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white relative overflow-hidden">
-      {/* Animated Background */}
+      
       <QuantumBackground />
 
       {/* Hero Section */}
