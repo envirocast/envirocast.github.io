@@ -25,11 +25,10 @@ export const ParticlePropertiesPanel: React.FC<ParticlePropertiesPanelProps> = (
   const properties = engine.getParticleProperties(selectedParticle);
   if (!properties) return null;
 
-  // Inline version (inside canvas container)
   if (inline) {
     return (
       <div className="bg-slate-900 border border-slate-600 rounded-xl h-full flex flex-col w-full">
-        {/* Fixed Header */}
+        
         <div className="flex-shrink-0 bg-slate-900 border-b border-slate-600 p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
