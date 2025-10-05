@@ -102,8 +102,6 @@ export class QuantumPhysicsEngine {
     // Quantum tunneling - teleport to random location
     particle.x = Math.random() * this.canvas.width;
     particle.y = Math.random() * this.canvas.height;
-    
-    // Clear trail after tunneling
     particle.trail = [];
     
     // Reset tunneling flag after a delay
