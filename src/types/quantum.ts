@@ -1,5 +1,3 @@
-// src/types/quantum.ts
-
 export interface Particle {
   id: string;
   x: number;
