@@ -21,7 +21,6 @@ interface QuantumInfoPanelProps {
 }
 
 export const QuantumInfoPanel: React.FC<QuantumInfoPanelProps> = ({ engine }) => {
-  // Get real-time statistics
   const particles = engine.getAllParticles();
   const entanglements = engine.getEntanglements();
   
