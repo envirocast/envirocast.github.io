@@ -27,14 +27,12 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
 
   const drawParticle = useCallback((ctx: CanvasRenderingContext2D, particle: Particle) => {
     if (!particle.visible && particle.superposition) {
-      // Flickering due to superposition
       if (Math.random() < 0.3) return;
     }
 
     const isSelected = selectedParticle === particle.id;
     const isHighlighted = selectedParticle && particle.entangledWith === selectedParticle;
 
-    // Draw uncertainty halo
     if (isSelected || isHighlighted) {
       const gradient = ctx.createRadialGradient(
         particle.x, particle.y, 0,
@@ -48,8 +46,7 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
       ctx.arc(particle.x, particle.y, particle.uncertainty, 0, Math.PI * 2);
       ctx.fill();
     }
-
-    // Draw particle
+    
     const size = particle.energy / 20 + 3;
     let color = '#00D4FF';
     
@@ -61,7 +58,6 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
       color = `hsl(${(Date.now() * 0.1) % 360}, 70%, 60%)`;
     }
 
-    // Outer glow
     const glowGradient = ctx.createRadialGradient(
       particle.x, particle.y, 0,
       particle.x, particle.y, size * 3
@@ -74,7 +70,6 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
     ctx.arc(particle.x, particle.y, size * 3, 0, Math.PI * 2);
     ctx.fill();
 
-    // Core particle
     ctx.fillStyle = color;
     ctx.shadowColor = color;
     ctx.shadowBlur = size * 2;
@@ -83,7 +78,6 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
     ctx.fill();
     ctx.shadowBlur = 0;
 
-    // Selection highlight
     if (isSelected || isHighlighted) {
       ctx.strokeStyle = isSelected ? '#FFFFFF' : '#FFD93D';
       ctx.lineWidth = 2;
@@ -119,7 +113,7 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
     particles.forEach(particle => {
       if (particle.isEntangled && particle.entangledWith) {
         const entangled = engine.getParticle(particle.entangledWith);
-        if (entangled && particle.id < entangled.id) { // Draw line only once per pair
+        if (entangled && particle.id < entangled.id) { 
           ctx.strokeStyle = '#FF6B6B';
           ctx.lineWidth = 1;
           ctx.globalAlpha = 0.6;
@@ -147,10 +141,8 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
     const deltaTime = currentTime - lastTimeRef.current;
     lastTimeRef.current = currentTime;
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Dark background
     ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -165,15 +157,10 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
       engine.checkCollisions();
     }
 
-    // Draw trails first
     engine.getAllParticles().forEach(particle => {
       drawTrail(ctx, particle);
     });
-
-    // Draw entanglement lines
     drawEntanglementLines(ctx);
-
-    // Draw particles
     engine.getAllParticles().forEach(particle => {
       drawParticle(ctx, particle);
     });
@@ -189,7 +176,6 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    // Check if click is on a particle
     const particles = engine.getAllParticles();
     let clickedParticle = null;
 
@@ -212,11 +198,9 @@ export const QuantumParticleCanvas: React.FC<QuantumParticleCanvasProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Set canvas size
     canvas.width = 800;
     canvas.height = 500;
 
-    // Start animation
     animationFrameRef.current = requestAnimationFrame(render);
 
     return () => {
