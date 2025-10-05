@@ -437,33 +437,134 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
             >
               <h5 className="text-lg font-semibold text-white mb-4">Atmospheric Layers</h5>
               <div className="space-y-3">
-                {atmosphereLayers.map((layer, index) => (
-                  <div key={layer.name} className="flex items-center space-x-4">
-                    <div className={`w-4 h-8 rounded bg-gradient-to-t ${layer.color} border border-slate-600`}></div>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-white">{layer.name}</span>
-                        <span className="text-sm text-slate-400">{layer.height}</span>
-                      </div>
-                      <p className="text-sm text-slate-300">{layer.description}</p>
-                      
-                      <div className="grid grid-cols-3 gap-2 mt-2 text-xs">
-                        <div className="bg-slate-800/50 rounded px-2 py-1">
-                          <div className="text-slate-400">Density</div>
-                          <div className="text-white">{(Math.random() * 100 + index * 20).toFixed(1)}%</div>
+                {atmosphereLayers.map((layer, index) => {
+                  // Calculate layer-specific values based on simulation metrics
+                  const isTroposphere = index === 0;
+                  const isStratosphere = index === 1;
+                  
+                  // Troposphere is most affected by pollution and temperature
+                  const pollutionEffect = isTroposphere ? (metrics.pollutionIndex / 100) : (metrics.pollutionIndex / 200);
+                  const tempEffect = isTroposphere ? (metrics.temperature - 15) / 10 : 0;
+                  
+                  // CO2 affects all layers but especially troposphere
+                  const co2Effect = (metrics.co2Level - 420) / 180; // normalized 0-1 for 420-600 range
+                  
+                  // Calculate density (affected by pollution and CO2)
+                  const baseDensity = 100 - (index * 22);
+                  const density = Math.max(0, Math.min(100, baseDensity + (pollutionEffect * 15) + (co2Effect * 10)));
+                  
+                  // Calculate temperature (decreases with altitude, affected by global warming)
+                  const baseTemp = 15 - (index * 12);
+                  const temp = baseTemp + (isTroposphere ? tempEffect * 3 : tempEffect * 0.5);
+                  
+                  // Calculate pressure (decreases with altitude)
+                  const basePressure = 1013 - (index * 250);
+                  const pressure = Math.max(0, basePressure);
+                  
+                  // Ozone layer health (stratosphere specific)
+                  const ozoneHealth = isStratosphere ? Math.max(60, 100 - (metrics.pollutionIndex * 0.2) - (co2Effect * 10)) : null;
+                  
+                  // Determine color intensity based on pollution and health
+                  const layerOpacity = isTroposphere 
+                    ? Math.min(0.5, 0.2 + (pollutionEffect * 0.3))
+                    : Math.min(0.4, 0.15 + (index * 0.05));
+                  
+                  return (
+                    <div key={layer.name} className="flex items-center space-x-4">
+                      <motion.div 
+                        className={`w-4 h-8 rounded bg-gradient-to-t ${layer.color} border border-slate-600`}
+                        animate={{
+                          opacity: layerOpacity + 0.3
+                        }}
+                        transition={{ duration: 0.5 }}
+                      ></motion.div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium text-white">{layer.name}</span>
+                          <span className="text-sm text-slate-400">{layer.height}</span>
                         </div>
-                        <div className="bg-slate-800/50 rounded px-2 py-1">
-                          <div className="text-slate-400">Temp</div>
-                          <div className="text-white">{(15 - index * 10 + Math.random() * 5).toFixed(1)}°C</div>
+                        <p className="text-sm text-slate-300">{layer.description}</p>
+                        
+                        <div className="grid grid-cols-3 gap-2 mt-2 text-xs">
+                          <div className="bg-slate-800/50 rounded px-2 py-1">
+                            <div className="text-slate-400">Density</div>
+                            <div className={`font-medium ${density > 80 ? 'text-red-300' : density > 60 ? 'text-yellow-300' : 'text-green-300'}`}>
+                              {density.toFixed(1)}%
+                            </div>
+                          </div>
+                          <div className="bg-slate-800/50 rounded px-2 py-1">
+                            <div className="text-slate-400">Temp</div>
+                            <div className={`font-medium ${temp > 20 ? 'text-red-300' : temp > 10 ? 'text-orange-300' : temp > 0 ? 'text-yellow-300' : 'text-cyan-300'}`}>
+                              {temp.toFixed(1)}°C
+                            </div>
+                          </div>
+                          <div className="bg-slate-800/50 rounded px-2 py-1">
+                            <div className="text-slate-400">Press</div>
+                            <div className="text-white font-medium">{pressure.toFixed(0)}hPa</div>
+                          </div>
                         </div>
-                        <div className="bg-slate-800/50 rounded px-2 py-1">
-                          <div className="text-slate-400">Press</div>
-                          <div className="text-white">{(1013 - index * 200 + Math.random() * 50).toFixed(0)}hPa</div>
-                        </div>
+                        
+                        {/* Ozone layer specific indicator */}
+                        {isStratosphere && (
+                          <div className="mt-2 flex items-center justify-between bg-slate-800/50 rounded px-2 py-1 text-xs">
+                            <span className="text-slate-400">Ozone Health</span>
+                            <div className="flex items-center space-x-2">
+                              <div className="w-16 h-1 bg-slate-700 rounded-full overflow-hidden">
+                                <motion.div
+                                  className={`h-full ${ozoneHealth! > 80 ? 'bg-green-400' : ozoneHealth! > 60 ? 'bg-yellow-400' : 'bg-red-400'}`}
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${ozoneHealth}%` }}
+                                  transition={{ duration: 0.5 }}
+                                />
+                              </div>
+                              <span className={`font-medium ${ozoneHealth! > 80 ? 'text-green-300' : ozoneHealth! > 60 ? 'text-yellow-300' : 'text-red-300'}`}>
+                                {ozoneHealth!.toFixed(0)}%
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Troposphere specific indicator */}
+                        {isTroposphere && (
+                          <div className="mt-2 flex items-center justify-between bg-slate-800/50 rounded px-2 py-1 text-xs">
+                            <span className="text-slate-400">CO₂ Concentration</span>
+                            <span className={`font-medium ${metrics.co2Level > 500 ? 'text-red-300' : metrics.co2Level > 450 ? 'text-orange-300' : 'text-yellow-300'}`}>
+                              {metrics.co2Level.toFixed(0)} ppm
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
+              </div>
+              
+              {/* Overall atmosphere health indicator */}
+              <div className="mt-4 p-3 bg-slate-800/50 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-white">Atmospheric Health</span>
+                  <span className={`text-sm font-bold ${
+                    metrics.pollutionIndex < 50 && metrics.co2Level < 450 ? 'text-green-300' :
+                    metrics.pollutionIndex < 100 && metrics.co2Level < 500 ? 'text-yellow-300' :
+                    'text-red-300'
+                  }`}>
+                    {metrics.pollutionIndex < 50 && metrics.co2Level < 450 ? 'Good' :
+                     metrics.pollutionIndex < 100 && metrics.co2Level < 500 ? 'Moderate' :
+                     'Poor'}
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2 text-xs text-slate-400">
+                  <AlertTriangle className={`w-3 h-3 ${
+                    metrics.pollutionIndex > 120 || metrics.co2Level > 500 ? 'text-red-400' : 'text-yellow-400'
+                  }`} />
+                  <span>
+                    {metrics.pollutionIndex > 120 || metrics.co2Level > 500
+                      ? 'Critical pollution levels detected - immediate action recommended'
+                      : metrics.pollutionIndex > 80 || metrics.co2Level > 450
+                      ? 'Elevated atmospheric contamination - monitor closely'
+                      : 'Atmospheric conditions within acceptable ranges'}
+                  </span>
+                </div>
               </div>
             </motion.div>
           )}
