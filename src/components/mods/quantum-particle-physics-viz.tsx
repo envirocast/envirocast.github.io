@@ -28,12 +28,10 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
   const [isEngineReady, setIsEngineReady] = useState(false);
   const engineRef = useRef<QuantumPhysicsEngine | null>(null);
 
-  // Initialize physics engine
   useEffect(() => {
     const initializeEngine = () => {
       engineRef.current = new QuantumPhysicsEngine({ width: 800, height: 500 });
 
-      // Create initial particles
       for (let i = 0; i < particleCount; i++) {
         engineRef.current.createParticle();
       }
@@ -41,7 +39,6 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
       setIsEngineReady(true);
     };
 
-    // Small delay to ensure DOM is ready
     const timer = setTimeout(initializeEngine, 100);
 
     return () => {
@@ -50,9 +47,8 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
         engineRef.current.clearAllParticles();
       }
     };
-  }, []); // Remove particleCount dependency to avoid re-initialization
+  }, []);
 
-  // Update particle count (separate effect)
   useEffect(() => {
     if (!engineRef.current || !isEngineReady) return;
 
@@ -60,17 +56,14 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
     const currentCount = currentParticles.length;
 
     if (currentCount < particleCount) {
-      // Add particles
       for (let i = 0; i < particleCount - currentCount; i++) {
         engineRef.current.createParticle();
       }
     } else if (currentCount > particleCount) {
-      // Remove particles
       const particlesToRemove = currentParticles.slice(particleCount);
       particlesToRemove.forEach(particle => {
         engineRef.current?.removeParticle(particle.id);
       });
-      // Clear selection if selected particle was removed
       if (selectedParticle && !engineRef.current.getParticle(selectedParticle)) {
         setSelectedParticle(null);
       }
@@ -80,7 +73,6 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
   const handleReset = () => {
     if (!engineRef.current) return;
 
-    // Clear existing particles and create new ones
     engineRef.current.clearAllParticles();
     for (let i = 0; i < particleCount; i++) {
       engineRef.current.createParticle();
@@ -92,7 +84,6 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
     setParticleCount(prev => Math.max(5, Math.min(50, prev + delta)));
   };
 
-  // Show loading state while engine initializes
   if (!isEngineReady || !engineRef.current) {
     return (
       <div className="space-y-6">
@@ -209,7 +200,7 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
             </div>
           </div>
 
-          {/* Particle Properties Panel - Fixed width when open */}
+          {/* Particle Properties Panel */}
           {selectedParticle && (
             <motion.div
               initial={{ opacity: 0, width: 0 }}
@@ -232,7 +223,6 @@ export const QuantumParticlePhysicsViz: React.FC<QuantumParticlePhysicsVizProps>
       {/* Information Panel */}
       <QuantumInfoPanel engine={engineRef.current} />
 
-      {/* Custom Slider Styles */}
       <style jsx>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
