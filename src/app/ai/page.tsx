@@ -1,10 +1,9 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
-import { Brain, Zap, ArrowLeft, ExternalLink, Atom, Globe, Target, Activity, Maximize } from 'lucide-react';
+import { Brain, Zap, ArrowLeft, ExternalLink, Atom, Globe, Target, Activity, Maximize, ArrowRight } from 'lucide-react';
 
 export default function AIPage() {
   const [isLoading, setIsLoading] = useState(true);
-  // Create a ref to get a reference to the iframe element, explicitly typing it.
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
@@ -18,7 +17,6 @@ export default function AIPage() {
 
   // Function to handle fullscreen request for the iframe
   const handleFullscreen = () => {
-    // The ref's current value is now typed to be either HTMLIFrameElement or null.
     const iframe = iframeRef.current;
     if (iframe && iframe.requestFullscreen) {
       iframe.requestFullscreen();
@@ -54,7 +52,7 @@ export default function AIPage() {
             {/* Description */}
             <p className="text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed">
               Experience our enhanced environmental AI chatbot in real-time. Learn about environmental information, 
-              gain knowledge from credible sources, and explore advanced concpets through our interactive interface.
+              gain knowledge from credible sources, and explore advanced concepts through our interactive interface.
             </p>
 
             {/* Feature Highlights */}
@@ -142,7 +140,7 @@ export default function AIPage() {
                   allow="accelerometer; autoplay; camera; encrypted-media; gyroscope; microphone"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                   onLoad={() => setIsLoading(false)}
-                  ref={iframeRef} // Attach the ref to the iframe
+                  ref={iframeRef}
                 />
                 
                 {/* Gradient Overlay for Seamless Integration */}
@@ -157,7 +155,7 @@ export default function AIPage() {
 
             {/* Floating Action Buttons */}
             <div className="absolute bottom-6 right-6 flex flex-col space-y-3">
-              {/* New fullscreen button */}
+              {/* Fullscreen button */}
               <button 
                 onClick={handleFullscreen}
                 className="w-12 h-12 bg-slate-800/80 backdrop-blur-md border border-slate-600 rounded-full flex items-center justify-center text-slate-300 hover:text-cyan-300 hover:border-cyan-500/50 shadow-lg hover:scale-110 transition-all duration-300"
@@ -179,25 +177,32 @@ export default function AIPage() {
         </div>
       </section>
 
-      {/* Footer Info */}
-      <section className="relative z-40 px-6 pb-20">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-md border border-slate-700/50 rounded-2xl p-8">
-            <div className="text-center space-y-4">
-              <h3 className="text-xl font-bold text-white">Powered by Large Language Machine Learning Algorithms</h3>
-              <p className="text-slate-400">
-                This interactive demo showcases our interactive approach to providing environmental information to the public. 
-                Learn from credible data sources using real-time data, analytics, and impact assessments.
-              </p>
-              <div className="flex justify-center space-x-6 pt-4">
-                <a href="/about" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
-                  Learn More About Our Technology
-                </a>
-                <a href="/mods" className="text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium">
-                  Explore Our Models
-                </a>
-              </div>
-            </div>
+      {/* CTA Section - Updated to match homepage styling */}
+      <section className="relative z-40 px-6 py-20 bg-gradient-to-br from-cyan-900/20 to-purple-900/20">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-transparent">
+            Powered by Large Language Machine Learning Algorithms
+          </h2>
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+            This interactive demo showcases our innovative approach to providing environmental information to the public. 
+            Learn from credible data sources using real-time data, analytics, and impact assessments.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <a 
+              href="/about" 
+              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 flex items-center justify-center group"
+            >
+              Learn More About Our Technology
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            
+            <a 
+              href="/mods" 
+              className="px-8 py-4 bg-slate-800/50 backdrop-blur-md border border-slate-600 rounded-xl font-semibold text-white hover:bg-slate-700/50 transition-all duration-300 flex items-center justify-center"
+            >
+              Explore Our Models
+            </a>
           </div>
         </div>
       </section>
