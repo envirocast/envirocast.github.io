@@ -16,7 +16,6 @@ const Header = () => {
     { href: '/nex', label: 'EnviroNex', icon: Globe, special: true },
   ];
 
-  // Variants for the mobile menu animation
   const mobileMenuVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
