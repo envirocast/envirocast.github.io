@@ -644,7 +644,6 @@ export const PolicyRecommendationModel: React.FC<PolicyRecommendationModelProps>
           }));
         }
         
-        // Mark as triggered when complete
         if (timeElapsed >= policy.timeToEffect && !policy.longTermTriggered) {
           setEnactedPolicies(prev => prev.map(p => 
             p.id === policy.id ? { ...p, longTermTriggered: true } : p
