@@ -57,7 +57,6 @@ const ModelsPage = () => {
   const [aqiValue, setAqiValue] = useState(89);
   const [predictionAccuracy, setPredictionAccuracy] = useState(94);
   
-  // Quantum Processing specific states
   const [quantumLoad, setQuantumLoad] = useState(45);
   const [dataStreams, setDataStreams] = useState(12);
   const [processedSamples, setProcessedSamples] = useState(2847392);
@@ -104,7 +103,6 @@ const ModelsPage = () => {
         setAqiValue(prev => Math.max(20, Math.min(200, prev + (Math.random() - 0.5) * 4)));
         setPredictionAccuracy(prev => Math.max(85, Math.min(98, prev + (Math.random() - 0.5) * 2)));
         
-        // Update quantum processing metrics
         setQuantumLoad(prev => Math.max(20, Math.min(95, prev + (Math.random() - 0.5) * 8)));
         setDataStreams(prev => Math.max(8, Math.min(24, prev + Math.floor((Math.random() - 0.5) * 3))));
         setProcessedSamples(prev => prev + Math.floor(Math.random() * 1000));
