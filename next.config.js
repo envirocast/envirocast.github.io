@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   // Disable Next.js image optimization (important for GitHub Pages / static export)
   images: {
