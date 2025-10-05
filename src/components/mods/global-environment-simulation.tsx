@@ -102,7 +102,6 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
     foodSecurity: 78
   });
 
-  // Control States
   const [selectedScenario, setSelectedScenario] = useState('current');
   const [timeScale, setTimeScale] = useState(2025);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
@@ -116,7 +115,6 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
   const [showAtmosphere, setShowAtmosphere] = useState(false);
   const [environmentalDamage, setEnvironmentalDamage] = useState(45);
 
-  // User Controls
   const [controls, setControls] = useState({
     industrialization: 50,
     renewableEnergy: 35,
@@ -203,7 +201,6 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
     { name: 'Thermosphere', height: '85-600km', description: 'Satellite operations', color: 'from-green-500/30 to-emerald-500/30' }
   ];
 
-  // Simulation Updates
   useEffect(() => {
     const interval = setInterval(() => {
       if (isPlaying) {
@@ -254,8 +251,6 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
           const tempFactor = Math.max(0, (metrics.temperature - 14) * 5);
           const pollutionFactor = Math.max(0, (metrics.pollutionIndex - 50) * 0.5);
           const biodiversityFactor = Math.max(0, (100 - metrics.biodiversityIndex) * 0.3);
-          
-          // Safeguard: check all operands are valid numbers
           const numbers = [tempFactor, pollutionFactor, biodiversityFactor].every(n => typeof n === 'number' && !isNaN(n));
           
           let newDamage = 0;
@@ -270,7 +265,6 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
 
         });
 
-        // Update timeline
         setTimeScale(prev => prev + 1 * speed);
       }
     }, 1000);
@@ -333,7 +327,6 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
               />
             </div>
 
-            {/* Scenario Selector */}
             <select
               value={selectedScenario}
               onChange={(e) => setSelectedScenario(e.target.value)}
@@ -1274,7 +1267,6 @@ export const GlobalEnvironmentSimulation: React.FC<GlobalEnvironmentSimulationPr
         </div>
       </div>
 
-      {/* Custom Slider Styles */}
       <style jsx>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
