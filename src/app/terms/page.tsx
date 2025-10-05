@@ -27,7 +27,7 @@ const TermsPage = () => {
           </p>
           
           <div className="text-slate-400">
-            <p>Last Updated: January 15, 2025</p>
+            <p>Last Updated: October 5, 2025</p>
           </div>
         </div>
       </section>
