@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import { redirect } from "next/navigation";
 
-// ---------- TYPE DEFINITIONS ----------
 type AlgorithmType = {
   title: string;
   category: string;
@@ -79,7 +78,6 @@ const QuantumVisualization: React.FC<QuantumVisualizationProps> = ({ isActive, a
       ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw connections (entanglement)
       connections.forEach(conn => {
         const from = qubits[conn.from];
         const to = qubits[conn.to];
@@ -97,7 +95,6 @@ const QuantumVisualization: React.FC<QuantumVisualizationProps> = ({ isActive, a
 
       // Draw qubits
       qubits.forEach((qubit, i) => {
-        // Update quantum state
         qubit.phase += 0.02;
         qubit.state = 0.5 + Math.sin(qubit.phase) * 0.3;
 
@@ -541,7 +538,6 @@ export default function AboutPage() {
       description: "Optimizes environmental resource allocation using quantum annealing and variational algorithms for maximum efficiency.",
       metrics: [
         { value: "87%", label: "Efficiency Gain" },
-        // { value: "€2.3M", label: "Cost Savings" },
         { value: "43%", label: "Waste Reduction" },
         { value: "94%", label: "Less Energy Consumption" }
       ],
@@ -624,7 +620,6 @@ export default function AboutPage() {
 
       <section className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
   <div className="max-w-7xl mx-auto px-6">
-    {/* 👇 Added justify-center here */}
     <div className="flex justify-center space-x-8 overflow-x-auto py-4">
       {sections.map(section => {
         const Icon = section.icon;
