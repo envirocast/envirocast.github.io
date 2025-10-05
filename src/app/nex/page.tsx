@@ -198,7 +198,7 @@ const NexPage = () => {
                       className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-12 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 inline-flex items-center"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => window.open("https://environex.vercel.app/", "_blank")}
+                      onClick={() => window.open("https://envnex.vercel.app/", "_blank")}
                     >
                       <ExternalLink className="w-6 h-6 mr-3" />
                       Launch EnviroNex
