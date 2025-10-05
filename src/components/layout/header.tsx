@@ -13,8 +13,6 @@ const Header = () => {
     { href: '/mods', label: 'Models' },
     { href: '/ai', label: "AI"},
     // { href: '/team', label: 'Team' },
-    // { href: 'resources', label: 'Resources' },
-    // { href: 'contact', label: 'Contact' },
     { href: '/nex', label: 'EnviroNex', icon: Globe, special: true },
   ];
 
