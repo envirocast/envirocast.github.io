@@ -59,7 +59,7 @@ const Header = () => {
       </div>
 
       <motion.header
-        className="fixed top-[52px] w-full bg-slate-900 backdrop-blur-md z-[90]"
+        className="fixed top-[52px] w-full bg-slate-900 backdrop-blur-md z-[90] -mt-px"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
