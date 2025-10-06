@@ -2,25 +2,10 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Atom, Globe, Sparkles, X } from 'lucide-react';
+import { Atom, Globe, Sparkles } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
-
-  // Load banner state from localStorage on mount
-  React.useEffect(() => {
-    const bannerDismissed = localStorage.getItem('envirocast-banner-dismissed');
-    if (bannerDismissed === 'true') {
-      setShowBanner(false);
-    }
-  }, []);
-
-  // Save banner state to localStorage when it changes
-  const handleCloseBanner = () => {
-    setShowBanner(false);
-    localStorage.setItem('envirocast-banner-dismissed', 'true');
-  };
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -84,7 +69,7 @@ const Header = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  setShowBanner(false);
+                  handleCloseBanner();
                 }}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
                 aria-label="Close banner"
