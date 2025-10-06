@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Instagram, Github, Mail, Zap } from 'lucide-react';
+import { Instagram, Github, Mail, Zap, Globe } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -55,7 +55,15 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/ai" className="hover:text-white transition-colors">AI Chatbot</Link></li>
               {/* <li><Link href="/team" className="hover:text-white transition-colors">Team</Link></li> */}
-              <li><Link href="/nex" className="hover:text-blue-400 transition-colors font-bold text-blue-400">EnviroNex</Link></li>
+              <li>
+                <Link 
+                  href="/nex" 
+                  className="inline-flex items-center px-3 py-1.5 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 hover:from-green-500/20 hover:to-emerald-500/20 border border-green-500/30 hover:border-green-400/50 transition-all font-bold text-green-400 hover:text-green-300 shadow-md shadow-green-500/20 hover:shadow-green-500/40"
+                >
+                  <Globe className="w-4 h-4 mr-2 animate-pulse" />
+                  EnviroNex
+                </Link>
+              </li>
             </ul>
           </div>
 
