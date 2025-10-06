@@ -58,7 +58,7 @@ const Footer = () => {
               <li>
                 <Link 
                   href="/nex" 
-                  className="inline-flex items-center px-3 py-1.5 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 hover:from-green-500/20 hover:to-emerald-500/20 border border-green-500/30 hover:border-green-400/50 transition-all font-bold text-green-400 hover:text-green-300 shadow-md shadow-green-500/20 hover:shadow-green-500/40"
+                  className="inline-flex items-center px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-500/10 to-cyan-500/10 hover:from-blue-500/20 hover:to-cyan-500/20 border border-blue-500/30 hover:border-blue-400/50 transition-all font-bold text-blue-400 hover:text-blue-300 shadow-md shadow-blue-500/20 hover:shadow-blue-500/40"
                 >
                   <Globe className="w-4 h-4 mr-2 animate-pulse" />
                   EnviroNex
