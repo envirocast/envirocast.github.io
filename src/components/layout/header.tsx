@@ -8,6 +8,20 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
 
+  // Load banner state from localStorage on mount
+  React.useEffect(() => {
+    const bannerDismissed = localStorage.getItem('envirocast-banner-dismissed');
+    if (bannerDismissed === 'true') {
+      setShowBanner(false);
+    }
+  }, []);
+
+  // Save banner state to localStorage when it changes
+  const handleCloseBanner = () => {
+    setShowBanner(false);
+    localStorage.setItem('envirocast-banner-dismissed', 'true');
+  };
+
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
