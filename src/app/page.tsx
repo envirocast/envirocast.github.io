@@ -313,9 +313,10 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 
-                <Link href="/nex" className="px-8 py-4 bg-slate-800/50 backdrop-blur-md border border-slate-600 rounded-xl font-semibold text-white hover:bg-slate-700/50 transition-all duration-300 flex items-center justify-center group">
-                  <Globe className="mr-2 w-5 h-5" />
-                  Try EnviroNex
+                <Link href="/nex" className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl font-semibold text-white hover:from-green-400 hover:to-emerald-500 transition-all duration-300 transform hover:scale-105 flex items-center justify-center group relative overflow-hidden shadow-lg shadow-green-500/50 animate-pulse">
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-400/20 blur-xl"></div>
+                  <Globe className="mr-2 w-5 h-5 relative z-10" />
+                  <span className="relative z-10">Try EnviroNex</span>
                 </Link>
               </div>
             </div>
@@ -507,7 +508,7 @@ export default function HomePage() {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 flex items-center justify-center group" onClick={() => redirect("/mods")}>
-              Explore Interactive Models
+              Explore the Crown Jewel of EnviroCast
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             
