@@ -30,61 +30,36 @@ const Header = () => {
   return (
     <>
       {/* Announcement Banner */}
-      <AnimatePresence>
-        {showBanner && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 w-full z-50 overflow-hidden"
-          >
-            <a
-              href="/nex"
-              className="block bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 hover:from-blue-500 hover:via-cyan-500 hover:to-blue-500 transition-all duration-300 cursor-pointer relative overflow-hidden"
-              onClick={() => setIsOpen(false)}
-            >
-              {/* Animated background effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
-              <style jsx>{`
-                @keyframes shimmer {
-                  0% { transform: translateX(-100%); }
-                  100% { transform: translateX(100%); }
-                }
-                .animate-shimmer {
-                  animation: shimmer 3s infinite;
-                }
-              `}</style>
-              
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center relative">
-                <Sparkles className="w-5 h-5 text-yellow-300 mr-2 animate-pulse" />
-                <span className="text-white font-semibold text-sm sm:text-base text-center">
-                  Check out <span className="font-bold underline decoration-yellow-300">EnviroNex</span>, the crown jewel of our project!
-                </span>
-                <Sparkles className="w-5 h-5 text-yellow-300 ml-2 animate-pulse" style={{ animationDelay: '0.5s' }} />
-              </div>
-
-              {/* Close button */}
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  handleCloseBanner();
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
-                aria-label="Close banner"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="fixed top-0 w-full z-50">
+        <a
+          href="/nex"
+          className="block bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 hover:from-blue-500 hover:via-cyan-500 hover:to-blue-500 transition-all duration-300 cursor-pointer relative overflow-hidden"
+          onClick={() => setIsOpen(false)}
+        >
+          {/* Animated background effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+          <style jsx>{`
+            @keyframes shimmer {
+              0% { transform: translateX(-100%); }
+              100% { transform: translateX(100%); }
+            }
+            .animate-shimmer {
+              animation: shimmer 3s infinite;
+            }
+          `}</style>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center relative">
+            <Sparkles className="w-5 h-5 text-yellow-300 mr-2 animate-pulse" />
+            <span className="text-white font-semibold text-sm sm:text-base text-center">
+              Check out <span className="font-bold underline decoration-yellow-300">EnviroNex</span>, the crown jewel of our project!
+            </span>
+            <Sparkles className="w-5 h-5 text-yellow-300 ml-2 animate-pulse" style={{ animationDelay: '0.5s' }} />
+          </div>
+        </a>
+      </div>
 
       <motion.header
-        className={`fixed w-full bg-slate-900 backdrop-blur-md z-40 transition-all duration-300 ${
-          showBanner ? 'top-[52px]' : 'top-0'
-        }`}
+        className="fixed top-[52px] w-full bg-slate-900 backdrop-blur-md z-40"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -161,9 +136,7 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={`fixed inset-0 bg-slate-900 md:hidden z-30 ${
-              showBanner ? 'pt-[136px]' : 'pt-24'
-            }`}
+            className="fixed inset-0 bg-slate-900 md:hidden z-30 pt-[136px]"
             initial="hidden"
             animate="visible"
             exit="exit"
