@@ -56,7 +56,7 @@ const Header = () => {
                   href={item.href}
                   className={`transition-all duration-300 relative group flex items-center space-x-2 ${
                     item.special 
-                      ? 'text-green-400 font-bold hover:text-green-300 px-4 py-2 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 hover:from-green-500/20 hover:to-emerald-500/20 border border-green-500/30 hover:border-green-400/50 shadow-lg shadow-green-500/20 hover:shadow-green-500/40' 
+                      ? 'text-blue-400 font-bold hover:text-blue-300 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500/10 to-cyan-500/10 hover:from-blue-500/20 hover:to-cyan-500/20 border border-blue-500/30 hover:border-blue-400/50 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40' 
                       : 'text-slate-300 hover:text-cyan-300'
                   }`}
                 >
@@ -124,7 +124,7 @@ const Header = () => {
                      href={item.href}
                       className={`text-3xl font-semibold transition-all flex items-center space-x-3 ${
                         item.special 
-                          ? 'text-green-400 font-bold hover:text-green-300 px-6 py-3 rounded-xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 hover:from-green-500/20 hover:to-emerald-500/20 border border-green-500/30 hover:border-green-400/50 shadow-lg shadow-green-500/30' 
+                          ? 'text-blue-400 font-bold hover:text-blue-300 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 hover:from-blue-500/20 hover:to-cyan-500/20 border border-blue-500/30 hover:border-blue-400/50 shadow-lg shadow-blue-500/30' 
                           : 'text-slate-200 hover:text-cyan-300'
                       }`}
                       onClick={() => setIsOpen(false)}
