@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Atom, Globe } from 'lucide-react';
+import { Atom, Globe, Sparkles, X } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -29,8 +30,62 @@ const Header = () => {
 
   return (
     <>
+      {/* Announcement Banner */}
+      <AnimatePresence>
+        {showBanner && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 w-full z-50 overflow-hidden"
+          >
+            <a
+              href="/nex"
+              className="block bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 hover:from-blue-500 hover:via-cyan-500 hover:to-blue-500 transition-all duration-300 cursor-pointer relative overflow-hidden"
+              onClick={() => setIsOpen(false)}
+            >
+              {/* Animated background effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+              <style jsx>{`
+                @keyframes shimmer {
+                  0% { transform: translateX(-100%); }
+                  100% { transform: translateX(100%); }
+                }
+                .animate-shimmer {
+                  animation: shimmer 3s infinite;
+                }
+              `}</style>
+              
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center relative">
+                <Sparkles className="w-5 h-5 text-yellow-300 mr-2 animate-pulse" />
+                <span className="text-white font-semibold text-sm sm:text-base text-center">
+                  Check out <span className="font-bold underline decoration-yellow-300">EnviroNex</span>, the crown jewel of our project!
+                </span>
+                <Sparkles className="w-5 h-5 text-yellow-300 ml-2 animate-pulse" style={{ animationDelay: '0.5s' }} />
+              </div>
+
+              {/* Close button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setShowBanner(false);
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full"
+                aria-label="Close banner"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.header
-        className="fixed top-0 w-full bg-slate-900 backdrop-blur-md z-50"
+        className={`fixed w-full bg-slate-900 backdrop-blur-md z-40 transition-all duration-300 ${
+          showBanner ? 'top-[52px]' : 'top-0'
+        }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -107,7 +162,9 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 bg-slate-900 pt-24 md:hidden z-40"
+            className={`fixed inset-0 bg-slate-900 md:hidden z-30 ${
+              showBanner ? 'pt-[136px]' : 'pt-24'
+            }`}
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -121,7 +178,7 @@ const Header = () => {
                 return (
                   <motion.div key={item.href} variants={mobileLinkVariants}>
                     <a
-                     href={item.href}
+                      href={item.href}
                       className={`text-3xl font-semibold transition-all flex items-center space-x-3 ${
                         item.special 
                           ? 'text-blue-400 font-bold hover:text-blue-300 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 hover:from-blue-500/20 hover:to-cyan-500/20 border border-blue-500/30 hover:border-blue-400/50 shadow-lg shadow-blue-500/30' 
